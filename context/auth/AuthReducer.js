@@ -1,10 +1,10 @@
 import {createContext, useEffect, useReducer, useState} from "react"
 import {CHANGE_AVATAR_SUCCESS, LOGOUT, SET_USER} from "./AuthTypes"
 import AuthActions from "./AuthActions"
-import logoutManager from "../../seyed-modules/helpers/logoutManager"
-import cookieHelper from "../../seyed-modules/helpers/cookieHelper"
-import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
-import LoadingWrapper from "../../seyed-modules/components/LoadingWrapper"
+import logoutManager from "../../../seyed-modules/helpers/logoutManager"
+import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
+import parseQueryString from "../../../seyed-modules/helpers/parseQueryString"
+import LoadingWrapper from "../../../seyed-modules/components/LoadingWrapper"
 
 export const AuthContext = createContext(null)
 

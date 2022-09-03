@@ -1,4 +1,4 @@
-import request from "../../seyed-modules/request/request"
+import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
 import {EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
 

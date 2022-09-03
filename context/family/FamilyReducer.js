@@ -1,9 +1,9 @@
 import {createContext, useEffect, useReducer} from "react"
 import {EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
 import FamilyActions from "./FamilyActions"
-import logoutManager from "../../seyed-modules/helpers/logoutManager"
+import logoutManager from "../../../seyed-modules/helpers/logoutManager"
 import {LOGOUT} from "../auth/AuthTypes"
-import cookieHelper from "../../seyed-modules/helpers/cookieHelper"
+import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
 import getSortedChildren from "../../helpers/getSortedChildren"
 
 export const FamilyContext = createContext(null)

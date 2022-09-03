@@ -1,8 +1,8 @@
 import {CHANGE_AVATAR_SUCCESS, SET_USER} from "./AuthTypes"
-import request from "../../seyed-modules/request/request"
+import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
 import FamilyActions from "../family/FamilyActions"
-import cookieHelper from "../../seyed-modules/helpers/cookieHelper"
+import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
 
 const base = process.env.REACT_APP_AUTH_URL
 
