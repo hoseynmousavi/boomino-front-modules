@@ -6,8 +6,8 @@ import inputKeyDownEnter from "../helpers/inputKeyDownEnter"
 import AuthActions from "../context/auth/AuthActions"
 import inputConstant from "../constant/inputConstant"
 import MyLoader from "../../seyed-modules/components/MyLoader"
-import CheckSvg from "../media/svg/CheckSvg"
-import CloseSvg from "../media/svg/CloseSvg"
+import CheckSvg from "../../seyed-modules/media/svg/CheckSvg"
+import CloseSvg from "../../seyed-modules/media/svg/CloseSvg"
 import {REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
 
 function Input({
