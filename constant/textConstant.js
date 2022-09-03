@@ -36,6 +36,9 @@ const textConstant = {
     chooseGender: "جنسیت خود را انتخاب کنید",
     birthDate: "تاریخ تولد",
 
+    chooseChildGender: "جنسیت فرزند خود را انتخاب کنید",
+    chooseChildBirthDate: "تاریخ تولد فرزند خود را انتخاب کنید",
+
     saveBtn: "ذخیره",
     skipBtn: "رد کردن",
 }
