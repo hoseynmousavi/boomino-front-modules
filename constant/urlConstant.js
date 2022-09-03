@@ -5,6 +5,7 @@ const urlConstant = {
     loginPhone: "/login/phone",
     loginVerifyCode: parameter => `/login/enter-code/${parameter}`,
 
+    editInformation: "/parent/profile",
     editInformationAfterSignup: "/parent/profile/after-signup",
 }
 

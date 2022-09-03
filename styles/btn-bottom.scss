@@ -1,0 +1,21 @@
+.full-screen-btn {
+  position: sticky;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: -1px;
+  padding: 20px var(--mobile-first-solid-padding);
+  background-color: var(--first-background-color);
+  border-top: 1px solid transparent;
+  transition: border-top ease 0.2s;
+
+  &.dark {
+    background-color: var(--second-background-color);
+  }
+
+  &.is-pinned {
+    @media screen and (max-width: 450px) {
+      border-top: 1px solid var(--first-border-color);
+    }
+  }
+}

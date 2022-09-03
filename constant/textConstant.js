@@ -19,6 +19,25 @@ const textConstant = {
     enterVerifyCode: `کد تاييد ${verifyCodeConstant.numberOfDigits} رقمی که به شماره همراه `,
     enterVerifyCodeEnd: " ارسال شد را در زیر وارد کنید.",
     editPhone: "ویرایش شماره",
+
+    completeProfile: "تکمیل اطلاعات کاربری",
+    completeProfileAfterSignup: "حساب شما با موفقیت ساخته شد، اطلاعات خود را کامل کنید.",
+    childAccountInfo: "اطلاعات حساب فرزند",
+    accountInfo: "اطلاعات حساب کاربری",
+    editAvatar: "ویرایش تصویر پروفایل",
+    lastName: "نام خانوادگی",
+    fullName: "نام",
+    email: "ایمیل",
+    enterEmail: "ایمیل خود را وارد کنید",
+    mobilePhone: "شماره همراه",
+    nationalCode: "کدملی",
+    enterNationalCode: "کد ملی 10 رقمی",
+    gender: "جنسیت",
+    chooseGender: "جنسیت خود را انتخاب کنید",
+    birthDate: "تاریخ تولد",
+
+    saveBtn: "ذخیره",
+    skipBtn: "رد کردن",
 }
 
 export default textConstant

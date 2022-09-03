@@ -12,6 +12,25 @@ const apiUrlsConstant = {
     getFamily: "family/get-family",
     addMember: "family/add-member",
     removeMember: "family/remove-member",
+
+    getPackages: "parental-control/get-packages",
+    editChildPackage: "parental-control/package",
+    addChildRestrictions: "parental-control/restriction",
+    editChildRestrictionsTime: "parental-control/time-restriction",
+    getChildRestrictions: "parental-control/get-restriction",
+    getChildChart: "parental-control/chart",
+    getChildTodayUsage: "parental-control/today-usage",
+    getChildCategories: "parental-control/child-categories",
+    getChildTimeLine: "parental-control/timeline",
+    getChildTimeLineDetail: "parental-control/timeline-detail",
+    getChildApps: "parental-control/apps",
+    getChildContacts: "parental-control/contacts",
+    addChildRestrictionsContact: "parental-control/contact-restriction",
+    addChildRestrictionsSite: "parental-control/site-restriction",
+    removeChildRestrictionsApp: "parental-control/app-restriction",
+    addChildRestrictionsApp: "parental-control/app-restriction",
+    setKidZonePass: "parental-control/kidzone-password",
+    verifyKidZonePass: "parental-control/verify-kidzone-password",
 }
 
 export default apiUrlsConstant
