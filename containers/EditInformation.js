@@ -111,7 +111,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                     avatar={getImageLink(child?.avatar_fid)}
                                     avatarClassName="login-image-edit-crop"
                                     label={textConstant.editAvatar}
-                                    link={link}
+                                    link={link?.(childId)}
                                     isChild={!!childId}
                         />
                     }
