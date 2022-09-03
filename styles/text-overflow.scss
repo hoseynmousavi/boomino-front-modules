@@ -1,0 +1,36 @@
+.text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+
+  &.added {
+    position: relative;
+  }
+}
+
+.text-overflow-shadow {
+  content: " ";
+  left: -5px;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  z-index: var(--default-z-index);
+  position: absolute;
+  pointer-events: none;
+
+  &.right {
+    left: initial;
+    right: -5px;
+  }
+}
+
+.text-overflow-slide-span {
+  display: inline-block;
+  margin-right: 16px;
+}
+
+.line-limit {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

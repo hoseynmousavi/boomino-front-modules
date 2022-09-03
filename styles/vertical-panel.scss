@@ -1,0 +1,50 @@
+.vertical-panel-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--full-height);
+  z-index: var(--modal-z-index);
+  background-color: var(--first-modal-background-color);
+  opacity: 0;
+
+  &.modal {
+    background-color: var(--second-modal-background-color);
+    transition: opacity ease 0.2s;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+}
+
+.vertical-panel {
+  position: fixed;
+  z-index: var(--modal-z-index);
+  top: var(--full-height);
+  right: 0;
+  left: 0;
+  padding: 0 var(--mobile-first-solid-padding);
+  background-color: var(--first-background-color);
+  border-radius: var(--second-radius) var(--second-radius) 0 0;
+  overflow: hidden;
+  transform: perspective(0);
+  cursor: pointer;
+  user-select: none;
+  touch-action: none;
+}
+
+.vertical-panel-line {
+  margin: 20px auto;
+  width: 75px;
+  height: 5px;
+  background-color: var(--first-border-color);
+  border-radius: var(--second-radius);
+}
+
+.vertical-panel-content {
+  overflow-y: visible;
+  overflow-x: hidden;
+}
