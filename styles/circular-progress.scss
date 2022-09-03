@@ -1,0 +1,14 @@
+.circular-progress {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: rotate(-90deg);
+  transition: opacity ease 0.2s;
+  pointer-events: none;
+}
+
+.circular-progress-path {
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  transition: all ease 0.2s;
+}
