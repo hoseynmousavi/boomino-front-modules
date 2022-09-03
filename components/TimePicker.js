@@ -4,9 +4,9 @@ import KeyboardArrowSvg from "../../boomino-front-modules/media/svg/KeyboardArro
 import Button from "../../seyed-modules/components/Button"
 import Scroll from "./Scroll"
 import goBack from "../../seyed-modules/helpers/goBack"
-import dateConstant from "../../constant/dateConstant"
+import dateConstant from "../constant/dateConstant"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
-import fixTimeFormat from "../../helpers/fixTimeFormat"
+import fixTimeFormat from "../helpers/fixTimeFormat"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
 
 function TimePicker({name, full_title, title, onChange, placeholder, defaultValue, justShowPanel})
