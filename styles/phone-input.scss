@@ -1,0 +1,45 @@
+.phone-input-cont {
+  width: 100%;
+  position: relative;
+}
+
+.phone-input {
+  width: 100%;
+  padding: 0 12px 0 45px;
+  height: var(--btn-input-height);
+  border-radius: var(--second-radius);
+  border: 2px solid var(--first-border-color);
+  font-size: var(--big-font);
+  text-align: left;
+  font-family: my-font-bold, serif;
+  letter-spacing: 4px;
+  direction: ltr;
+  transition: border ease 0.2s;
+
+  &:focus {
+    border: 2px solid var(--first-text-color);
+
+    + .phone-input-placeholder {
+      color: var(--first-text-color);
+    }
+  }
+}
+
+.phone-input-placeholder {
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: var(--big-font);
+  font-family: my-font-bold, serif;
+  color: var(--second-text-color);
+  pointer-events: none;
+  letter-spacing: 4px;
+  transition: color ease 0.2s;
+
+  &.active {
+    color: var(--first-text-color);
+  }
+}

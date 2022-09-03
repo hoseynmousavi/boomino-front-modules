@@ -1,0 +1,118 @@
+.on-boarding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: var(--full-height);
+  touch-action: pan-x;
+  width: 100%;
+  transition: min-height ease 0.15s;
+
+  &.dark {
+    background-color: var(--second-background-color);
+  }
+}
+
+.on-boarding-slide {
+  direction: ltr;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+}
+
+.on-boarding-page {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+  width: 100%;
+}
+
+.on-boarding-img {
+  width: 72%;
+  margin: auto;
+}
+
+.on-boarding-title {
+  text-align: center;
+  width: 72%;
+  font-size: var(--huge-font);
+  font-family: my-font-bold, serif;
+  color: var(--first-text-color);
+  margin: 10% auto 4% auto;
+}
+
+.on-boarding-desc {
+  text-align: center;
+  width: 72%;
+  font-size: var(--big-font);
+  color: var(--second-text-color);
+  margin: 0 auto 0 auto;
+}
+
+.on-boarding-next-cont {
+  height: var(--btn-input-height);
+  font-size: var(--big-font);
+  font-family: my-font-bold, serif;
+  color: var(--first-color);
+  margin: 0 8%;
+  align-self: flex-start;
+  width: 80px;
+  border-radius: var(--first-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: margin var(--first-transition), width var(--first-transition), color var(--first-transition), background-color ease 0.35s;
+
+  &.done {
+    margin: 0 var(--mobile-first-solid-padding);
+    width: calc(100% - 2 * var(--mobile-first-solid-padding));
+    background-color: var(--first-color);
+    color: var(--solid-light);
+  }
+}
+
+.on-boarding-done {
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity ease 0.3s;
+
+  &.show {
+    opacity: 1;
+    transition: opacity ease 0.3s 0.2s;
+  }
+}
+
+.on-boarding-next {
+  width: 23px;
+  height: 23px;
+  stroke: var(--first-color);
+  margin: 0 -8px 0 2px;
+  transform: rotate(-90deg);
+  transition: opacity ease 0.1s;
+
+  path {
+    stroke-width: 2.3px;
+  }
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.on-boarding-next-text {
+  transition: opacity ease 0.1s;
+
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.on-boarding-dot {
+  background: var(--second-text-color);
+}

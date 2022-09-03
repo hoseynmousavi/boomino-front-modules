@@ -1,0 +1,213 @@
+.login {
+  min-height: var(--full-height);
+  padding: 0 var(--mobile-first-solid-padding) calc(var(--btn-input-height) + 20px + 20px) var(--mobile-first-solid-padding);
+  background-color: var(--first-background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  transition: min-height ease 0.15s;
+
+  &.edit {
+    padding: 0;
+    justify-content: space-between;
+  }
+
+  &.dark {
+    background-color: var(--second-background-color);
+  }
+}
+
+.login-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.login-title {
+  font-size: var(--big-font);
+  margin-bottom: 15px;
+}
+
+.login-desc {
+  font-size: var(--title-font);
+  margin-bottom: 25px;
+}
+
+.login-submit {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 0;
+  padding: 20px var(--mobile-first-solid-padding);
+  background-color: var(--first-background-color);
+}
+
+.login-code-desc {
+  font-size: var(--title-font);
+  margin-bottom: 15px;
+  line-height: var(--first-line-height);
+}
+
+.login-code-err {
+  height: 0;
+  color: var(--toast-fail-text);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  transition: height ease 0.2s 0.1s, opacity ease 0.1s;
+
+  &.show {
+    height: 35px;
+    opacity: 1;
+    transition: height ease 0.2s, opacity ease 0.1s 0.2s;
+  }
+}
+
+.login-code-desc-phone {
+  font-family: my-font-bold, serif;
+  color: var(--first-text-color);
+  direction: ltr;
+  display: inline-block;
+}
+
+.login-code-edit {
+  font-size: var(--title-font);
+  margin: 0 auto 25px auto;
+  border-bottom: 2px dotted var(--first-text-color);
+  padding: 5px;
+  border-radius: var(--second-radius) var(--second-radius) 0 0;
+  cursor: pointer;
+  transition: opacity ease 0.2s;
+
+  &.disable {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.login-code-timer {
+  font-size: var(--title-font);
+  margin: 25px auto 0 auto;
+  height: 32px;
+  color: var(--second-text-color);
+  padding: 5px;
+  border-radius: var(--first-radius);
+  animation: fade-in ease 0.2s;
+  transition: opacity ease 0.2s;
+
+  &.pointer {
+    cursor: pointer;
+  }
+
+  &.disable {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.login-code-timer-remain {
+  display: inline-block;
+  width: 43px;
+  text-align: center;
+}
+
+.login-code-loading {
+  margin: 25px auto 0 auto;
+  height: 32px;
+}
+
+.login-edit-buttons {
+  display: flex;
+}
+
+.login-edit-button {
+  display: inline-flex;
+  vertical-align: top;
+  width: 53%;
+  flex-grow: 1;
+
+  &.full {
+    width: 100%;
+  }
+
+  &.skip {
+    width: calc(47% - 15px);
+    margin-left: 15px;
+  }
+}
+
+.login-edit-form {
+  width: 100%;
+  padding: 20px var(--mobile-first-solid-padding) 0 var(--mobile-first-solid-padding);
+}
+
+.login-image-edit-crop {
+  width: 120px;
+  height: 120px;
+  margin: 10px auto;
+}
+
+.login-image-edit-cont {
+  position: relative;
+}
+
+.login-image-edit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  object-fit: cover;
+  cursor: pointer;
+  fill: var(--first-background-color);
+  transition: top ease 0.2s, bottom ease 0.2s, left ease 0.2s, right ease 0.2s, padding ease 0.2s;
+
+  &.dark {
+    fill: var(--second-background-color);
+
+    .default {
+      background-color: var(--first-background-color);
+    }
+
+    .image-loading {
+      background-color: var(--first-background-color);
+    }
+  }
+
+  &.parent-loading {
+    padding: 4px;
+  }
+
+  &.child-loading {
+    .avatar-active-border {
+      stroke-width: 6px;
+    }
+  }
+}
+
+.login-image-edit-btn {
+  margin: 0 auto 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--link-color);
+  font-family: my-font-bold, serif;
+  padding: 8px;
+  border-radius: var(--first-radius);
+  cursor: pointer;
+}
+
+.login-image-edit-remove {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+}
+
+.login-image-edit-title-remove {
+  color: var(--toast-fail-text);
+}
