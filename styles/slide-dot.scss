@@ -1,0 +1,30 @@
+.slide-dots {
+  pointer-events: none;
+  text-align: center;
+  height: 10px;
+  margin: 0 auto;
+  white-space: nowrap;
+  animation: kid-zone-app ease-in-out 0.8s;
+}
+
+.slide-dot {
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+  width: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #86d8fe, #21b2f5);
+  transform: scale(0.8);
+  opacity: 0.5;
+  box-shadow: var(--third-shadow);
+  transition: all ease 0.2s;
+
+  &.active {
+    opacity: 1;
+  }
+
+  &.right {
+    transform: scale(0.8) translate3d(24px, 0, 0);
+  }
+}
