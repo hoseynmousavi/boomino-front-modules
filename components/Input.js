@@ -9,9 +9,10 @@ import MyLoader from "../../seyed-modules/components/MyLoader"
 import CheckSvg from "../../seyed-modules/media/svg/CheckSvg"
 import CloseSvg from "../../seyed-modules/media/svg/CloseSvg"
 import {REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
+import onScroll from "../../seyed-modules/helpers/onScroll"
 
 function Input({
-                   className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "",
+                   className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll,
                    defaultValue, onChange, disabled, ltr, ltrPlaceHolder, Icon, required, onSubmit, onSubmitDisable, disableSubmit, labelClassName, iconClassName, noSpace,
                })
 {
@@ -25,6 +26,8 @@ function Input({
 
     useEffect(() =>
     {
+        let scrollListener = null
+        if (disableOnScroll) scrollListener = onScroll({callback: () => inputRef.current?.blur?.()})
         if (focusOnMountDesktop && window.innerWidth > 480) setTimeout(() => inputRef?.current?.focus(), 300)
         if (defaultValue)
         {
@@ -51,11 +54,17 @@ function Input({
 
         return () =>
         {
+            scrollListener?.()
             clearTimeout(validationTimer.current)
             clearTimeout(validationIconTimer.current)
         }
         // eslint-disable-next-line
     }, [])
+
+    function resetInput()
+    {
+        onInputChange({target: {value: ""}})
+    }
 
     function onInputChange(e)
     {
@@ -132,7 +141,7 @@ function Input({
         {
             const {value} = e.target
             setValue(value)
-            onChange({name, value: value.trim() ? value.trim() : required ? null : ""})
+            onChange({name, value: value.trim() ? value.trim() : required ? null : "", reset: resetInput})
             checkErrTimer()
         }
         setError("")
@@ -195,7 +204,7 @@ function Input({
                 />
                 {
                     Icon ?
-                        <Icon className={`input-icon icon ${iconClassName} ${ltr ? "" : "rtl"}`}/>
+                        <Icon className={`input-icon icon ${iconClassName} ${ltr ? "" : "rtl"}`} onClick={onIconClick}/>
                         :
                         <>
                             <MyLoader width={24} className={`input-icon validation ${iconClassName} ${validationLoading === "loading" ? "show" : ""} ${ltr ? "" : "rtl"}`}/>
