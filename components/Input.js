@@ -10,6 +10,7 @@ import CheckSvg from "../../seyed-modules/media/svg/CheckSvg"
 import CloseSvg from "../../seyed-modules/media/svg/CloseSvg"
 import {REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
 import onScroll from "../../seyed-modules/helpers/onScroll"
+import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 
 function Input({
                    className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll,
@@ -122,7 +123,7 @@ function Input({
             }
             else if (validation === "phone")
             {
-                const value = numberCorrection(e.target.value.trim().slice(0, 11))
+                const value = numberCorrection(showPhoneNumber.fixToNumber(e.target.value))
                 if (!isNaN(value) && value.length <= 11) setValue(value)
                 if (regexConstant.PHONE_REGEX.test(value)) onChange({name, value})
                 else onChange({name, value: value || required ? null : ""})
@@ -197,7 +198,7 @@ function Input({
                        ref={inputRef}
                        type={type}
                        placeholder={placeholder}
-                       value={value}
+                       value={validation === "phone" ? showPhoneNumber.showPhone(value) : value}
                        onChange={onInputChange}
                        onBlur={onInputBlur}
                        onKeyDown={onSubmit || onSubmitDisable ? inputKeyDownEnter({onSubmit, onSubmitDisable, disableSubmit, checkValidation: onInputBlur}) : undefined}
