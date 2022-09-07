@@ -11,7 +11,7 @@ import {AuthContext} from "../context/auth/AuthReducer"
 import urlConstant from "../constant/urlConstant"
 import errorConstant from "../../seyed-modules/constant/errorConstant"
 import textConstant from "../constant/textConstant"
-import showPhoneNumber from "../helpers/showPhoneNumber"
+import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import {REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
 
@@ -78,7 +78,7 @@ function LoginInputCode({route: {match: {params: {phone}}}})
             <h1 className="login-title">{textConstant.enterCode}</h1>
             <div className="login-code-desc">
                 {textConstant.enterVerifyCode}
-                <div className="login-code-desc-phone">{showPhoneNumber(phone)}</div>
+                <div className="login-code-desc-phone">{showPhoneNumber.showPhone(phone)}</div>
                 {textConstant.enterVerifyCodeEnd}
             </div>
             <Material className={`login-code-edit ${verifyLoading ? "disable" : ""}`} disable={verifyLoading} onClick={goBack}>{textConstant.editPhone}</Material>

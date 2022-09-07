@@ -1,6 +1,6 @@
 import {useLayoutEffect, useRef, useState} from "react"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
-import verifyCodeConstant from "../constant/verifyCodeConstant"
+import showPhoneNumber, {phoneSeparator} from "../../seyed-modules/helpers/showPhoneNumber"
 
 function PhoneInput({onChange})
 {
@@ -15,7 +15,7 @@ function PhoneInput({onChange})
     function onInputChange(e)
     {
         const {value: eventValue} = e.target
-        const inputValue = numberCorrection(eventValue.replace(verifyCodeConstant.phoneSeparatorRemove, ""))
+        const inputValue = numberCorrection(showPhoneNumber.fixToNumber(eventValue))
         if (inputValue.length <= 9 && !isNaN(inputValue))
         {
             setValue(inputValue)
@@ -28,7 +28,7 @@ function PhoneInput({onChange})
     {
         const clipboardData = e?.clipboardData || window?.clipboardData
         const pastedData = clipboardData?.getData("Text")
-        const inputValue = numberCorrection(pastedData.replace(verifyCodeConstant.phoneSeparatorRemove, ""))
+        const inputValue = numberCorrection(showPhoneNumber.fixToNumber(pastedData))
         if (inputValue && inputValue.length === 11 && !isNaN(inputValue) && inputValue.startsWith("09"))
         {
             setValue(inputValue.slice(2, 11))
@@ -40,10 +40,10 @@ function PhoneInput({onChange})
     {
         return input && !isNaN(input) ?
             input.length >= 6 ?
-                input.slice(0, 2) + verifyCodeConstant.phoneSeparator + input.slice(2, 5) + verifyCodeConstant.phoneSeparator + input.slice(5, input.length)
+                input.slice(0, 2) + phoneSeparator + input.slice(2, 5) + phoneSeparator + input.slice(5, input.length)
                 :
                 input.length >= 3 ?
-                    input.slice(0, 2) + verifyCodeConstant.phoneSeparator + input.slice(2, input.length)
+                    input.slice(0, 2) + phoneSeparator + input.slice(2, input.length)
                     :
                     input
             :

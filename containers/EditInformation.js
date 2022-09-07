@@ -16,7 +16,7 @@ import CheckIfChildExists from "../../boomino-front-modules/hooks/CheckIfChildEx
 import LoadingWrapper from "../../seyed-modules/components/LoadingWrapper"
 import {FamilyContext} from "../context/family/FamilyReducer"
 import getImageLink from "../../boomino-front-modules/helpers/getImageLink"
-import showPhoneNumber from "../../boomino-front-modules/helpers/showPhoneNumber"
+import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import WizardBack from "../../boomino-front-modules/components/WizardBack"
 import goBack from "../../seyed-modules/helpers/goBack"
 import textConstant from "../constant/textConstant"
@@ -158,7 +158,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                             <Input name="mobilePhone"
                                    label={textConstant.mobilePhone}
                                    disabled
-                                   defaultValue={showPhoneNumber(user.mobilePhone)}
+                                   defaultValue={showPhoneNumber.showPhone(user.mobilePhone)}
                                    onChange={changeField}
                                    ltr
                                    Icon={ShieldSvg}
