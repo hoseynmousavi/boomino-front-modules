@@ -156,7 +156,8 @@ function Input({
 
     function onInputBlur()
     {
-        const tempValue = inputRef.current.value.trim()
+        let tempValue = inputRef.current.value.trim()
+        if (validation === "phone") tempValue = showPhoneNumber.fixToNumber(tempValue)
         let tempErr = ""
         if (!tempValue)
         {
