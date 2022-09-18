@@ -4,13 +4,14 @@ import checkNationalCode from "../helpers/checkNationalCode"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
 import inputKeyDownEnter from "../helpers/inputKeyDownEnter"
 import AuthActions from "../context/auth/AuthActions"
-import inputConstant from "../constant/inputConstant"
+import validationConstant from "../constant/validationConstant"
 import MyLoader from "../../seyed-modules/components/MyLoader"
 import CheckSvg from "../../seyed-modules/media/svg/CheckSvg"
 import CloseSvg from "../../seyed-modules/media/svg/CloseSvg"
 import {REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
 import onScroll from "../../seyed-modules/helpers/onScroll"
 import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
+import ShowValidationError from "./ShowValidationError"
 
 function Input({
                    className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll,
@@ -91,7 +92,7 @@ function Input({
                                 .then(() =>
                                 {
                                     setValidationLoading("NOK")
-                                    setError(inputConstant.repeatedEmail)
+                                    setError(validationConstant.repeatedEmail)
                                 })
                                 .catch(err =>
                                 {
@@ -161,7 +162,7 @@ function Input({
         let tempErr = ""
         if (!tempValue)
         {
-            if (required) tempErr = inputConstant.requiredField
+            if (required) tempErr = validationConstant.requiredField
         }
         else
         {
@@ -169,19 +170,19 @@ function Input({
             {
                 if (validation === "email")
                 {
-                    if (!regexConstant.EMAIL_REGEX.test(tempValue)) tempErr = inputConstant.unValidEmail
+                    if (!regexConstant.EMAIL_REGEX.test(tempValue)) tempErr = validationConstant.unValidEmail
                 }
                 else if (validation === "national_code")
                 {
-                    if (!checkNationalCode(tempValue)) tempErr = inputConstant.unValidNationalCode
+                    if (!checkNationalCode(tempValue)) tempErr = validationConstant.unValidNationalCode
                 }
                 else if (validation === "phone")
                 {
-                    if (!regexConstant.PHONE_REGEX.test(tempValue)) tempErr = inputConstant.unValidPhone
+                    if (!regexConstant.PHONE_REGEX.test(tempValue)) tempErr = validationConstant.unValidPhone
                 }
                 else if (validation === "url")
                 {
-                    if (!regexConstant.URL_REGEX.test(tempValue)) tempErr = inputConstant.unValidUrl
+                    if (!regexConstant.URL_REGEX.test(tempValue)) tempErr = validationConstant.unValidUrl
                 }
             }
         }
@@ -215,7 +216,7 @@ function Input({
                         </>
                 }
             </div>
-            <div className={`input-label-err ${noSpace ? "no-space" : ""} ${error ? "show" : ""}`}>{error}</div>
+            <ShowValidationError error={error} noSpace={noSpace}/>
         </label>
     )
 }

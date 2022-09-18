@@ -4,11 +4,14 @@ import KeyboardArrowSvg from "../media/svg/KeyboardArrowSvg"
 import goBack from "../../seyed-modules/helpers/goBack"
 import RadioItem from "./RadioItem"
 import VerticalPanel from "./VerticalPanel"
+import ShowValidationError from "./ShowValidationError"
+import validationConstant from "../constant/validationConstant"
 
-function Select({name, full_title, placeholder, title, items, defaultValue, onChange, disabled})
+function Select({name, full_title, placeholder, title, items, defaultValue, onChange, disabled, required, noSpace})
 {
     const [isShowPanel, setIsShowPanel] = useState(false)
     const [value, setValue] = useState(null)
+    const [haveOpened, setHaveOpened] = useState(false)
 
     useEffect(() =>
     {
@@ -23,6 +26,7 @@ function Select({name, full_title, placeholder, title, items, defaultValue, onCh
 
     function showPanel()
     {
+        setHaveOpened(true)
         setIsShowPanel(true)
     }
 
@@ -46,6 +50,7 @@ function Select({name, full_title, placeholder, title, items, defaultValue, onCh
                     </div>
                     <KeyboardArrowSvg className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
                 </Material>
+                <ShowValidationError error={haveOpened && !isShowPanel && validationConstant.requiredField} noSpace={noSpace}/>
             </label>
 
             {

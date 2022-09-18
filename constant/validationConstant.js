@@ -1,4 +1,4 @@
-const inputConstant = {
+const validationConstant = {
     requiredField: "پر کردن این فیلد الزامی است",
     repeatedEmail: "ایمیل وارد شده قبلاً استفاده شده است",
     unValidEmail: "ایمیل وارد شده معتبر نیست",
@@ -7,4 +7,4 @@ const inputConstant = {
     unValidUrl: "آدرس وارد شده معتبر نیست",
 }
 
-export default inputConstant
+export default validationConstant

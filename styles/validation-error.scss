@@ -1,0 +1,18 @@
+.validation-err {
+  color: var(--toast-fail-text);
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  transition: height var(--first-transition), opacity var(--first-transition);
+
+  &.no-space {
+    position: absolute;
+  }
+
+  &.show {
+    opacity: 1;
+    height: 35px;
+  }
+}
