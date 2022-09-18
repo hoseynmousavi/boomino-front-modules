@@ -80,7 +80,7 @@ function DatePicker({name, full_title, title, onChange, placeholder, defaultValu
         <>
             <label className="select-label">
                 <p className="select-label-text">{title}</p>
-                <Material className="select-main" onClick={showPanel} disable={disabled}>
+                <Material className={`select-main ${error ? "err" : ""}`} onClick={showPanel} disable={disabled}>
                     <div className={`select-main-text ${value ? "active" : ""}`}>
                         {value || placeholder || full_title || title}
                     </div>
