@@ -12,6 +12,7 @@ function Select({name, full_title, placeholder, title, items, defaultValue, onCh
     const [isShowPanel, setIsShowPanel] = useState(false)
     const [value, setValue] = useState(null)
     const [haveOpened, setHaveOpened] = useState(false)
+    const error = required && haveOpened && !isShowPanel && !value && validationConstant.requiredField
 
     useEffect(() =>
     {
@@ -44,13 +45,13 @@ function Select({name, full_title, placeholder, title, items, defaultValue, onCh
         <>
             <label className="select-label">
                 <p className="select-label-text">{title}</p>
-                <Material className="select-main" onClick={showPanel} disable={disabled}>
+                <Material className={`select-main ${error ? "err" : ""}`} onClick={showPanel} disable={disabled}>
                     <div className={`select-main-text ${value ? "active" : ""}`}>
                         {value?.name || placeholder || full_title || title}
                     </div>
                     <KeyboardArrowSvg className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
                 </Material>
-                <ShowValidationError error={haveOpened && !isShowPanel && validationConstant.requiredField} noSpace={noSpace}/>
+                <ShowValidationError error={error} noSpace={noSpace}/>
             </label>
 
             {

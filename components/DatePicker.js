@@ -9,14 +9,18 @@ import toGregorian from "../helpers/toGregorian"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
 import fixDateFormat from "../helpers/fixDateFormat"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
+import ShowValidationError from "./ShowValidationError"
+import validationConstant from "../constant/validationConstant"
 
-function DatePicker({name, full_title, title, onChange, placeholder, defaultValue, disabled})
+function DatePicker({name, full_title, title, onChange, placeholder, defaultValue, disabled, required, noSpace})
 {
     const [isShowPanel, setIsShowPanel] = useState(false)
     const [value, setValue] = useState(null)
+    const [haveOpened, setHaveOpened] = useState(false)
     const [day, setDay] = useState(dateConstant.defaultDay)
     const [month, setMonth] = useState(dateConstant.defaultMonth)
     const [year, setYear] = useState(dateConstant.defaultYear)
+    const error = required && haveOpened && !isShowPanel && !value && validationConstant.requiredField
 
     useEffect(() =>
     {
@@ -45,6 +49,7 @@ function DatePicker({name, full_title, title, onChange, placeholder, defaultValu
 
     function showPanel()
     {
+        setHaveOpened(true)
         setIsShowPanel(true)
     }
 
@@ -81,6 +86,7 @@ function DatePicker({name, full_title, title, onChange, placeholder, defaultValu
                     </div>
                     <KeyboardArrowSvg className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
                 </Material>
+                <ShowValidationError error={error} noSpace={noSpace}/>
             </label>
 
             {
