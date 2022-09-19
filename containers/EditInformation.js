@@ -154,6 +154,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                    onSubmit={saveInformation}
                                    onSubmitDisable={onDisableSaveClick}
                                    disabled={isLoading}
+                                   type="email"
                             />
                             <Input name="mobilePhone"
                                    label={textConstant.mobilePhone}
@@ -165,6 +166,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                    disableSubmit={validationError}
                                    onSubmit={saveInformation}
                                    onSubmitDisable={onDisableSaveClick}
+                                   type="tel"
                             />
                             <Input name="nationalCode"
                                    validation="national_code"
@@ -177,6 +179,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                    onSubmit={saveInformation}
                                    onSubmitDisable={onDisableSaveClick}
                                    disabled={isLoading}
+                                   type="tel"
                             />
                         </>
                     }
