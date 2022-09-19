@@ -18,7 +18,7 @@ function loginOrSignup({mobile, code, dispatch})
         {
             const {insertInstant, lastUpdateInstant, registrations} = res.user
             setUser({user: res, dispatch})
-            return ({isSignUp: insertInstant === lastUpdateInstant, isAdmin: registrations[0]?.roles?.includes("admin")})
+            return ({isSignUp: insertInstant === lastUpdateInstant, isAdmin: registrations?.[0]?.roles?.includes("admin")})
         })
 }
 
