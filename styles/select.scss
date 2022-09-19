@@ -130,7 +130,7 @@
 .select-main-svg {
   width: 20px;
   height: 20px;
-  transition: transform ease 0.2s;
+  transition: transform var(--first-transition);
 
   path {
     stroke: var(--first-text-color);
