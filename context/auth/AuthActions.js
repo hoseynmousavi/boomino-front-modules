@@ -16,9 +16,9 @@ function loginOrSignup({mobile, code, dispatch})
     return request.post({base, url: apiUrlsConstant.sendOtp, data: {mobile, code}})
         .then(res =>
         {
-            const {insertInstant, lastUpdateInstant} = res.user
+            const {insertInstant, lastUpdateInstant, registrations} = res.user
             setUser({user: res, dispatch})
-            return ({isSignUp: insertInstant === lastUpdateInstant})
+            return ({isSignUp: insertInstant === lastUpdateInstant, isAdmin: registrations[0]?.roles?.includes("admin")})
         })
 }
 
