@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState, memo} from "react"
+import {useEffect, useRef, useState, memo, forwardRef} from "react"
 import regexConstant from "../constant/regexConstant"
 import checkNationalCode from "../helpers/checkNationalCode"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
@@ -13,15 +13,14 @@ import onScroll from "../../seyed-modules/helpers/onScroll"
 import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import ShowValidationError from "./ShowValidationError"
 
-function Input({
-                   className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll,
-                   defaultValue, onChange, disabled, ltr, ltrPlaceHolder, Icon, required, onSubmit, onSubmitDisable, disableSubmit, labelClassName, iconClassName, noSpace,
-               })
+const Input = forwardRef(({
+                              className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll,
+                              defaultValue, onChange, disabled, ltr, ltrPlaceHolder, Icon, required, onSubmit, onSubmitDisable, disableSubmit, labelClassName, iconClassName, noSpace,
+                          }, ref) =>
 {
     const [validationLoading, setValidationLoading] = useState("")
     const [value, setValue] = useState("")
     const [error, setError] = useState("")
-    const inputRef = useRef(null)
     const validationTimer = useRef(null)
     const validationIconTimer = useRef(null)
     const validationCancel = useRef(null)
@@ -29,8 +28,8 @@ function Input({
     useEffect(() =>
     {
         let scrollListener = null
-        if (disableOnScroll) scrollListener = onScroll({callback: () => inputRef.current?.blur?.()})
-        if (focusOnMountDesktop && window.innerWidth > 480) setTimeout(() => inputRef?.current?.focus(), 300)
+        if (disableOnScroll) scrollListener = onScroll({callback: () => ref.current?.blur?.()})
+        if (focusOnMountDesktop && window.innerWidth > 480) setTimeout(() => ref?.current?.focus(), 300)
         if (defaultValue)
         {
             if (validation)
@@ -157,7 +156,7 @@ function Input({
 
     function onInputBlur()
     {
-        let tempValue = inputRef.current.value.trim()
+        let tempValue = ref.current.value.trim()
         if (validation === "phone") tempValue = showPhoneNumber.fixToNumber(tempValue)
         let tempErr = ""
         if (!tempValue)
@@ -197,7 +196,7 @@ function Input({
                        name={name}
                        className={`input-main ${ltrPlaceHolder ? "ltr-placeholder" : ""} ${Icon || (validation && value) ? "have-icon" : ""} ${error ? "err" : ""} ${ltr ? "ltr" : ""}`}
                        disabled={disabled}
-                       ref={inputRef}
+                       ref={ref}
                        type={type}
                        placeholder={placeholder}
                        value={validation === "phone" ? showPhoneNumber.showPhone(value) : value}
@@ -219,6 +218,6 @@ function Input({
             <ShowValidationError error={error} noSpace={noSpace}/>
         </label>
     )
-}
+})
 
 export default memo(Input)
