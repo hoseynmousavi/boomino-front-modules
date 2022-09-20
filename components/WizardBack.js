@@ -38,13 +38,13 @@ function WizardBack({secondPadding, title, headerTile, desc, dontFix, link})
         <div className="wizard-back-cont" ref={contRef}>
             <div
                 className={`wizard-back-fixer ${isFix ? `fix ${isDark ? "dark" : ""}` : ""} ${secondPadding ? "second-padding" : dontFix ? "no-padding" : ""}`}
-                style={{
-                    ...createSafariBlurNav({
+                style={
+                    createSafariBlurNav({
                         color: !isFix && "transparent",
                         variable: isDark ? "--second-background-color" : "--first-background-color",
                         blur: isFix,
-                    }),
-                }}
+                    })
+                }
             >
                 {
                     link ?
