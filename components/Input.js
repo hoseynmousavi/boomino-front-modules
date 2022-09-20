@@ -117,7 +117,7 @@ const Input = forwardRef(({
             {
                 const value = numberCorrection(e.target.value.trim().slice(0, 10))
                 if (!isNaN(value) && value.length <= 10) setValue(value)
-                if (checkNationalCode(value)) onChange({name, value})
+                if (checkNationalCode(value)) onChange({name, value, reset: resetInput})
                 else onChange({name, value: value || required ? null : "", reset: resetInput})
                 checkErrTimer()
             }
@@ -125,7 +125,7 @@ const Input = forwardRef(({
             {
                 const value = numberCorrection(showPhoneNumber.fixToNumber(e.target.value))
                 if (!isNaN(value) && value.length <= 11) setValue(value)
-                if (regexConstant.PHONE_REGEX.test(value)) onChange({name, value})
+                if (regexConstant.PHONE_REGEX.test(value)) onChange({name, value, reset: resetInput})
                 else onChange({name, value: value || required ? null : "", reset: resetInput})
                 checkErrTimer()
             }
@@ -133,7 +133,7 @@ const Input = forwardRef(({
             {
                 const value = numberCorrection(e.target.value.trim())
                 setValue(value)
-                if (regexConstant.URL_REGEX.test(value)) onChange({name, value})
+                if (regexConstant.URL_REGEX.test(value)) onChange({name, value, reset: resetInput})
                 else onChange({name, value: value || required ? null : "", reset: resetInput})
                 checkErrTimer()
             }
