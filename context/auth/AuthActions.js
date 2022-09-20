@@ -11,14 +11,15 @@ function sendOtp({mobile, cancel})
     return request.post({base, url: apiUrlsConstant.sendOtp, data: {mobile}, cancel})
 }
 
-function loginOrSignup({mobile, code, dispatch})
+function loginOrSignup({mobile, code, checkIfAdmin, dispatch})
 {
     return request.post({base, url: apiUrlsConstant.sendOtp, data: {mobile, code}})
         .then(res =>
         {
             const {insertInstant, lastUpdateInstant, registrations} = res.user
-            setUser({user: res, dispatch})
-            return ({isSignUp: insertInstant === lastUpdateInstant, isAdmin: registrations?.[0]?.roles?.includes("admin")})
+            const isAdmin = registrations?.[0]?.roles?.includes("admin")
+            if (!checkIfAdmin || isAdmin) setUser({user: res, dispatch})
+            return ({isSignUp: insertInstant === lastUpdateInstant, isAdmin})
         })
 }
 
