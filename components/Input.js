@@ -82,7 +82,7 @@ const Input = forwardRef(({
                 {
                     if (value !== defaultValue)
                     {
-                        onChange({name, value: value || required ? null : ""})
+                        onChange({name, value: value || required ? null : "", reset: resetInput})
                         if (validationCancel?.current?.cancel) validationCancel.current.cancel(REQUEST_CANCEL)
                         validationTimer.current = setTimeout(() =>
                         {
@@ -99,17 +99,17 @@ const Input = forwardRef(({
                                     {
                                         setValidationLoading("OK")
                                         validationIconTimer.current = setTimeout(() => setValidationLoading(""), 1000)
-                                        onChange({name, value})
+                                        onChange({name, value, reset: resetInput})
                                     }
                                     else setValidationLoading("NOK")
                                 })
                         }, 250)
                     }
-                    else onChange({name, value})
+                    else onChange({name, value, reset: resetInput})
                 }
                 else
                 {
-                    onChange({name, value: value || required ? null : ""})
+                    onChange({name, value: value || required ? null : "", reset: resetInput})
                     checkErrTimer()
                 }
             }
@@ -118,7 +118,7 @@ const Input = forwardRef(({
                 const value = numberCorrection(e.target.value.trim().slice(0, 10))
                 if (!isNaN(value) && value.length <= 10) setValue(value)
                 if (checkNationalCode(value)) onChange({name, value})
-                else onChange({name, value: value || required ? null : ""})
+                else onChange({name, value: value || required ? null : "", reset: resetInput})
                 checkErrTimer()
             }
             else if (validation === "phone")
@@ -126,7 +126,7 @@ const Input = forwardRef(({
                 const value = numberCorrection(showPhoneNumber.fixToNumber(e.target.value))
                 if (!isNaN(value) && value.length <= 11) setValue(value)
                 if (regexConstant.PHONE_REGEX.test(value)) onChange({name, value})
-                else onChange({name, value: value || required ? null : ""})
+                else onChange({name, value: value || required ? null : "", reset: resetInput})
                 checkErrTimer()
             }
             else if (validation === "url")
@@ -134,7 +134,7 @@ const Input = forwardRef(({
                 const value = numberCorrection(e.target.value.trim())
                 setValue(value)
                 if (regexConstant.URL_REGEX.test(value)) onChange({name, value})
-                else onChange({name, value: value || required ? null : ""})
+                else onChange({name, value: value || required ? null : "", reset: resetInput})
                 checkErrTimer()
             }
         }
