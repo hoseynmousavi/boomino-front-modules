@@ -16,6 +16,7 @@ import ShowValidationError from "./ShowValidationError"
 const Input = forwardRef(({
                               className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll,
                               defaultValue, onChange, disabled, ltr, ltrPlaceHolder, Icon, required, onSubmit, onSubmitDisable, disableSubmit, labelClassName, iconClassName, noSpace,
+                              lang = "fa",
                           }, ref) =>
 {
     const [validationLoading, setValidationLoading] = useState("")
@@ -91,7 +92,7 @@ const Input = forwardRef(({
                                 .then(() =>
                                 {
                                     setValidationLoading("NOK")
-                                    setError(validationConstant.repeatedEmail)
+                                    setError(validationConstant[lang].repeatedEmail)
                                 })
                                 .catch(err =>
                                 {
@@ -161,7 +162,7 @@ const Input = forwardRef(({
         let tempErr = ""
         if (!tempValue)
         {
-            if (required) tempErr = validationConstant.requiredField
+            if (required) tempErr = validationConstant[lang].requiredField
         }
         else
         {
@@ -169,19 +170,19 @@ const Input = forwardRef(({
             {
                 if (validation === "email")
                 {
-                    if (!regexConstant.EMAIL_REGEX.test(tempValue)) tempErr = validationConstant.unValidEmail
+                    if (!regexConstant.EMAIL_REGEX.test(tempValue)) tempErr = validationConstant[lang].unValidEmail
                 }
                 else if (validation === "national_code")
                 {
-                    if (!checkNationalCode(tempValue)) tempErr = validationConstant.unValidNationalCode
+                    if (!checkNationalCode(tempValue)) tempErr = validationConstant[lang].unValidNationalCode
                 }
                 else if (validation === "phone")
                 {
-                    if (!regexConstant.PHONE_REGEX.test(tempValue)) tempErr = validationConstant.unValidPhone
+                    if (!regexConstant.PHONE_REGEX.test(tempValue)) tempErr = validationConstant[lang].unValidPhone
                 }
                 else if (validation === "url")
                 {
-                    if (!regexConstant.URL_REGEX.test(tempValue)) tempErr = validationConstant.unValidUrl
+                    if (!regexConstant.URL_REGEX.test(tempValue)) tempErr = validationConstant[lang].unValidUrl
                 }
             }
         }
