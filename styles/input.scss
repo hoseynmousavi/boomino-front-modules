@@ -25,14 +25,14 @@
   transition: border ease 0.2s;
 
   &.have-icon {
-    padding: 0 12px 0 48px;
+    padding-inline-end: 48px;
   }
 
   &.ltr {
     direction: ltr;
 
     &.have-icon {
-      padding: 0 48px 0 12px;
+      padding-inline-start: 48px;
     }
   }
 

@@ -19,6 +19,8 @@ const Input = forwardRef(({
                               lang = "fa",
                           }, ref) =>
 {
+    const tempRef = useRef(null)
+    const inputRef = ref || tempRef
     const [validationLoading, setValidationLoading] = useState("")
     const [value, setValue] = useState("")
     const [error, setError] = useState("")
@@ -29,8 +31,8 @@ const Input = forwardRef(({
     useEffect(() =>
     {
         let scrollListener = null
-        if (disableOnScroll) scrollListener = onScroll({callback: () => ref.current?.blur?.()})
-        if (focusOnMountDesktop && window.innerWidth > 480) setTimeout(() => ref?.current?.focus(), 300)
+        if (disableOnScroll) scrollListener = onScroll({callback: () => inputRef.current?.blur?.()})
+        if (focusOnMountDesktop && window.innerWidth > 480) setTimeout(() => inputRef?.current?.focus(), 300)
         if (defaultValue)
         {
             if (validation)
@@ -157,7 +159,7 @@ const Input = forwardRef(({
 
     function onInputBlur()
     {
-        let tempValue = ref.current.value.trim()
+        let tempValue = inputRef.current.value.trim()
         if (validation === "phone") tempValue = showPhoneNumber.fixToNumber(tempValue)
         let tempErr = ""
         if (!tempValue)
@@ -197,7 +199,7 @@ const Input = forwardRef(({
                        name={name}
                        className={`input-main ${ltrPlaceHolder ? "ltr-placeholder" : ""} ${Icon || (validation === "email" && value) ? "have-icon" : ""} ${error ? "err" : ""} ${ltr ? "ltr" : ""}`}
                        disabled={disabled}
-                       ref={ref}
+                       ref={inputRef}
                        type={type}
                        placeholder={placeholder}
                        value={validation === "phone" ? showPhoneNumber.showPhone(value) : value}
