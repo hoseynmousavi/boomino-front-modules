@@ -143,7 +143,7 @@ const Input = forwardRef(({
         }
         else
         {
-            const {value} = e.target
+            const value = numberCorrection(e.target.value)
             setValue(value)
             onChange({name, value: value.trim() ? value.trim() : required ? null : "", reset: resetInput})
             checkErrTimer()
