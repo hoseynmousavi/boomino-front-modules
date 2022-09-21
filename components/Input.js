@@ -195,7 +195,7 @@ const Input = forwardRef(({
             <div className="input-label-relative">
                 <input autoComplete={autoComplete}
                        name={name}
-                       className={`input-main ${ltrPlaceHolder ? "ltr-placeholder" : ""} ${Icon || (validation && value) ? "have-icon" : ""} ${error ? "err" : ""} ${ltr ? "ltr" : ""}`}
+                       className={`input-main ${ltrPlaceHolder ? "ltr-placeholder" : ""} ${Icon || (validation === "email" && value) ? "have-icon" : ""} ${error ? "err" : ""} ${ltr ? "ltr" : ""}`}
                        disabled={disabled}
                        ref={ref}
                        type={type}
