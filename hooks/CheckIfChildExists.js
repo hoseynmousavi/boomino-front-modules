@@ -6,12 +6,24 @@ import GetData from "../../seyed-modules/request/GetData"
 function CheckIfChildExists({childId, doAfterGet})
 {
     const {state: {family, getFamily}, dispatch} = useContext(FamilyContext)
-    const child = family?.members?.[childId]
+    const familyRef = useRef(family)
+    familyRef.current = family
+    const child = familyRef.current?.members?.[childId]
     const isLoading = childId ? !getFamily && !child : false
     const notFound = childId ? !isLoading && !child : false
     const cancelToken = useRef(null)
 
-    GetData({request, isLoading, cancelToken, dependencies: [child], doAfterGet: () => doAfterGet?.(child)})
+    GetData({
+        request,
+        isLoading,
+        cancelToken,
+        dependencies: [childId],
+        doAfterGet: () =>
+        {
+            const child = familyRef.current?.members?.[childId]
+            doAfterGet?.(child)
+        },
+    })
 
     function request()
     {

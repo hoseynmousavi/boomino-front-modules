@@ -7,7 +7,7 @@ const base = process.env.REACT_APP_PARENTAL_URL
 const getPackages = ({child_age, dispatch}) =>
 {
     let param = ""
-    if (child_age) param = `?child_age=${child_age}`
+    if (child_age || child_age === 0) param = `?child_age=${child_age}`
     return request.get({base, url: apiUrlsConstant.getPackages, param})
         .then(packages =>
         {
