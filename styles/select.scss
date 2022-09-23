@@ -216,5 +216,5 @@
 }
 
 .select-birth-save {
-  margin: 30px 0 15px 0;
+  margin: 30px 0 calc(min(env(safe-area-inset-bottom), 12px) + var(--mobile-first-solid-padding)) 0;
 }

@@ -1,6 +1,6 @@
 .login {
   min-height: var(--full-height);
-  padding: 0 var(--mobile-first-solid-padding) calc(var(--btn-input-height) + 20px + 20px) var(--mobile-first-solid-padding);
+  padding: 0 var(--mobile-first-solid-padding) calc(var(--btn-input-height) + var(--mobile-first-solid-padding) + min(env(safe-area-inset-bottom), 12px) + var(--mobile-first-solid-padding)) var(--mobile-first-solid-padding);
   background-color: var(--first-background-color);
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@
   right: 0;
   width: 100%;
   bottom: 0;
-  padding: 20px var(--mobile-first-solid-padding);
+  padding: var(--mobile-first-solid-padding) var(--mobile-first-solid-padding) calc(min(env(safe-area-inset-bottom), 12px) + var(--mobile-first-solid-padding)) var(--mobile-first-solid-padding);
   background-color: var(--first-background-color);
 }
 
