@@ -9,7 +9,7 @@ import Link from "../../seyed-modules/components/Link"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import createSafariBlurNav from "../../seyed-modules/helpers/createSafariBlurNav"
 
-function WizardBack({secondPadding, title, headerTile, desc, dontFix, link})
+function WizardBack({secondPadding, title, headerTile, desc, dontFix, link, isDisable})
 {
     const [isFix, setIsFix] = useState(false)
     const {isDark} = GetTheme()
@@ -55,7 +55,7 @@ function WizardBack({secondPadding, title, headerTile, desc, dontFix, link})
                             </Material>
                         </Link>
                         :
-                        <Material className="wizard-back" onClick={goBack}>
+                        <Material className="wizard-back" onClick={isDisable ? undefined : goBack}>
                             <BackSvg className="wizard-back-svg"/>
                             <div className={`wizard-back-title ${isFix ? "hide" : ""}`}>{textConstant.back}</div>
                         </Material>
