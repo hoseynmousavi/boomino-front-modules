@@ -12,7 +12,7 @@ import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
 import ShowValidationError from "./ShowValidationError"
 import validationConstant from "../constant/validationConstant"
 
-function DatePicker({name, full_title, title, onChange, placeholder, defaultValue, disabled, required, noSpace})
+function DatePicker({name, full_title, title, onChange, placeholder, defaultValue, disabled, required, noSpace, lang = "fa"})
 {
     const [isShowPanel, setIsShowPanel] = useState(false)
     const [value, setValue] = useState(null)
@@ -20,7 +20,7 @@ function DatePicker({name, full_title, title, onChange, placeholder, defaultValu
     const [day, setDay] = useState(dateConstant.defaultDay)
     const [month, setMonth] = useState(dateConstant.defaultMonth)
     const [year, setYear] = useState(dateConstant.defaultYear)
-    const error = required && haveOpened && !isShowPanel && !value && validationConstant.requiredField
+    const error = required && haveOpened && !isShowPanel && !value && validationConstant[lang].requiredField
 
     useEffect(() =>
     {
