@@ -6,12 +6,12 @@ function inputKeyDownEnter({disableSubmit, onSubmit, onSubmitDisable, checkValid
         {
             if (!disableSubmit)
             {
-                if (onSubmit) onSubmit()
+                onSubmit?.()
             }
             else
             {
-                if (checkValidation) checkValidation()
-                if (onSubmitDisable) onSubmitDisable()
+                checkValidation?.()
+                onSubmitDisable?.()
             }
         }
     }

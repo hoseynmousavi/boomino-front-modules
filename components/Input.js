@@ -28,6 +28,7 @@ const Input = forwardRef(({
     const validationTimer = useRef(null)
     const validationIconTimer = useRef(null)
     const validationCancel = useRef(null)
+    const timerFixScroll = useRef(null)
 
     useEffect(() =>
     {
@@ -62,6 +63,7 @@ const Input = forwardRef(({
             scrollListener?.()
             clearTimeout(validationTimer.current)
             clearTimeout(validationIconTimer.current)
+            clearTimeout(timerFixScroll.current)
         }
         // eslint-disable-next-line
     }, [])
@@ -160,6 +162,7 @@ const Input = forwardRef(({
 
     function onInputBlur()
     {
+        clearTimeout(timerFixScroll.current)
         let tempValue = inputRef.current.value.trim()
         if (validation === "phone") tempValue = showPhoneNumber.fixToNumber(tempValue)
         let tempErr = ""
@@ -192,9 +195,9 @@ const Input = forwardRef(({
         setError(tempErr)
     }
 
-    function onClick()
+    function onFocus()
     {
-        if (fixScroll) fixInputScroll({inputRef})
+        if (fixScroll) timerFixScroll.current = fixInputScroll({inputRef})
     }
 
     return (
@@ -212,7 +215,7 @@ const Input = forwardRef(({
                        onChange={onInputChange}
                        onBlur={onInputBlur}
                        onKeyDown={onSubmit || onSubmitDisable ? inputKeyDownEnter({onSubmit, onSubmitDisable, disableSubmit, checkValidation: onInputBlur}) : undefined}
-                       onClick={onClick}
+                       onFocus={onFocus}
                 />
                 {
                     Icon ?

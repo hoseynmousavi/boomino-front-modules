@@ -2,8 +2,9 @@ import {useLayoutEffect, useRef, useState} from "react"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
 import showPhoneNumber, {phoneSeparator} from "../../seyed-modules/helpers/showPhoneNumber"
 import fixInputScroll from "../helpers/fixInputScroll"
+import inputKeyDownEnter from "../helpers/inputKeyDownEnter"
 
-function PhoneInput({onChange})
+function PhoneInput({onChange, onSubmit, disableSubmit})
 {
     const [value, setValue] = useState("")
     const inputRef = useRef(null)
@@ -51,14 +52,23 @@ function PhoneInput({onChange})
             input
     }
 
-    function onClick()
+    function onFocus()
     {
         fixInputScroll({inputRef})
     }
 
     return (
         <div className="phone-input-cont">
-            <input className="phone-input" onClick={onClick} onPaste={onPaste} ref={inputRef} value={showPhone(value)} max={9} type="tel" onChange={onInputChange}/>
+            <input className="phone-input"
+                   onFocus={onFocus}
+                   onPaste={onPaste}
+                   ref={inputRef}
+                   value={showPhone(value)}
+                   max={9}
+                   type="tel"
+                   onChange={onInputChange}
+                   onKeyDown={inputKeyDownEnter({onSubmit, disableSubmit})}
+            />
             <div className={`phone-input-placeholder ${value.length > 0 ? "active" : ""}`}>۰۹</div>
         </div>
     )

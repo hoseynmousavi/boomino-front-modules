@@ -4,7 +4,7 @@ function fixInputScroll({inputRef, halfHeight = 40})
 {
     if (checkOs() === "android")
     {
-        setTimeout(() =>
+        return setTimeout(() =>
         {
             const root = document.getElementById("main-render")
             const rect = inputRef.current.getBoundingClientRect()
@@ -14,6 +14,7 @@ function fixInputScroll({inputRef, halfHeight = 40})
             root.scroll({top: scroll - (should - now - halfHeight), behavior: "smooth"})
         }, 800)
     }
+    else return null
 }
 
 export default fixInputScroll
