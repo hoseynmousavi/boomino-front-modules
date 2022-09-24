@@ -77,7 +77,7 @@ const Input = forwardRef(({
         {
             if (validation === "email")
             {
-                const value = numberCorrection(e.target.value.trim())
+                const value = numberCorrection(e.target.value.replace(/ /g, ""))
                 setValue(value)
                 setValidationLoading("")
                 clearTimeout(validationIconTimer.current)
@@ -119,7 +119,7 @@ const Input = forwardRef(({
             }
             else if (validation === "national_code")
             {
-                const value = numberCorrection(e.target.value.trim().slice(0, 10))
+                const value = numberCorrection(e.target.value.replace(/ /g, "").slice(0, 10))
                 if (!isNaN(value) && value.length <= 10) setValue(value)
                 if (checkNationalCode(value)) onChange({name, value, reset: resetInput})
                 else onChange({name, value: value || required ? null : "", reset: resetInput})
@@ -135,7 +135,7 @@ const Input = forwardRef(({
             }
             else if (validation === "url")
             {
-                const value = numberCorrection(e.target.value.trim())
+                const value = numberCorrection(e.target.value.replace(/ /g, ""))
                 setValue(value)
                 if (regexConstant.URL_REGEX.test(value)) onChange({name, value, reset: resetInput})
                 else onChange({name, value: value || required ? null : "", reset: resetInput})
