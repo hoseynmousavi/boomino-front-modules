@@ -126,6 +126,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                            onSubmitDisable={onDisableSaveClick}
                            disabled={isLoading}
                            required={!!childId}
+                           fixScroll
                     />
                     {
                         !childId &&
@@ -138,6 +139,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                onSubmit={saveInformation}
                                onSubmitDisable={onDisableSaveClick}
                                disabled={isLoading}
+                               fixScroll
                         />
                     }
                     {
@@ -155,6 +157,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                    onSubmitDisable={onDisableSaveClick}
                                    disabled={isLoading}
                                    type="email"
+                                   fixScroll
                             />
                             <Input name="mobilePhone"
                                    label={textConstant.mobilePhone}
@@ -167,6 +170,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                    onSubmit={saveInformation}
                                    onSubmitDisable={onDisableSaveClick}
                                    type="tel"
+                                   fixScroll
                             />
                             <Input name="nationalCode"
                                    validation="national_code"
@@ -180,6 +184,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                    onSubmitDisable={onDisableSaveClick}
                                    disabled={isLoading}
                                    type="tel"
+                                   fixScroll
                             />
                         </>
                     }
