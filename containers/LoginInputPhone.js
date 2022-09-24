@@ -6,6 +6,7 @@ import OnKeyDown from "../../seyed-modules/hooks/OnKeyDown"
 import Button from "../../seyed-modules/components/Button"
 import textConstant from "../constant/textConstant"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
+import BtnBottomFullScreen from "../components/BtnBottomFullScreen"
 
 function LoginInputPhone()
 {
@@ -29,13 +30,16 @@ function LoginInputPhone()
 
     return (
         <div className="login">
-            <LogoSvg className="login-logo"/>
-            <h1 className="login-title">{textConstant.entering}{process.env.REACT_APP_NAME}</h1>
-            <p className="login-desc">{textConstant.enterPhone}</p>
-            <PhoneInput onChange={onPhoneChange}/>
-            <div className="login-submit">
-                <Button type="first" disable={!phone} onClick={goToCode}>{textConstant.continueBtn}</Button>
+            <div/>
+            <div className="login-content">
+                <LogoSvg className="login-logo"/>
+                <h1 className="login-title">{textConstant.entering}{process.env.REACT_APP_NAME}</h1>
+                <p className="login-desc">{textConstant.enterPhone}</p>
+                <PhoneInput onChange={onPhoneChange}/>
             </div>
+            <BtnBottomFullScreen changeOnDark={false}>
+                <Button type="first" disable={!phone} onClick={goToCode}>{textConstant.continueBtn}</Button>
+            </BtnBottomFullScreen>
         </div>
     )
 }

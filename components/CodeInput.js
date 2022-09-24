@@ -6,6 +6,8 @@ function CodeInput({onChange, disable, error})
 {
     const [value, setValue] = useState("")
     const inputRef = useRef(null)
+    const {numberOfDigits} = verifyCodeConstant
+    const codeWidthHeight = `calc((var(--full-viewport) - (${numberOfDigits} * 6px) - (2 * var(--mobile-first-solid-padding))) / ${numberOfDigits})`
 
     useLayoutEffect(() =>
     {
@@ -23,10 +25,10 @@ function CodeInput({onChange, disable, error})
         {
             const {value: eventValue} = e.target
             const inputValue = numberCorrection(eventValue.trim())
-            if (inputValue.length <= verifyCodeConstant.numberOfDigits && !isNaN(inputValue))
+            if (inputValue.length <= numberOfDigits && !isNaN(inputValue))
             {
                 setValue(inputValue)
-                if (inputValue.length === verifyCodeConstant.numberOfDigits) onChange(inputValue, resetInput)
+                if (inputValue.length === numberOfDigits) onChange(inputValue, resetInput)
                 else onChange(null)
             }
         }
@@ -34,11 +36,18 @@ function CodeInput({onChange, disable, error})
 
     return (
         <div className={`code-input-cont ${disable ? "disable" : ""}`}>
-            <input className="code-input" ref={inputRef} maxLength={verifyCodeConstant.numberOfDigits} type="tel" value={value} onChange={onInputChange}/>
+            <input className="code-input" ref={inputRef} maxLength={numberOfDigits} type="tel" value={value} onChange={onInputChange}/>
             <div className="code-input-boxes">
                 {
-                    Array(verifyCodeConstant.numberOfDigits).fill(0).map((_, index) =>
-                        <div key={index} className={`code-input-box ${error ? "err" : ""} ${value[index] ? "fill" : value.length === index ? "ready" : ""}`}>{value[index]}</div>,
+                    Array(numberOfDigits).fill(0).map((_, index) =>
+                        <div key={index}
+                             className={`code-input-box ${error ? "err" : ""} ${value[index] ? "fill" : value.length === index ? "ready" : ""}`}
+                             style={{
+                                 width: codeWidthHeight,
+                                 height: codeWidthHeight,
+                             }}>
+                            {value[index]}
+                        </div>,
                     )
                 }
             </div>

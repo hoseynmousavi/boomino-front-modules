@@ -2,7 +2,7 @@ import {useRef} from "react"
 import CheckIsPinned from "../hooks/CheckIsPinned"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 
-function BtnBottomFullScreen({className, children})
+function BtnBottomFullScreen({className, children, changeOnDark = true})
 {
     const btnRef = useRef(null)
     const {isDark} = GetTheme()
@@ -10,7 +10,7 @@ function BtnBottomFullScreen({className, children})
     CheckIsPinned({ref: btnRef})
 
     return (
-        <div className={`full-screen-btn ${isDark ? "dark" : ""} ${className}`} ref={btnRef}>
+        <div className={`full-screen-btn ${isDark && changeOnDark ? "dark" : ""} ${className}`} ref={btnRef}>
             {children}
         </div>
     )

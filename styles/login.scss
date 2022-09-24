@@ -1,11 +1,10 @@
 .login {
   min-height: var(--full-height);
-  padding: 0 var(--mobile-first-solid-padding) calc(var(--btn-input-height) + var(--mobile-first-solid-padding) + min(env(safe-area-inset-bottom), 12px) + var(--mobile-first-solid-padding)) var(--mobile-first-solid-padding);
   background-color: var(--first-background-color);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   transition: min-height ease 0.15s;
 
   &.edit {
@@ -16,6 +15,16 @@
   &.dark {
     background-color: var(--second-background-color);
   }
+}
+
+.login-content {
+  width: 100%;
+  padding: var(--mobile-first-solid-padding);
+}
+
+.login-code-submit {
+  width: 100%;
+  padding: var(--mobile-first-solid-padding) var(--mobile-first-solid-padding) calc(min(env(safe-area-inset-bottom), 12px) + var(--mobile-first-solid-padding)) var(--mobile-first-solid-padding);
 }
 
 .login-logo {
@@ -32,16 +41,6 @@
 .login-desc {
   font-size: var(--title-font);
   margin-bottom: 25px;
-}
-
-.login-submit {
-  position: fixed;
-  left: 0;
-  right: 0;
-  width: 100%;
-  bottom: 0;
-  padding: var(--mobile-first-solid-padding) var(--mobile-first-solid-padding) calc(min(env(safe-area-inset-bottom), 12px) + var(--mobile-first-solid-padding)) var(--mobile-first-solid-padding);
-  background-color: var(--first-background-color);
 }
 
 .login-code-desc {

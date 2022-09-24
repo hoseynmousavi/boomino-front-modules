@@ -75,22 +75,25 @@ function LoginInputCode({route: {match: {params: {phone}}}})
 
     return (
         <div className="login">
-            <h1 className="login-title">{textConstant.enterCode}</h1>
-            <div className="login-code-desc">
-                {textConstant.enterVerifyCode}
-                <div className="login-code-desc-phone">{showPhoneNumber.showPhone(phone)}</div>
-                {textConstant.enterVerifyCodeEnd}
+            <div/>
+            <div className="login-content">
+                <h1 className="login-title">{textConstant.enterCode}</h1>
+                <div className="login-code-desc">
+                    {textConstant.enterVerifyCode}
+                    <div className="login-code-desc-phone">{showPhoneNumber.showPhone(phone)}</div>
+                    {textConstant.enterVerifyCodeEnd}
+                </div>
+                <Material className={`login-code-edit ${verifyLoading ? "disable" : ""}`} disable={verifyLoading} onClick={goBack}>{textConstant.editPhone}</Material>
+                <CodeInput error={!!showError} disable={disable} onChange={onCodeChange}/>
+                <div className={`login-code-err ${!!showError ? "show" : ""}`}>{showError}</div>
+                {
+                    timerId ?
+                        <TimerCode key={timerId} disable={disable} onEndRetry={sendCode}/>
+                        :
+                        <MyLoader className="login-code-loading" width={32}/>
+                }
             </div>
-            <Material className={`login-code-edit ${verifyLoading ? "disable" : ""}`} disable={verifyLoading} onClick={goBack}>{textConstant.editPhone}</Material>
-            <CodeInput error={!!showError} disable={disable} onChange={onCodeChange}/>
-            <div className={`login-code-err ${!!showError ? "show" : ""}`}>{showError}</div>
-            {
-                timerId ?
-                    <TimerCode key={timerId} disable={disable} onEndRetry={sendCode}/>
-                    :
-                    <MyLoader className="login-code-loading" width={32}/>
-            }
-            <div className="login-submit">
+            <div className="login-code-submit">
                 <Button type="first" disable={!code} loading={verifyLoading}>{textConstant.continueBtn}</Button>
             </div>
         </div>

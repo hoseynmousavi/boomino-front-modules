@@ -12,9 +12,10 @@ import {REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
 import onScroll from "../../seyed-modules/helpers/onScroll"
 import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import ShowValidationError from "./ShowValidationError"
+import fixInputScroll from "../helpers/fixInputScroll"
 
 const Input = forwardRef(({
-                              className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll,
+                              className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll, fixScroll,
                               defaultValue, onChange, disabled, ltr, ltrPlaceHolder, Icon, required, onSubmit, onSubmitDisable, disableSubmit, labelClassName, iconClassName, noSpace,
                               lang = "fa",
                           }, ref) =>
@@ -191,6 +192,11 @@ const Input = forwardRef(({
         setError(tempErr)
     }
 
+    function onClick()
+    {
+        if (fixScroll) fixInputScroll({inputRef})
+    }
+
     return (
         <label className={`input-label ${className}`}>
             <p className={`input-label-text ${labelClassName}`}>{label}</p>
@@ -206,6 +212,7 @@ const Input = forwardRef(({
                        onChange={onInputChange}
                        onBlur={onInputBlur}
                        onKeyDown={onSubmit || onSubmitDisable ? inputKeyDownEnter({onSubmit, onSubmitDisable, disableSubmit, checkValidation: onInputBlur}) : undefined}
+                       onClick={onClick}
                 />
                 {
                     Icon ?
