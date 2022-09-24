@@ -8,10 +8,12 @@ function PhoneInput({onChange, onSubmit, disableSubmit})
 {
     const [value, setValue] = useState("")
     const inputRef = useRef(null)
+    const timerFixScroll = useRef(null)
 
     useLayoutEffect(() =>
     {
         if (window.innerWidth > 480) setTimeout(() => inputRef?.current?.focus(), 300)
+        return () => clearTimeout(timerFixScroll.current)
     }, [])
 
     function onInputChange(e)
@@ -52,15 +54,23 @@ function PhoneInput({onChange, onSubmit, disableSubmit})
             input
     }
 
-    function onFocus()
+    function onFocusClick()
     {
-        fixInputScroll({inputRef})
+        clearTimeout(timerFixScroll.current)
+        timerFixScroll.current = fixInputScroll({inputRef})
+    }
+
+    function onBlur()
+    {
+        clearTimeout(timerFixScroll.current)
     }
 
     return (
         <div className="phone-input-cont">
             <input className="phone-input"
-                   onFocus={onFocus}
+                   onFocus={onFocusClick}
+                   onClick={onFocusClick}
+                   onBlur={onBlur}
                    onPaste={onPaste}
                    ref={inputRef}
                    value={showPhone(value)}

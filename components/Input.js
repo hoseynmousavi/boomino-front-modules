@@ -195,9 +195,13 @@ const Input = forwardRef(({
         setError(tempErr)
     }
 
-    function onFocus()
+    function onFocusClick()
     {
-        if (fixScroll) timerFixScroll.current = fixInputScroll({inputRef})
+        if (fixScroll)
+        {
+            clearTimeout(timerFixScroll.current)
+            timerFixScroll.current = fixInputScroll({inputRef})
+        }
     }
 
     return (
@@ -215,7 +219,8 @@ const Input = forwardRef(({
                        onChange={onInputChange}
                        onBlur={onInputBlur}
                        onKeyDown={onSubmit || onSubmitDisable ? inputKeyDownEnter({onSubmit, onSubmitDisable, disableSubmit, checkValidation: onInputBlur}) : undefined}
-                       onFocus={onFocus}
+                       onFocus={onFocusClick}
+                       onClick={onFocusClick}
                 />
                 {
                     Icon ?
