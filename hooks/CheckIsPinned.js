@@ -6,7 +6,7 @@ function CheckIsPinned({ref, threshold = 1})
     {
         const observer = new IntersectionObserver(
             ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < threshold),
-            {threshold: [threshold]},
+            {threshold: 1},
         )
 
         observer.observe(ref.current)
