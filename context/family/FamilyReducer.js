@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer} from "react"
-import {EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
+import {ADD_CHILD_SUCCESS, EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
 import FamilyActions from "./FamilyActions"
 import logoutManager from "../../../seyed-modules/helpers/logoutManager"
 import {LOGOUT} from "../auth/AuthTypes"
@@ -39,6 +39,24 @@ function reducer(state, action)
                 family: familyTemp,
                 selectedChildUserId,
                 getFamily: true,
+            }
+        }
+        case ADD_CHILD_SUCCESS:
+        {
+            const {child} = action.payload
+            const {userId} = child
+            const selectedChildUserId = userId
+            cookieHelper.setItem("selectedChildUserId", selectedChildUserId)
+            return {
+                ...state,
+                family: {
+                    ...state?.family ?? {},
+                    members: {
+                        ...state?.family?.members ?? {},
+                        [userId]: child,
+                    },
+                },
+                selectedChildUserId,
             }
         }
         case EDIT_CHILD_SUCCESS:

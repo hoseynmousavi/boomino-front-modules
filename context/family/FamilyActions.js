@@ -1,6 +1,6 @@
 import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
-import {EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
+import {ADD_CHILD_SUCCESS, EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
 
 const base = process.env.REACT_APP_FAMILY_URL
 
@@ -16,10 +16,9 @@ function getFamily({dispatch, cancel})
 function addFamilyMember({birthDate, gender, fullName, dispatch})
 {
     return request.post({base, url: apiUrlsConstant.addMember, data: {birthDate, fullName, gender}})
-        .then(({family}) =>
+        .then(child =>
         {
-            const child = family.members.filter(item => item.fullName === fullName)[0]
-            setFamily({dispatch, family, selectChildUserId: child.userId})
+            addChild({dispatch, child})
             return child
         })
 }
@@ -40,6 +39,14 @@ function setFamily({dispatch, family, selectChildUserId})
     dispatch({
         type: GET_FAMILY_SUCCESS,
         payload: {family, selectChildUserId},
+    })
+}
+
+function addChild({dispatch, child})
+{
+    dispatch({
+        type: ADD_CHILD_SUCCESS,
+        payload: {child},
     })
 }
 
