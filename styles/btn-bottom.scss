@@ -7,7 +7,7 @@
   padding: var(--mobile-first-solid-padding) var(--mobile-first-solid-padding) calc(var(--mobile-first-solid-padding) + min(env(safe-area-inset-bottom), 12px)) var(--mobile-first-solid-padding);
   background-color: var(--first-background-color);
   border-top: 1px solid transparent;
-  transition: border-top ease-in 0.1s, padding linear 0.1s;
+  transition: border-top ease-in 0.2s, padding linear 0.2s;
 
   &.dark {
     background-color: var(--second-background-color);

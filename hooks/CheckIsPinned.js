@@ -1,12 +1,12 @@
 import {useEffect} from "react"
 
-function CheckIsPinned({ref})
+function CheckIsPinned({ref, threshold = 1})
 {
     useEffect(() =>
     {
         const observer = new IntersectionObserver(
-            ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-            {threshold: [1]},
+            ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < threshold),
+            {threshold: [threshold]},
         )
 
         observer.observe(ref.current)
