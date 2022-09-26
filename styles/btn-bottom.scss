@@ -14,9 +14,7 @@
   }
 
   &.is-pinned {
-    @media screen and (max-width: 450px) {
-      padding: calc(var(--mobile-first-solid-padding) / 2) var(--mobile-first-solid-padding) calc(var(--mobile-first-solid-padding) + var(--mobile-first-solid-padding) / 2) var(--mobile-first-solid-padding);
-      border-top: 1px solid var(--first-border-color);
-    }
+    padding: calc(var(--mobile-first-solid-padding) / 2) var(--mobile-first-solid-padding) calc(var(--mobile-first-solid-padding) + var(--mobile-first-solid-padding) / 2) var(--mobile-first-solid-padding);
+    border-top: 1px solid var(--first-border-color);
   }
 }
