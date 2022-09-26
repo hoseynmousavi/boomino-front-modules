@@ -18,10 +18,10 @@ import {FamilyContext} from "../context/family/FamilyReducer"
 import getImageLink from "../../boomino-front-modules/helpers/getImageLink"
 import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import WizardBack from "../../boomino-front-modules/components/WizardBack"
-import goBack from "../../seyed-modules/helpers/goBack"
 import textConstant from "../constant/textConstant"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
+import closeAndToast from "../../seyed-modules/helpers/closeAndToast"
 
 function EditInformation({route: {location: {pathname}, match: {params: {childId}}}, link})
 {
@@ -77,16 +77,15 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                         else
                         {
                             setIsLoading(false)
-                            goBack()
-                            setTimeout(() => toastManager.addToast({message: toastConstant[childId ? "editChildProfileSuccess" : "editProfileSuccess"], type: SUCCESS_TOAST}), 150)
+                            closeAndToast({toast: {message: toastConstant[childId ? "editChildProfileSuccess" : "editProfileSuccess"], type: SUCCESS_TOAST}})
                         }
                     })
                     .catch(() => setIsLoading(false))
             }
             else
             {
-                goBack()
-                setTimeout(() => toastManager.addToast({message: toastConstant[childId ? "editChildProfileSuccess" : "editProfileSuccess"], type: SUCCESS_TOAST}), 150)
+                setIsLoading(false)
+                closeAndToast({toast: {message: toastConstant[childId ? "editChildProfileSuccess" : "editProfileSuccess"], type: SUCCESS_TOAST}})
             }
         }
         else onDisableSaveClick()
