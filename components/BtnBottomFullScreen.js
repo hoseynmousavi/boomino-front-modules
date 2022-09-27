@@ -7,7 +7,7 @@ function BtnBottomFullScreen({className, children, changeOnDark = true})
     const btnRef = useRef(null)
     const {isDark} = GetTheme()
 
-    CheckIsPinned({ref: btnRef, threshold: 0.83})
+    CheckIsPinned({ref: btnRef, threshold: 0.9})
 
     return (
         <div className={`full-screen-btn ${isDark && changeOnDark ? "dark" : ""} ${className}`} ref={btnRef}>

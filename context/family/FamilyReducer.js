@@ -22,18 +22,14 @@ function reducer(state, action)
     {
         case GET_FAMILY_SUCCESS:
         {
-            const {family, selectChildUserId} = action.payload
+            const {family} = action.payload
             const familyTemp = {...family, members: family.members.reduce((sum, item) => ({...sum, [item.userId]: {...state?.family?.members?.[item.userId] ?? {}, ...item}}), {})}
-            const selectedChildUserId = selectChildUserId ?
-                selectChildUserId
-                :
+            const selectedChildUserId =
                 state.selectedChildUserId && familyTemp.members[state.selectedChildUserId] ?
                     state.selectedChildUserId
                     :
                     getSortedChildren(family)?.[0]?.userId
-
             cookieHelper.setItem("selectedChildUserId", selectedChildUserId)
-
             return {
                 ...state,
                 family: familyTemp,

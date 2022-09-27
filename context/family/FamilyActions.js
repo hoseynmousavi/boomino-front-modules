@@ -34,11 +34,11 @@ function removeChild({child_id, dispatch})
         })
 }
 
-function setFamily({dispatch, family, selectChildUserId})
+function setFamily({dispatch, family})
 {
     dispatch({
         type: GET_FAMILY_SUCCESS,
-        payload: {family, selectChildUserId},
+        payload: {family},
     })
 }
 
