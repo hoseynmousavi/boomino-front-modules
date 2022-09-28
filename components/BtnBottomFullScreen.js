@@ -1,13 +1,17 @@
-import {useRef} from "react"
-import CheckIsPinned from "../hooks/CheckIsPinned"
+import {useEffect, useRef} from "react"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
+import checkIsPinned from "../helpers/checkIsPinned"
 
 function BtnBottomFullScreen({className, children, changeOnDark = true})
 {
     const btnRef = useRef(null)
     const {isDark} = GetTheme()
 
-    CheckIsPinned({ref: btnRef})
+    useEffect(() =>
+    {
+        checkIsPinned({ref: btnRef})
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className={`full-screen-btn ${isDark && changeOnDark ? "dark" : ""} ${className}`} ref={btnRef}>
