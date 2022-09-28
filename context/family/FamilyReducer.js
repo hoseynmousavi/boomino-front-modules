@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer} from "react"
-import {ADD_CHILD_SUCCESS, EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, REMOVE_CHILD_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
+import {EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
 import FamilyActions from "./FamilyActions"
 import logoutManager from "../../../seyed-modules/helpers/logoutManager"
 import {LOGOUT} from "../auth/AuthTypes"
@@ -22,56 +22,23 @@ function reducer(state, action)
     {
         case GET_FAMILY_SUCCESS:
         {
-            const {family} = action.payload
+            const {family, selectChildUserId} = action.payload
             const familyTemp = {...family, members: family.members.reduce((sum, item) => ({...sum, [item.userId]: {...state?.family?.members?.[item.userId] ?? {}, ...item}}), {})}
-            const selectedChildUserId =
+            const selectedChildUserId = selectChildUserId ?
+                selectChildUserId
+                :
                 state.selectedChildUserId && familyTemp.members[state.selectedChildUserId] ?
                     state.selectedChildUserId
                     :
                     getSortedChildren(family)?.[0]?.userId
+
             cookieHelper.setItem("selectedChildUserId", selectedChildUserId)
+
             return {
                 ...state,
                 family: familyTemp,
                 selectedChildUserId,
                 getFamily: true,
-            }
-        }
-        case ADD_CHILD_SUCCESS:
-        {
-            const {child} = action.payload
-            const {userId} = child
-            const selectedChildUserId = userId
-            cookieHelper.setItem("selectedChildUserId", selectedChildUserId)
-            return {
-                ...state,
-                family: {
-                    ...state?.family ?? {},
-                    members: {
-                        ...state?.family?.members ?? {},
-                        [userId]: child,
-                    },
-                },
-                selectedChildUserId,
-            }
-        }
-        case REMOVE_CHILD_SUCCESS:
-        {
-            const {child_id} = action.payload
-            const membersTemp = {...state.family.members}
-            delete membersTemp[child_id]
-            const selectedChildUserId =
-                state.selectedChildUserId && membersTemp[state.selectedChildUserId] ?
-                    state.selectedChildUserId
-                    :
-                    getSortedChildren({members: membersTemp})?.[0]?.userId
-            return {
-                ...state,
-                family: {
-                    ...state.family,
-                    members: membersTemp,
-                },
-                selectedChildUserId,
             }
         }
         case EDIT_CHILD_SUCCESS:

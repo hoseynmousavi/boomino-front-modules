@@ -1,8 +1,6 @@
 import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
-import {ADD_CHILD_SUCCESS, EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, REMOVE_CHILD_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
-import toastManager from "../../../seyed-modules/helpers/toastManager"
-import {INFO_TOAST} from "../../../seyed-modules/constant/toastTypes"
+import {EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
 
 const base = process.env.REACT_APP_FAMILY_URL
 
@@ -11,22 +9,17 @@ function getFamily({dispatch, cancel})
     return request.get({base, url: apiUrlsConstant.getFamily, cancel})
         .then(({family}) =>
         {
-            dispatch({
-                type: GET_FAMILY_SUCCESS,
-                payload: {family},
-            })
+            setFamily({dispatch, family})
         })
 }
 
 function addFamilyMember({birthDate, gender, fullName, dispatch})
 {
     return request.post({base, url: apiUrlsConstant.addMember, data: {birthDate, fullName, gender}})
-        .then(child =>
+        .then(({family}) =>
         {
-            dispatch({
-                type: ADD_CHILD_SUCCESS,
-                payload: {child},
-            })
+            const child = family.members.filter(item => item.fullName === fullName)[0]
+            setFamily({dispatch, family, selectChildUserId: child.userId})
             return child
         })
 }
@@ -36,14 +29,18 @@ function removeChild({child_id, dispatch})
     const data = new FormData()
     data.append("child_id", child_id)
     return request.del({base, url: apiUrlsConstant.removeMember, data})
-        .then(res =>
+        .then(({family}) =>
         {
-            if (res?.status) toastManager.addToast({message: res.status, type: INFO_TOAST})
-            dispatch({
-                type: REMOVE_CHILD_SUCCESS,
-                payload: {child_id},
-            })
+            setFamily({dispatch, family})
         })
+}
+
+function setFamily({dispatch, family, selectChildUserId})
+{
+    dispatch({
+        type: GET_FAMILY_SUCCESS,
+        payload: {family, selectChildUserId},
+    })
 }
 
 function selectChild({dispatch, userId})
