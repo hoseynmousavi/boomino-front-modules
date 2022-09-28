@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer} from "react"
-import {ADD_CHILD_SUCCESS, EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
+import {ADD_CHILD_SUCCESS, EDIT_CHILD_SUCCESS, GET_FAMILY_SUCCESS, REMOVE_CHILD_SUCCESS, SELECT_CHILD} from "./FamilyTypes"
 import FamilyActions from "./FamilyActions"
 import logoutManager from "../../../seyed-modules/helpers/logoutManager"
 import {LOGOUT} from "../auth/AuthTypes"
@@ -51,6 +51,25 @@ function reducer(state, action)
                         ...state?.family?.members ?? {},
                         [userId]: child,
                     },
+                },
+                selectedChildUserId,
+            }
+        }
+        case REMOVE_CHILD_SUCCESS:
+        {
+            const {child_id} = action.payload
+            const membersTemp = {...state.family.members}
+            delete membersTemp[child_id]
+            const selectedChildUserId =
+                state.selectedChildUserId && membersTemp[state.selectedChildUserId] ?
+                    state.selectedChildUserId
+                    :
+                    getSortedChildren({members: membersTemp})?.[0]?.userId
+            return {
+                ...state,
+                family: {
+                    ...state.family,
+                    members: membersTemp,
                 },
                 selectedChildUserId,
             }
