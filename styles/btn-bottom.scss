@@ -4,7 +4,7 @@
   right: 0;
   width: 100%;
   bottom: calc(-1 * var(--mobile-first-solid-padding));
-  padding: var(--mobile-first-solid-padding) var(--mobile-first-solid-padding) calc(var(--mobile-first-solid-padding) + min(env(safe-area-inset-bottom), 12px)) var(--mobile-first-solid-padding);
+  padding: var(--mobile-first-solid-padding) var(--mobile-first-solid-padding) calc(var(--mobile-first-solid-padding) + var(--bottom-env-padding)) var(--mobile-first-solid-padding);
   background-color: var(--first-background-color);
   border-top: 1px solid transparent;
   transition: border-top ease-in 0.2s, padding linear 0.2s;
@@ -14,7 +14,7 @@
   }
 
   &.is-pinned {
-    padding: calc(var(--mobile-first-solid-padding) / 2) var(--mobile-first-solid-padding) calc(var(--mobile-first-solid-padding) + min(env(safe-area-inset-bottom), 12px) + var(--mobile-first-solid-padding) / 2) var(--mobile-first-solid-padding);
+    padding: calc(var(--mobile-first-solid-padding) / 2) var(--mobile-first-solid-padding) calc(var(--mobile-first-solid-padding) + var(--bottom-env-padding) + var(--mobile-first-solid-padding) / 2) var(--mobile-first-solid-padding);
     border-top: 1px solid var(--first-border-color);
   }
 }

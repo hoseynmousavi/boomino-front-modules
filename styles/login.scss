@@ -24,7 +24,7 @@
 
 .login-code-submit {
   width: 100%;
-  padding: var(--mobile-first-solid-padding) var(--mobile-first-solid-padding) calc(min(env(safe-area-inset-bottom), 12px) + var(--mobile-first-solid-padding)) var(--mobile-first-solid-padding);
+  padding: var(--mobile-first-solid-padding) var(--mobile-first-solid-padding) calc(var(--bottom-env-padding) + var(--mobile-first-solid-padding)) var(--mobile-first-solid-padding);
 }
 
 .login-logo {
