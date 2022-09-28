@@ -206,7 +206,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                         />
                     }
                 </div>
-                <BtnBottomFullScreen className="login-edit-buttons">
+                <BtnBottomFullScreen className="login-edit-buttons" delayCheckPin={false}>
                     {isAfterSignUp && <Button className="login-edit-button skip" type="skip" disable={isLoading} onClick={goToHome}>{textConstant.skipBtn}</Button>}
                     <Button className="login-edit-button" type="first" disable={validationError} loading={isLoading} onClick={saveInformation} onDisableClick={onDisableSaveClick}>{isAfterSignUp ? textConstant.continueBtn : textConstant.saveBtn}</Button>
                 </BtnBottomFullScreen>
