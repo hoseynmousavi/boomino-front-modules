@@ -3,6 +3,7 @@ import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
 import FamilyActions from "../family/FamilyActions"
 import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
+import getTimezone from "../../helpers/getTimezone"
 
 const base = process.env.REACT_APP_AUTH_URL
 
@@ -13,7 +14,8 @@ function sendOtp({mobile, cancel})
 
 function loginOrSignup({mobile, code, checkIfAdmin, dispatch})
 {
-    return request.post({base, url: apiUrlsConstant.sendOtp, data: {mobile, code}})
+    const timezone = getTimezone()
+    return request.post({base, url: apiUrlsConstant.sendOtp, data: {mobile, code, timezone}})
         .then(res =>
         {
             const {insertInstant, lastUpdateInstant, registrations} = res.user
