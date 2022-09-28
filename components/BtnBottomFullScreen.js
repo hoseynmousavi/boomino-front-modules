@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react"
+import {useLayoutEffect, useRef} from "react"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import checkIsPinned from "../helpers/checkIsPinned"
 
@@ -7,9 +7,9 @@ function BtnBottomFullScreen({className, children, changeOnDark = true})
     const btnRef = useRef(null)
     const {isDark} = GetTheme()
 
-    useEffect(() =>
+    useLayoutEffect(() =>
     {
-        checkIsPinned({ref: btnRef})
+        setTimeout(() => checkIsPinned({ref: btnRef}), 300)
         // eslint-disable-next-line
     }, [])
 
