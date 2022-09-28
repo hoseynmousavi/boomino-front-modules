@@ -2,7 +2,7 @@ import {useLayoutEffect, useRef} from "react"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import checkIsPinned from "../helpers/checkIsPinned"
 
-function BtnBottomFullScreen({className, children, delayCheckPin, changeOnDark = true})
+function BtnBottomFullScreen({className, children, delayCheckPin = true, changeOnDark = true})
 {
     const btnRef = useRef(null)
     const {isDark} = GetTheme()
