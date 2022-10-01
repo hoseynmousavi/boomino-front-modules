@@ -258,12 +258,12 @@ const getChildAllContacts = ({child_id, dispatch, cancel}) =>
 
 const setKidZonePassword = ({password}) =>
 {
-    return request.post({base, url: apiUrlsConstant.setKidZonePass, data: {password}})
+    return request.post({base, url: apiUrlsConstant.setKidZonePass, data: {password}, dontToast: true})
 }
 
 const verifyKidZonePassword = ({password}) =>
 {
-    return request.post({base, url: apiUrlsConstant.verifyKidZonePass, data: {password}})
+    return request.post({base, url: apiUrlsConstant.verifyKidZonePass, data: {password}, dontToast: true})
 }
 
 const ParentalActions = {
