@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react"
 
-function RangeSlider({defaultValue, onChange})
+function RangeSlider({defaultValue, disabled, onChange})
 {
     const [value, setValue] = useState(50)
 
@@ -18,7 +18,7 @@ function RangeSlider({defaultValue, onChange})
 
     return (
         <div className="range-slider-cont dont-gesture">
-            <input type="range" min="1" max="100" className="range-slider" value={value} onChange={onSliderChange}/>
+            <input disabled={disabled} type="range" min="1" max="100" className="range-slider" value={value} onChange={onSliderChange}/>
             <div className="range-slider-fill" style={{width: value + "%"}}/>
         </div>
     )

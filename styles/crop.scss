@@ -78,11 +78,13 @@
 
 .crop-cropping-btn {
   width: 50%;
-  text-align: center;
-  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: var(--large-font);
   border-radius: var(--first-radius);
   cursor: pointer;
+  height: var(--btn-input-height);
 
   &.cancel {
     color: var(--second-text-color);

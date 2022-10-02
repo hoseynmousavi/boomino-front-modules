@@ -4,6 +4,8 @@ const textConstant = {
     back: "بازگشت",
 
     continueBtn: "ادامه",
+    submitAndContinueBtn: "ثبت و ادامه",
+    closeBtn: "بستن",
 
     entering: "ورود به ",
     enterPhone: "شماره موبایل خود را وارد کنید.",

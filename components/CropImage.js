@@ -7,9 +7,11 @@ import goBack from "../../seyed-modules/helpers/goBack"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
 import RangeSlider from "./RangeSlider"
 import getComputedStyleHelper from "../../seyed-modules/helpers/getComputedStyleHelper"
+import textConstant from "../constant/textConstant"
 
 function CropImage({file, onChange, closeCrop})
 {
+    const [isLoading, setIsLoading] = useState(false)
     const [width, setWidth] = useState(null)
     const [size, setSize] = useState(0)
     const circleRatio = 0.75
@@ -56,6 +58,7 @@ function CropImage({file, onChange, closeCrop})
     {
         if (selectedAvatar)
         {
+            setIsLoading(true)
             const canvas = document.createElement("canvas")
             canvas.width = avatarRef.current.naturalWidth * (circleRatio * size) / avatarRef.current.width
             canvas.height = avatarRef.current.naturalHeight * (circleRatio * size) / avatarRef.current.height
@@ -86,7 +89,7 @@ function CropImage({file, onChange, closeCrop})
 
     function onMouseDown(e)
     {
-        if (selectedAvatar)
+        if (selectedAvatar && !isLoading)
         {
             posX.current = e.touches?.[0].clientX || e.clientX
             posY.current = e.touches?.[0].clientY || e.clientY
@@ -101,7 +104,7 @@ function CropImage({file, onChange, closeCrop})
 
     function elementDrag(e)
     {
-        if (selectedAvatar)
+        if (selectedAvatar && !isLoading)
         {
             const deltaX = posX.current - (e.touches?.[0].clientX || e.clientX)
             const deltaY = posY.current - (e.touches?.[0].clientY || e.clientY)
@@ -192,12 +195,14 @@ function CropImage({file, onChange, closeCrop})
                     }
                 </div>
                 <div className="crop-zoom-cont dont-gesture">
-                    <RangeSlider onChange={setZoom}/>
+                    <RangeSlider disabled={!selectedAvatar || isLoading} onChange={setZoom}/>
                 </div>
             </div>
             <div className="crop-cropping-btn-cont">
-                <Material className="crop-cropping-btn cancel" onClick={goBack}>بستن</Material>
-                <Material className="crop-cropping-btn submit" disable={!selectedAvatar} onClick={submitCrop}>ثبت و ادامه</Material>
+                <Material className="crop-cropping-btn cancel" disable={isLoading} onClick={goBack}>{textConstant.closeBtn}</Material>
+                <Material className="crop-cropping-btn submit" disable={!selectedAvatar || isLoading} onClick={submitCrop}>
+                    {isLoading ? <MyLoader width={24}/> : textConstant.submitAndContinueBtn}
+                </Material>
             </div>
         </VerticalPanel>
     )
