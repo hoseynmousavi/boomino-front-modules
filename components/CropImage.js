@@ -1,4 +1,3 @@
-import Material from "../../seyed-modules/components/Material"
 import MyLoader from "../../seyed-modules/components/MyLoader"
 import compressImage from "../helpers/compressImage"
 import {useLayoutEffect, useRef, useState} from "react"
@@ -8,6 +7,7 @@ import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
 import RangeSlider from "./RangeSlider"
 import getComputedStyleHelper from "../../seyed-modules/helpers/getComputedStyleHelper"
 import textConstant from "../constant/textConstant"
+import AlertModalButtons from "./AlertModalButtons"
 
 function CropImage({file, onChange, closeCrop})
 {
@@ -198,12 +198,12 @@ function CropImage({file, onChange, closeCrop})
                     <RangeSlider disabled={!selectedAvatar || isLoading} onChange={setZoom}/>
                 </div>
             </div>
-            <div className="crop-cropping-btn-cont">
-                <Material className="crop-cropping-btn cancel" disable={isLoading} onClick={goBack}>{textConstant.closeBtn}</Material>
-                <Material className="crop-cropping-btn submit" disable={!selectedAvatar || isLoading} onClick={submitCrop}>
-                    {isLoading ? <MyLoader width={24}/> : textConstant.submitAndContinueBtn}
-                </Material>
-            </div>
+            <AlertModalButtons isLoading={isLoading}
+                               submitDisable={!selectedAvatar || isLoading}
+                               onSubmit={submitCrop}
+                               cancelBtn={textConstant.closeBtn}
+                               submitBtn={textConstant.submitAndContinueBtn}
+            />
         </VerticalPanel>
     )
 }

@@ -28,14 +28,14 @@ function TextOverflow({className, children, infinite})
                     {
                         textSlide.style.transition = `transform linear 0ms`
                         textSlide.style.transform = `translate3d(0,0,0)`
-                        if (infinite) setTimeout(() => makeTextRight(), 2500)
+                        if (infinite) setTimeout(makeTextRight, 2500)
                     }, scrollWidthRef.current * 20)
                 }
             }
-            else setTimeout(() => makeTextRight(), 50)
+            else setTimeout(makeTextRight, 50)
         }
 
-        setTimeout(() => makeTextRight(), 1000)
+        setTimeout(makeTextRight, 1000)
         // eslint-disable-next-line
     }, [])
 
