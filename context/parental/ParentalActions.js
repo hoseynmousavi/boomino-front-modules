@@ -1,6 +1,7 @@
 import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
 import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
+import strToHash from "../../helpers/strToHash"
 
 const base = process.env.REACT_APP_PARENTAL_URL
 
@@ -259,11 +260,24 @@ const getChildAllContacts = ({child_id, dispatch, cancel}) =>
 const setKidZonePassword = ({password}) =>
 {
     return request.post({base, url: apiUrlsConstant.setKidZonePass, data: {password}, dontToast: true})
+        .then(res =>
+        {
+            localStorage.setItem("kidZonePassword", strToHash(password).toString())
+            return res
+        })
 }
 
 const verifyKidZonePassword = ({password}) =>
 {
     return request.post({base, url: apiUrlsConstant.verifyKidZonePass, data: {password}, dontToast: true})
+        .then(() =>
+        {
+            localStorage.setItem("kidZonePassword", strToHash(password).toString())
+        })
+        .catch(err =>
+        {
+            if (!(err.message === "Network Error" && strToHash(password).toString() === strToHash(localStorage.getItem("kidZonePassword")))) throw err
+        })
 }
 
 const ParentalActions = {
