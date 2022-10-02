@@ -8,7 +8,7 @@ import onResize from "../../seyed-modules/helpers/onResize"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import {dontSwitchGesture} from "../../seyed-modules/hooks/SwitchGesture"
 
-function VerticalPanel({children, className, contentClassName, style, close, statusBarColor, dontPush})
+function VerticalPanel({children, className, contentClassName, style, close, statusBarColor, dontChangeStatus, dontPush})
 {
     const {isDark} = GetTheme()
     let gesture = useRef(false)
@@ -26,7 +26,7 @@ function VerticalPanel({children, className, contentClassName, style, close, sta
     useLayoutEffect(() =>
     {
         changeBodyOverflow(true)
-        popOnPopState({dontPush, callback: hideSidebar, dontChangeOverflow: true, statusBarColor: statusBarColor || (isDark ? "#0A0A0A" : "#7F7F7F")})
+        popOnPopState({dontPush, callback: hideSidebar, dontChangeOverflow: true, statusBarColor: dontChangeStatus ? null : statusBarColor || (isDark ? "#0A0A0A" : "#7F7F7F")})
         setHeight({reset: false})
         removeResize.current = onResize({callback: () => setHeight({reset: true})})
         return () => removeResize.current && removeResize.current()
