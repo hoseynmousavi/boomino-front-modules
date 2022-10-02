@@ -257,9 +257,9 @@ const getChildAllContacts = ({child_id, dispatch, cancel}) =>
         })
 }
 
-const setKidZonePassword = ({password}) =>
+const setKidZonePassword = ({password, cancel}) =>
 {
-    return request.post({base, url: apiUrlsConstant.setKidZonePass, data: {password}, dontToast: true})
+    return request.post({base, url: apiUrlsConstant.setKidZonePass, data: {password}, dontToast: true, cancel})
         .then(res =>
         {
             localStorage.setItem("kidZonePassword", strToHash(password).toString())
@@ -267,9 +267,9 @@ const setKidZonePassword = ({password}) =>
         })
 }
 
-const verifyKidZonePassword = ({password}) =>
+const verifyKidZonePassword = ({password, cancel}) =>
 {
-    return request.post({base, url: apiUrlsConstant.verifyKidZonePass, data: {password}, dontToast: true})
+    return request.post({base, url: apiUrlsConstant.verifyKidZonePass, data: {password}, dontToast: true, cancel})
         .then(() =>
         {
             localStorage.setItem("kidZonePassword", strToHash(password).toString())
