@@ -12,7 +12,7 @@
 
 .alert-buttons {
   display: flex;
-  margin-bottom: 35px;
+  margin-bottom: calc(32px + var(--bottom-env-padding));
 }
 
 .alert-button {
