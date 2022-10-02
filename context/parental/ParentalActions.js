@@ -280,7 +280,11 @@ const verifyKidZonePassword = ({password, cancel}) =>
             const kidZonePassword = localStorage.getItem("kidZonePassword")
             if (err.message === "Network Error" && kidZonePassword)
             {
-                if (strToHash(password).toString() !== kidZonePassword) throw {response: {data: {status: toastConstant.wrongPassword}}}
+                if (strToHash(password).toString() !== kidZonePassword)
+                {
+                    // eslint-disable-next-line
+                    throw {response: {data: {status: toastConstant.wrongPassword}}}
+                }
             }
             else throw err
         })
