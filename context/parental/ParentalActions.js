@@ -2,6 +2,7 @@ import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
 import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
 import strToHash from "../../helpers/strToHash"
+import toastConstant from "../../constant/toastConstant"
 
 const base = process.env.REACT_APP_PARENTAL_URL
 
@@ -276,7 +277,12 @@ const verifyKidZonePassword = ({password, cancel}) =>
         })
         .catch(err =>
         {
-            if (!(err.message === "Network Error" && strToHash(password).toString() === localStorage.getItem("kidZonePassword"))) throw err
+            const kidZonePassword = localStorage.getItem("kidZonePassword")
+            if (err.message === "Network Error" && kidZonePassword)
+            {
+                if (strToHash(password).toString() !== kidZonePassword) throw {response: {data: {status: toastConstant.wrongPassword}}}
+            }
+            else throw err
         })
 }
 
