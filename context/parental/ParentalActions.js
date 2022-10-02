@@ -276,7 +276,7 @@ const verifyKidZonePassword = ({password}) =>
         })
         .catch(err =>
         {
-            if (!(err.message === "Network Error" && strToHash(password).toString() === strToHash(localStorage.getItem("kidZonePassword")))) throw err
+            if (!(err.message === "Network Error" && strToHash(password).toString() === localStorage.getItem("kidZonePassword"))) throw err
         })
 }
 
