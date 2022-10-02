@@ -203,6 +203,7 @@ function CropImage({file, onChange, closeCrop})
                                onSubmit={submitCrop}
                                cancelBtn={textConstant.closeBtn}
                                submitBtn={textConstant.submitAndContinueBtn}
+                               isOk={false}
             />
         </VerticalPanel>
     )
