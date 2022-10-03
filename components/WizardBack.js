@@ -9,7 +9,7 @@ import Link from "../../seyed-modules/components/Link"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import createSafariBlurNav from "../../seyed-modules/helpers/createSafariBlurNav"
 
-function WizardBack({secondPadding, title, headerTile, desc, dontFix, link, isDisable})
+function WizardBack({rootId, secondPadding, title, headerTile, desc, dontFix, link, isDisable})
 {
     const [isFix, setIsFix] = useState(false)
     const {isDark} = GetTheme()
@@ -32,7 +32,7 @@ function WizardBack({secondPadding, title, headerTile, desc, dontFix, link, isDi
         }
     }
 
-    ScrollY({condition})
+    ScrollY({rootId, condition})
 
     return (
         <div className="wizard-back-cont" ref={contRef}>
