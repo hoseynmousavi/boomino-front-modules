@@ -13,7 +13,7 @@ function TextOverflow({className, children, infinite})
     {
         function makeTextRight()
         {
-            if (pageLoaded() && textRef.current)
+            if (pageLoaded())
             {
                 const text = textRef.current
                 const textSlide = textSlideRef.current
@@ -32,10 +32,15 @@ function TextOverflow({className, children, infinite})
                     }, scrollWidthRef.current * 20)
                 }
             }
-            else setTimeout(makeTextRight, 50)
+            else
+            {
+                window.addEventListener("load", makeTextRight)
+            }
         }
 
         setTimeout(makeTextRight, 1000)
+
+        return () => window.removeEventListener("load", makeTextRight)
         // eslint-disable-next-line
     }, [])
 
