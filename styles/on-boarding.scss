@@ -31,6 +31,12 @@
 .on-boarding-img {
   width: 72%;
   margin: auto;
+  aspect-ratio: 1 / 1;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+  }
 }
 
 .on-boarding-title {
