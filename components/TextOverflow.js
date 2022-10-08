@@ -1,4 +1,4 @@
-import {useLayoutEffect, useRef, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import createMaterialColor from "../../seyed-modules/helpers/createMaterialColor"
 import pageLoaded from "../../seyed-modules/helpers/pageLoaded"
 
@@ -9,7 +9,7 @@ function TextOverflow({className, children, infinite})
     const textSlideRef = useRef(null)
     const scrollWidthRef = useRef(null)
 
-    useLayoutEffect(() =>
+    useEffect(() =>
     {
         function makeTextRight()
         {

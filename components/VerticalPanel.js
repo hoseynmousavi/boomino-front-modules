@@ -1,4 +1,4 @@
-import {useLayoutEffect, useRef} from "react"
+import {useEffect, useRef} from "react"
 import {createPortal} from "react-dom"
 import popOnPopState from "../../seyed-modules/helpers/popOnPopState"
 import goBack from "../../seyed-modules/helpers/goBack"
@@ -23,7 +23,7 @@ function VerticalPanel({children, className, contentClassName, style, close, sta
     const isHiding = useRef(false)
     const removeResize = useRef(null)
 
-    useLayoutEffect(() =>
+    useEffect(() =>
     {
         changeBodyOverflow(true)
         popOnPopState({dontPush, callback: hideSidebar, dontChangeOverflow: true, statusBarColor: dontChangeStatus ? null : statusBarColor || (isDark ? "#0A0A0A" : "#7F7F7F")})

@@ -1,4 +1,4 @@
-import {useLayoutEffect, useRef, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import verifyCodeConstant from "../constant/verifyCodeConstant"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
 
@@ -9,7 +9,7 @@ function CodeInput({onChange, disable, error})
     const {numberOfDigits} = verifyCodeConstant
     const codeWidthHeight = `calc((var(--full-viewport) - (${numberOfDigits} * 6px) - (2 * var(--mobile-first-solid-padding))) / ${numberOfDigits})`
 
-    useLayoutEffect(() =>
+    useEffect(() =>
     {
         setTimeout(() => inputRef?.current?.focus?.(), 300)
     }, [])

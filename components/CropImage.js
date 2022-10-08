@@ -1,6 +1,6 @@
 import MyLoader from "../../seyed-modules/components/MyLoader"
 import compressImage from "../helpers/compressImage"
-import {useLayoutEffect, useRef, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import b64ToFile from "../helpers/b64ToFile"
 import goBack from "../../seyed-modules/helpers/goBack"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
@@ -28,7 +28,7 @@ function CropImage({file, onChange, closeCrop})
     const posX = useRef(null)
     const posY = useRef(null)
 
-    useLayoutEffect(() =>
+    useEffect(() =>
     {
         const size = contRef.current.clientWidth
         setSize(size)

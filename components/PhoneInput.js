@@ -1,4 +1,4 @@
-import {useLayoutEffect, useRef, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
 import showPhoneNumber, {phoneSeparator} from "../../seyed-modules/helpers/showPhoneNumber"
 import fixInputScroll from "../helpers/fixInputScroll"
@@ -10,7 +10,7 @@ function PhoneInput({onChange, onSubmit, disableSubmit})
     const inputRef = useRef(null)
     const timerFixScroll = useRef(null)
 
-    useLayoutEffect(() =>
+    useEffect(() =>
     {
         if (window.innerWidth > 480) setTimeout(() => inputRef?.current?.focus(), 300)
         return () => clearTimeout(timerFixScroll.current)
