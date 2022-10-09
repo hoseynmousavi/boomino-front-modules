@@ -13,17 +13,20 @@ import errorConstant from "../../seyed-modules/constant/errorConstant"
 import textConstant from "../constant/textConstant"
 import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
-import {REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
+import {INFO_TOAST, REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
+import toastManager from "../../seyed-modules/helpers/toastManager"
 
 function LoginInputCode({route: {match: {params: {phone}}}})
 {
     const {dispatch} = useContext(AuthContext)
     const [timerId, setTimerId] = useState(null)
+    const [remainingTime, setRemainingTime] = useState(null)
     const [showError, setShowError] = useState(null)
     const [verifyLoading, setVerifyLoading] = useState(false)
     const [code, setCode] = useState(null)
     const errorTimer = useRef(null)
     const disable = !timerId || verifyLoading
+    const inputRef = useRef(null)
     const request = useRef(null)
 
     useEffect(() =>
@@ -37,9 +40,20 @@ function LoginInputCode({route: {match: {params: {phone}}}})
 
     function sendCode()
     {
-        if (timerId !== null) setTimerId(null)
+        if (timerId !== null || remainingTime !== null)
+        {
+            setTimerId(null)
+            setRemainingTime(null)
+        }
         AuthActions.sendOtp({mobile: phone, cancel: cancelSource => request.current = cancelSource})
-            .then(() => setTimerId(new Date().toISOString()))
+            .then(res =>
+            {
+                const {already_sent, status, remaining_time} = res || {}
+                if (already_sent) toastManager.addToast({message: status, type: INFO_TOAST})
+                if (remaining_time) setRemainingTime(remaining_time)
+                setTimerId(new Date().toISOString())
+                inputRef?.current?.focus?.()
+            })
             .catch(err => setShowError(errorConstant(err)))
     }
 
@@ -84,11 +98,11 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                     {textConstant.enterVerifyCodeEnd}
                 </div>
                 <Material className={`login-code-edit ${verifyLoading ? "disable" : ""}`} disable={verifyLoading} onClick={goBack}>{textConstant.editPhone}</Material>
-                <CodeInput error={!!showError} disable={disable} onChange={onCodeChange}/>
+                <CodeInput error={!!showError} disable={disable} onChange={onCodeChange} ref={inputRef}/>
                 <div className={`login-code-err ${!!showError ? "show" : ""}`}>{showError}</div>
                 {
                     timerId ?
-                        <TimerCode key={timerId} disable={disable} onEndRetry={sendCode}/>
+                        <TimerCode key={timerId} disable={disable} onEndRetry={sendCode} timeInSeconds={remainingTime || undefined}/>
                         :
                         <MyLoader className="login-code-loading" width={32}/>
                 }

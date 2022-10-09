@@ -2,21 +2,26 @@ import {useEffect, useState} from "react"
 import verifyCodeConstant from "../constant/verifyCodeConstant"
 import Material from "../../seyed-modules/components/Material"
 
-function TimerCode({onEndRetry, disable})
+function TimerCode({onEndRetry, disable, timeInSeconds = verifyCodeConstant.secondsForResend})
 {
-    const [remain, setRemain] = useState(`0${verifyCodeConstant.minutesForResend}:00`)
+    const [remain, setRemain] = useState(fixFormat(timeInSeconds))
+
+    function fixFormat(seconds)
+    {
+        return `${Math.floor(seconds / 60).toString().padStart(2, "0")}:${(seconds % 60).toString().padStart(2, "0")}`
+    }
 
     useEffect(() =>
     {
         const start = new Date()
         const timer = setInterval(() =>
         {
-            const remainSeconds = Math.floor((verifyCodeConstant.minutesForResend * 60) + ((start - new Date()) / 1000))
-            const remain = `${Math.floor(remainSeconds / 60) > 9 ? Math.floor(remainSeconds / 60) : "0" + Math.floor(remainSeconds / 60)}:${remainSeconds % 60 > 9 ? remainSeconds % 60 : "0" + remainSeconds % 60}`
-            if (remainSeconds >= 0) setRemain(remain)
+            const remainSeconds = Math.floor(timeInSeconds + ((start - new Date()) / 1000))
+            if (remainSeconds >= 0) setRemain(fixFormat(remainSeconds))
             if (remainSeconds <= 0) clearInterval(timer)
         }, 900)
         return () => clearInterval(timer)
+        // eslint-disable-next-line
     }, [])
 
     return (

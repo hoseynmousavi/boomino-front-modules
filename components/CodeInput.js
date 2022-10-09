@@ -1,18 +1,12 @@
-import {useEffect, useRef, useState} from "react"
+import {forwardRef, useState} from "react"
 import verifyCodeConstant from "../constant/verifyCodeConstant"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
 
-function CodeInput({onChange, disable, error})
+const CodeInput = forwardRef(({onChange, disable, error}, ref) =>
 {
     const [value, setValue] = useState("")
-    const inputRef = useRef(null)
     const {numberOfDigits} = verifyCodeConstant
     const codeWidthHeight = `calc((var(--full-viewport) - (${numberOfDigits} * 6px) - (2 * var(--mobile-first-solid-padding))) / ${numberOfDigits})`
-
-    useEffect(() =>
-    {
-        setTimeout(() => inputRef?.current?.focus?.(), 300)
-    }, [])
 
     function resetInput()
     {
@@ -36,7 +30,7 @@ function CodeInput({onChange, disable, error})
 
     return (
         <div className={`code-input-cont ${disable ? "disable" : ""}`}>
-            <input className="code-input" ref={inputRef} maxLength={numberOfDigits} type="tel" value={value} onChange={onInputChange}/>
+            <input className="code-input" ref={ref} maxLength={numberOfDigits} type="tel" value={value} onChange={onInputChange}/>
             <div className="code-input-boxes">
                 {
                     Array(numberOfDigits).fill(0).map((_, index) =>
@@ -53,6 +47,6 @@ function CodeInput({onChange, disable, error})
             </div>
         </div>
     )
-}
+})
 
 export default CodeInput

@@ -1,6 +1,6 @@
 const verifyCodeConstant = {
     numberOfDigits: 6,
-    minutesForResend: 5,
+    secondsForResend: 60,
 }
 
 export default verifyCodeConstant
