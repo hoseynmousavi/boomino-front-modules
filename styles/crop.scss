@@ -19,27 +19,6 @@
   margin-top: 20px;
 }
 
-.crop-cropping-zoom {
-  border-radius: var(--first-radius);
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all ease 0.2s;
-
-  &.left {
-    margin-right: 15px;
-  }
-}
-
-.crop-cropping-zoom-svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--link-color);
-}
-
 .crop-relative {
   position: relative;
   overflow: hidden;

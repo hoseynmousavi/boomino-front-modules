@@ -58,12 +58,12 @@
   justify-content: center;
   overflow: hidden;
   opacity: 0;
-  transition: height ease 0.2s 0.1s, opacity ease 0.1s;
+  transition: height var(--transition-method) 0.2s 0.1s, opacity var(--transition-method) 0.1s;
 
   &.show {
     height: 35px;
     opacity: 1;
-    transition: height ease 0.2s, opacity ease 0.1s 0.2s;
+    transition: height var(--transition-method) 0.2s, opacity var(--transition-method) 0.1s 0.2s;
   }
 }
 

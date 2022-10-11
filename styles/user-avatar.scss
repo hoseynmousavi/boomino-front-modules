@@ -78,5 +78,5 @@
 }
 
 .avatar-active-border, .avatar-padding-border {
-  transition: all var(--first-transition);
+  transition: all var(--first-transition), stroke-dasharray ease 0.2s;
 }
