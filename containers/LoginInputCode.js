@@ -48,9 +48,9 @@ function LoginInputCode({route: {match: {params: {phone}}}})
         AuthActions.sendOtp({mobile: phone, cancel: cancelSource => request.current = cancelSource})
             .then(res =>
             {
-                const {already_sent, status, remaining_time} = res || {}
+                const {already_sent, status, ttl} = res || {}
                 if (already_sent) toastManager.addToast({message: status, type: INFO_TOAST})
-                if (remaining_time) setRemainingTime(remaining_time)
+                if (ttl) setRemainingTime(ttl)
                 setTimerId(new Date().toISOString())
                 inputRef?.current?.focus?.()
             })
