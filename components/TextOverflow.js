@@ -13,11 +13,11 @@ function TextOverflow({className, children, infinite})
     {
         function makeTextRight()
         {
-            if (pageLoaded())
+            if (pageLoaded() && textRef.current)
             {
                 const text = textRef.current
                 const textSlide = textSlideRef.current
-                const {scrollWidth, clientWidth} = text
+                const {scrollWidth, clientWidth} = text || {}
                 if (!scrollWidthRef.current) scrollWidthRef.current = scrollWidth
                 if (scrollWidthRef.current > clientWidth)
                 {
