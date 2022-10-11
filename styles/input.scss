@@ -10,12 +10,12 @@
 
 .input-label-text {
   font-size: var(--title-font);
-  font-family: my-font-bold, serif;
+  font-family: "my-font-demibold", serif;
 }
 
 .input-main {
   font-size: var(--title-font);
-  font-family: my-font-bold, serif;
+  font-family: "my-font-demibold", serif;
   margin-top: 10px;
   height: var(--btn-input-height);
   width: 100%;
@@ -49,7 +49,7 @@
   }
 
   &::placeholder {
-    font-family: my-font, serif;
+    font-family: "my-font", serif;
     color: var(--second-text-color);
   }
 

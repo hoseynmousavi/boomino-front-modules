@@ -290,6 +290,11 @@ const verifyKidZonePassword = ({password, cancel}) =>
         })
 }
 
+function getUpdateChanges({version})
+{
+    return request.get({base, url: apiUrlsConstant.getUpdateChanges, dontCache: true, param: `?version=${version}&client=WEB`})
+}
+
 const ParentalActions = {
     getPackages,
     addChildRestrictions,
@@ -311,6 +316,7 @@ const ParentalActions = {
     getChildAllContacts,
     setKidZonePassword,
     verifyKidZonePassword,
+    getUpdateChanges,
 }
 
 export default ParentalActions

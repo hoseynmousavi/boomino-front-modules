@@ -31,6 +31,7 @@ const apiUrlsConstant = {
     addChildRestrictionsApp: "parental-control/app-restriction",
     setKidZonePass: "parental-control/kidzone-password",
     verifyKidZonePass: "parental-control/verify-kidzone-password",
+    getUpdateChanges: "parental-control/update-changes",
 }
 
 export default apiUrlsConstant

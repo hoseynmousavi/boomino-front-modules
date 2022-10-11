@@ -1,5 +1,5 @@
 .alert-title {
-  font-family: my-font-bold, serif;
+  font-family: "my-font-demibold", serif;
   font-size: var(--big-font);
   padding-top: 8px;
 }
@@ -44,12 +44,12 @@
 
   &.ok {
     color: var(--toast-fail-text);
-    font-family: my-font-bold, serif;
+    font-family: "my-font-demibold", serif;
   }
 
   &.yes {
     color: var(--first-color);
-    font-family: my-font-bold, serif;
+    font-family: "my-font-demibold", serif;
   }
 
   &.disable {
