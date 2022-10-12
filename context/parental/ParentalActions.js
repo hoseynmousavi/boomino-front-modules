@@ -1,6 +1,6 @@
 import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
-import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
+import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
 import strToHash from "../../helpers/strToHash"
 import toastConstant from "../../constant/toastConstant"
 
@@ -290,9 +290,20 @@ const verifyKidZonePassword = ({password, cancel}) =>
         })
 }
 
-function getUpdateChanges({version})
+function getUpdateChanges({version, getAll, dispatch, cancel})
 {
-    return request.get({base, url: apiUrlsConstant.getUpdateChanges, dontCache: true, param: `?version=${version}&client=WEB`})
+    return request.get({base, url: apiUrlsConstant.getUpdateChanges, dontCache: !getAll, dontToast: !getAll, param: `?version=${version}&client=WEB`, cancel})
+        .then(res =>
+        {
+            if (getAll)
+            {
+                dispatch({
+                    type: SET_CHANGE_LOGS,
+                    payload: {res},
+                })
+            }
+            else return res
+        })
 }
 
 const ParentalActions = {

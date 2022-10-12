@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer} from "react"
-import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
+import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
 import {LOGOUT} from "../auth/AuthTypes"
 import logoutManager from "../../../seyed-modules/helpers/logoutManager"
 
@@ -16,6 +16,7 @@ const initialState = {
     timeline: {},
     timelineDetail: {},
     todayUsage: {},
+    allChangeLogs: {},
 }
 
 const init = () => initialState
@@ -170,6 +171,17 @@ function reducer(state, action)
                         todayUsage: {...res},
                         getTodayUsage: true,
                     },
+                },
+            }
+        }
+        case SET_CHANGE_LOGS:
+        {
+            const {res} = action.payload
+            return {
+                ...state,
+                allChangeLogs: {
+                    getDone: true,
+                    changeLogs: res,
                 },
             }
         }
