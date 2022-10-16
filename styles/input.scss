@@ -54,7 +54,7 @@
   }
 
   &:placeholder-shown {
-    direction: rtl;
+    direction: var(--language-direction);
   }
 
   &.ltr-placeholder {
@@ -67,14 +67,14 @@
 .input-icon {
   position: absolute;
   top: 26px;
-  right: 12px;
+  inset-inline-start: 12px;
   width: 24px;
   height: 24px;
   pointer-events: none;
 
   &.rtl {
-    right: initial;
-    left: 12px;
+    inset-inline-start: initial;
+    inset-inline-end: 12px;
   }
 
   &.icon {
