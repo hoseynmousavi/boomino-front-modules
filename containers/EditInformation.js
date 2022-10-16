@@ -18,13 +18,14 @@ import {FamilyContext} from "../context/family/FamilyReducer"
 import getImageLink from "../../boomino-front-modules/helpers/getImageLink"
 import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import WizardBack from "../../boomino-front-modules/components/WizardBack"
-import textConstant from "../constant/textConstant"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import closeAndToast from "../../seyed-modules/helpers/closeAndToast"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function EditInformation({route: {location: {pathname}, match: {params: {childId}}}, link})
 {
+    const {textConstant} = GetTextConstant()
     const {isDark} = GetTheme()
     const {state: {user}, dispatch} = useContext(AuthContext)
     const {dispatch: familyDispatch} = useContext(FamilyContext)

@@ -10,14 +10,15 @@ import AuthActions from "../context/auth/AuthActions"
 import {AuthContext} from "../context/auth/AuthReducer"
 import urlConstant from "../constant/urlConstant"
 import errorConstant from "../../seyed-modules/constant/errorConstant"
-import textConstant from "../constant/textConstant"
 import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import {INFO_TOAST, REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
 import toastManager from "../../seyed-modules/helpers/toastManager"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function LoginInputCode({route: {match: {params: {phone}}}})
 {
+    const {textConstant} = GetTextConstant()
     const {dispatch} = useContext(AuthContext)
     const [timerId, setTimerId] = useState(null)
     const [remainingTime, setRemainingTime] = useState(null)

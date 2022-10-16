@@ -3,12 +3,13 @@ import PhoneInput from "../components/PhoneInput"
 import {useState} from "react"
 import urlConstant from "../constant/urlConstant"
 import Button from "../../seyed-modules/components/Button"
-import textConstant from "../constant/textConstant"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import BtnBottomFullScreen from "../components/BtnBottomFullScreen"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function LoginInputPhone()
 {
+    const {textConstant} = GetTextConstant()
     const [phone, setPhone] = useState(null)
     const isDisable = !phone
 
@@ -28,7 +29,7 @@ function LoginInputPhone()
             <div/>
             <div className="login-content">
                 <LogoSvg className="login-logo"/>
-                <h1 className="login-title">{textConstant.entering}{process.env.REACT_APP_NAME}</h1>
+                <h1 className="login-title">{textConstant.entering}</h1>
                 <p className="login-desc">{textConstant.enterPhone}</p>
                 <PhoneInput onChange={onPhoneChange} onSubmit={goToCode} disableSubmit={isDisable}/>
             </div>

@@ -6,11 +6,12 @@ import goBack from "../../seyed-modules/helpers/goBack"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
 import RangeSlider from "./RangeSlider"
 import getComputedStyleHelper from "../../seyed-modules/helpers/getComputedStyleHelper"
-import textConstant from "../constant/textConstant"
 import AlertModalButtons from "./AlertModalButtons"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function CropImage({file, onChange, closeCrop})
 {
+    const {textConstant} = GetTextConstant()
     const [isLoading, setIsLoading] = useState(false)
     const [width, setWidth] = useState(null)
     const [size, setSize] = useState(0)

@@ -4,13 +4,14 @@ import onboarding3 from "../media/images/onboarding3.webp"
 import SlideDots from "../components/SlideDots"
 import SlideGesture from "../../seyed-modules/hooks/SlideGesture"
 import OnBoardingBtn from "../components/OnBoardingBtn"
-import textConstant from "../constant/textConstant"
 import OnBoardingItem from "../components/OnBoardingItem"
 import OnBoardingSvg from "../media/svg/OnBoardingSvg"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function OnBoarding()
 {
+    const {textConstant} = GetTextConstant()
     const {slideIndex, onTouchEnd, onTouchStart, onTouchMove, slideRef, setSlide} = SlideGesture({slideNumbers: 3, rightToLeft: false, mainSlideAnime: true})
     const {isDark} = GetTheme()
     return (

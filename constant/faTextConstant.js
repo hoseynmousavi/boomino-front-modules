@@ -1,6 +1,6 @@
 import verifyCodeConstant from "./verifyCodeConstant"
 
-const textConstant = {
+const faTextConstant = {
     back: "بازگشت",
 
     continueBtn: "ادامه",
@@ -45,4 +45,4 @@ const textConstant = {
     skipBtn: "رد کردن",
 }
 
-export default textConstant
+export default faTextConstant

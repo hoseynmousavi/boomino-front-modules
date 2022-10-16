@@ -4,13 +4,14 @@ import goBack from "../../seyed-modules/helpers/goBack"
 import ScrollY from "../../seyed-modules/hooks/ScrollY"
 import {useRef, useState} from "react"
 import TextOverflow from "./TextOverflow"
-import textConstant from "../constant/textConstant"
 import Link from "../../seyed-modules/components/Link"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import createSafariBlurNav from "../../seyed-modules/helpers/createSafariBlurNav"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function WizardBack({rootId, secondPadding, title, headerTile, desc, dontFix, link, isDisable})
 {
+    const {textConstant} = GetTextConstant()
     const [isFix, setIsFix] = useState(false)
     const {isDark} = GetTheme()
     const [showFixTitle, setShowFixTitle] = useState(false)
