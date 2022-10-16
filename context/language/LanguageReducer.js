@@ -39,7 +39,7 @@ function LanguageProvider({children})
     {
         const language = cookieHelper.getItem("language")
         if (language && language !== "fa") LanguageActions.changeLanguage({language, dispatch})
-    })
+    }, [])
 
     return (
         <LanguageContext.Provider value={{state, dispatch}}>
