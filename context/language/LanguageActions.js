@@ -4,7 +4,7 @@ function changeLanguage({language, dispatch})
 {
     dispatch({
         type: CHANGE_LANGUAGE,
-        language,
+        payload: {language},
     })
 }
 
