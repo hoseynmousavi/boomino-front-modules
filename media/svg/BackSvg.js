@@ -1,4 +1,4 @@
-import GetTextConstant from "../../hooks/GetTextConstant"
+import GetTextConstant from "../../../seyed-modules/hooks/GetTextConstant"
 
 function BackSvg({className})
 {
