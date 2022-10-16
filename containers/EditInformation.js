@@ -191,7 +191,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                     <Select name="gender"
                             full_title={textConstant[childId ? "chooseChildGender" : "chooseGender"]}
                             title={textConstant.gender}
-                            items={[{id: "male", name: childId ? "پسر" : "مرد"}, {id: "female", name: childId ? "دختر" : "زن"}]}
+                            items={[{id: "male", name: childId ? textConstant.boy : textConstant.male}, {id: "female", name: childId ? textConstant.girl : textConstant.female}]}
                             defaultValue={childId ? child.gender : user.data?.gender}
                             onChange={changeField}
                             disabled={isLoading}

@@ -43,6 +43,11 @@ const faTextConstant = {
 
     saveBtn: "ذخیره",
     skipBtn: "رد کردن",
+
+    boy: "پسر",
+    girl: "دختر",
+    male: "مرد",
+    female: "زن",
 }
 
 export default faTextConstant
