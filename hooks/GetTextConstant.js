@@ -1,7 +1,7 @@
 import {useContext} from "react"
 import {LanguageContext} from "../../seyed-modules/context/language/LanguageReducer"
-import faTextConstant from "../../constant/faTextConstant"
-import enTextConstant from "../../constant/enTextConstant"
+import faTextConstant from "../constant/faTextConstant"
+import enTextConstant from "../constant/enTextConstant"
 
 function GetTextConstant()
 {
