@@ -98,8 +98,8 @@
 .wizard-back-svg {
   width: 22px;
   min-width: 22px;
-  margin-left: 4px;
-  margin-right: -6px;
+  margin-inline-end: 4px;
+  margin-inline-start: -6px;
 
   path {
     stroke: var(--second-text-color);
