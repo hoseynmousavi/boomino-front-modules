@@ -3,6 +3,15 @@ import verifyCodeConstant from "./verifyCodeConstant"
 const faTextConstant = {
     back: "بازگشت",
 
+    chooseGallery: "انتخاب از گالری",
+    chooseCamera: "باز کردن دوربین",
+    removeAvatar: "حذف تصویر",
+
+    next: "بعدی",
+    letsGo: "برو بریم",
+
+    sendCodeAgain: "ارسال مجدد کد",
+
     continueBtn: "ادامه",
     submitAndContinueBtn: "ثبت و ادامه",
     closeBtn: "بستن",

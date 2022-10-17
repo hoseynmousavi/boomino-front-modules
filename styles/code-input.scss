@@ -67,7 +67,7 @@
     &:last-child {
       &:after {
         content: "|";
-        margin-right: -5px;
+        margin-inline-start: -5px;
         animation: caret ease 1s infinite;
         font-family: "my-font", serif;
       }

@@ -1,9 +1,11 @@
 import {useEffect, useState} from "react"
 import verifyCodeConstant from "../constant/verifyCodeConstant"
 import Material from "../../seyed-modules/components/Material"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function TimerCode({onEndRetry, disable, timeInSeconds = verifyCodeConstant.secondsForResend})
 {
+    const {textConstant} = GetTextConstant()
     const [remain, setRemain] = useState(fixFormat(timeInSeconds))
 
     function fixFormat(seconds)
@@ -26,7 +28,7 @@ function TimerCode({onEndRetry, disable, timeInSeconds = verifyCodeConstant.seco
 
     return (
         <Material className={`login-code-timer ${disable ? "disable" : remain !== "00:00" ? "" : "pointer"}`} disable={remain !== "00:00" || disable} onClick={onEndRetry}>
-            ارسال مجدد کد
+            {textConstant.sendCodeAgain}
             {
                 remain !== "00:00" &&
                 <>

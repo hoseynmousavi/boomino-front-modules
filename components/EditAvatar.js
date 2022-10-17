@@ -18,9 +18,11 @@ import ParentalActions from "../context/parental/ParentalActions"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import CropImage from "./CropImage"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChange, removeButton, link, getRef, isChild})
 {
+    const {textConstant} = GetTextConstant()
     const {isDark} = GetTheme()
     const {state: {user}, dispatch} = useContext(AuthContext)
     const [avatarTemp, setAvatarTemp] = useState(null)
@@ -140,7 +142,7 @@ function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChan
                     removeButton ?
                         <>
                             <TrashSvg className="login-image-edit-remove"/>
-                            <div className="login-image-edit-title-remove">حذف تصویر</div>
+                            <div className="login-image-edit-title-remove">{textConstant.removeAvatar}</div>
                         </>
                         :
                         <>
@@ -161,7 +163,7 @@ function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChan
                         <label>
                             <Material isDiv className="select-item have-icon">
                                 <GallerySvg className="select-item-svg gallery"/>
-                                <div>انتخاب از گالری</div>
+                                <div>{textConstant.chooseGallery}</div>
                             </Material>
                             <input hidden type="file" accept="image/*" onChange={onFileChange}/>
                         </label>
@@ -169,7 +171,7 @@ function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChan
                             <label>
                                 <Material isDiv className="select-item have-icon">
                                     <CameraSvg className="select-item-svg camera"/>
-                                    <div>باز کردن دوربین</div>
+                                    <div>{textConstant.chooseCamera}</div>
                                 </Material>
                                 <input hidden type="file" accept="image/*" capture="user" onChange={onFileChange}/>
                             </label>
@@ -178,7 +180,7 @@ function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChan
                             showLoginUser && user.data?.avatar_fid &&
                             <Material className="select-item have-icon remove" backgroundColor={createMaterialColor({variable: "--toast-fail-text"})} onClick={removeAvatar}>
                                 <TrashSvg className="select-item-svg"/>
-                                <div>حذف تصویر</div>
+                                <div>{textConstant.removeAvatar}</div>
                             </Material>
                         }
                     </div>

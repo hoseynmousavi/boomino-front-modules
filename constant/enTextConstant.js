@@ -1,22 +1,31 @@
 const faTextConstant = {
     back: "back",
 
+    chooseGallery: "choose from gallery",
+    chooseCamera: "open camera",
+    removeAvatar: "remove photo",
+
+    next: "next",
+    letsGo: "let's go",
+
+    sendCodeAgain: "send code again",
+
     continueBtn: "continue",
-    submitAndContinueBtn: "submit and continue",
+    submitAndContinueBtn: "continue",
     closeBtn: "close",
 
     entering: "entering Boomino",
     enterPhone: "enter your phone number.",
 
-    onBoardingTitle1: "tell us how old is he/she?",
-    onBoardingTitle2: "what ever you want, is here",
-    onBoardingTitle3: "with Boomino, you can keep calm",
-    onBoardingDesc1: "then we tell what is good for him/her",
+    onBoardingTitle1: "tell us how old he is?",
+    onBoardingTitle2: "everything you want is here",
+    onBoardingTitle3: "you are at ease with Boomino",
+    onBoardingDesc1: "then we tell what is good for him",
     onBoardingDesc2: "game, movie, animation, music and visual education for kids",
-    onBoardingDesc3: "cause by access control, you can take care of him/her",
+    onBoardingDesc3: "cause by access control, you can take care of him",
 
     enterCode: "enter submission code",
-    enterVerifyCode: `the code we sent to`,
+    enterVerifyCode: `the code we sent to `,
     enterVerifyCodeEnd: " should be fill here.",
     editPhone: "edit number",
 

@@ -79,7 +79,7 @@ function PhoneInput({onChange, onSubmit, disableSubmit})
                    onChange={onInputChange}
                    onKeyDown={inputKeyDownEnter({onSubmit, disableSubmit})}
             />
-            <div className={`phone-input-placeholder ${value.length > 0 ? "active" : ""}`}>۰۹</div>
+            <div className={`phone-input-placeholder ${value.length > 0 ? "active" : ""}`}>09</div>
         </div>
     )
 }
