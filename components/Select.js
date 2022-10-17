@@ -49,7 +49,7 @@ function Select({name, full_title, placeholder, title, items, defaultValue, onCh
                     <div className={`select-main-text ${value ? "active" : ""}`}>
                         {value?.name || placeholder || full_title || title}
                     </div>
-                    <KeyboardArrowSvg className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
+                    <KeyboardArrowSvg isDown className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
                 </Material>
                 <ShowValidationError error={error} noSpace={noSpace}/>
             </label>

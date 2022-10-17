@@ -8,9 +8,11 @@ import dateConstant from "../constant/dateConstant"
 import numberCorrection from "../../seyed-modules/helpers/numberCorrection"
 import fixTimeFormat from "../helpers/fixTimeFormat"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function TimePicker({name, full_title, title, onChange, placeholder, defaultValue, justShowPanel})
 {
+    const {textConstant} = GetTextConstant()
     const [isShowPanel, setIsShowPanel] = useState(false)
     const [value, setValue] = useState(null)
     const [hour, setHour] = useState(dateConstant.defaultHour)
@@ -73,7 +75,7 @@ function TimePicker({name, full_title, title, onChange, placeholder, defaultValu
                         <div className={`select-main-text ${value ? "active" : ""}`}>
                             {value || placeholder || full_title || title}
                         </div>
-                        <KeyboardArrowSvg className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
+                        <KeyboardArrowSvg isDown className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
                     </Material>
                 </label>
             }
@@ -84,14 +86,14 @@ function TimePicker({name, full_title, title, onChange, placeholder, defaultValu
                     <div className="select-title">{full_title || title}</div>
                     <div className="select-birth-cont">
                         <div className="select-birth-col">
-                            <div className="select-birth-col-title">دقیقه</div>
+                            <div className="select-birth-col-title">{textConstant.minute}</div>
                             <Scroll type="minute" onChange={onMinuteChange} defaultValue={minute}/>
                         </div>
                         <div className="select-birth-col">
-                            <div className="select-birth-col-title">ساعت</div>
+                            <div className="select-birth-col-title">{textConstant.hour}</div>
                             <Scroll type="hour" onChange={onHourChange} defaultValue={hour}/>
                         </div>
-                        <Button className="select-birth-save" onClick={submitTime}>ذخیره</Button>
+                        <Button className="select-birth-save" onClick={submitTime}>{textConstant.saveBtn}</Button>
                     </div>
                 </VerticalPanel>
             }

@@ -84,7 +84,7 @@ function DatePicker({name, full_title, title, onChange, placeholder, defaultValu
                     <div className={`select-main-text ${value ? "active" : ""}`}>
                         {value || placeholder || full_title || title}
                     </div>
-                    <KeyboardArrowSvg className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
+                    <KeyboardArrowSvg isDown className={`select-main-svg ${isShowPanel ? "show" : ""}`}/>
                 </Material>
                 <ShowValidationError error={error} noSpace={noSpace}/>
             </label>

@@ -32,7 +32,7 @@
 
     &:after {
       position: absolute;
-      left: 0;
+      inset-inline-end: 0;
       top: 50%;
       transform: translate3d(-50%, -50%, 0);
       content: " ";

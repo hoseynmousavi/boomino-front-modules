@@ -31,14 +31,14 @@
 
 .select-item-title {
   &.rtl {
-    padding-right: 35px;
+    padding-inline-start: 35px;
   }
 }
 
 .select-item-svg {
   width: 20px;
   height: 20px;
-  margin-left: 8px;
+  margin-inline-end: 8px;
 
   &.camera {
     path {
@@ -156,6 +156,7 @@
 
 .select-birth-cont {
   text-align: center;
+  direction: rtl;
 }
 
 .select-birth-col {

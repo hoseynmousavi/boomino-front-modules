@@ -46,6 +46,9 @@ const faTextConstant = {
     girl: "girl",
     male: "male",
     female: "female",
+
+    hour: "hour",
+    minute: "minute",
 }
 
 export default faTextConstant
