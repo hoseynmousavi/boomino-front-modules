@@ -9,7 +9,6 @@ import {AuthContext} from "../context/auth/AuthReducer"
 import urlConstant from "../constant/urlConstant"
 import EditAvatar from "../components/EditAvatar"
 import toastManager from "../../seyed-modules/helpers/toastManager"
-import toastConstant from "../constant/toastConstant"
 import {FAIL_TOAST, SUCCESS_TOAST} from "../../seyed-modules/constant/toastTypes"
 import BtnBottomFullScreen from "../components/BtnBottomFullScreen"
 import CheckIfChildExists from "../../boomino-front-modules/hooks/CheckIfChildExists"
@@ -25,7 +24,7 @@ import GetTextConstant from "../hooks/GetTextConstant"
 
 function EditInformation({route: {location: {pathname}, match: {params: {childId}}}, link})
 {
-    const {textConstant} = GetTextConstant()
+    const {textConstant, toastConstant} = GetTextConstant()
     const {isDark} = GetTheme()
     const {state: {user}, dispatch} = useContext(AuthContext)
     const {dispatch: familyDispatch} = useContext(FamilyContext)

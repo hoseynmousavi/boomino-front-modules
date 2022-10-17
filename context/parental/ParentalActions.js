@@ -2,7 +2,9 @@ import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
 import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
 import strToHash from "../../helpers/strToHash"
-import toastConstant from "../../constant/toastConstant"
+import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
+import enToastConstant from "../../constant/enToastConstant"
+import faToastConstant from "../../constant/faToastConstant"
 
 const base = process.env.REACT_APP_PARENTAL_URL
 
@@ -282,8 +284,9 @@ function verifyKidZonePassword({password, cancel})
             {
                 if (strToHash(password).toString() !== kidZonePassword)
                 {
+                    const language = cookieHelper.getItem("language") || "fa"
                     // eslint-disable-next-line
-                    throw {response: {data: {status: toastConstant.wrongPassword}}}
+                    throw {response: {data: {status: language === "en" ? enToastConstant.wrongPassword : faToastConstant.wrongPassword}}}
                 }
             }
             else throw err

@@ -7,7 +7,6 @@ import UserAvatar from "../../boomino-front-modules/components/UserAvatar"
 import CircleProgress from "./CircleProgress"
 import toastManager from "../../seyed-modules/helpers/toastManager"
 import {SUCCESS_TOAST} from "../../seyed-modules/constant/toastTypes"
-import toastConstant from "../constant/toastConstant"
 import TrashSvg from "../media/svg/TrashSvg"
 import goBack from "../../seyed-modules/helpers/goBack"
 import GallerySvg from "../media/svg/GallerySvg"
@@ -22,7 +21,7 @@ import GetTextConstant from "../hooks/GetTextConstant"
 
 function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChange, removeButton, link, getRef, isChild})
 {
-    const {textConstant} = GetTextConstant()
+    const {textConstant, toastConstant} = GetTextConstant()
     const {isDark} = GetTheme()
     const {state: {user}, dispatch} = useContext(AuthContext)
     const [avatarTemp, setAvatarTemp] = useState(null)
