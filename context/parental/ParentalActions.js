@@ -6,7 +6,7 @@ import toastConstant from "../../constant/toastConstant"
 
 const base = process.env.REACT_APP_PARENTAL_URL
 
-const getPackages = ({child_age, dispatch}) =>
+function getPackages({child_age, dispatch})
 {
     let param = ""
     if (child_age || child_age === 0) param = `?child_age=${child_age}`
@@ -20,7 +20,7 @@ const getPackages = ({child_age, dispatch}) =>
         })
 }
 
-const addChildRestrictions = ({childId, packageId, restrictions, dispatch}) =>
+function addChildRestrictions({childId, packageId, restrictions, dispatch})
 {
     return request.post({base, url: apiUrlsConstant.addChildRestrictions, data: {childId, packageId, restrictions}})
         .then(res =>
@@ -29,7 +29,7 @@ const addChildRestrictions = ({childId, packageId, restrictions, dispatch}) =>
         })
 }
 
-const getChildRestrictions = ({child_id, dispatch, cancel}) =>
+function getChildRestrictions({child_id, dispatch, cancel})
 {
     return request.get({base, url: apiUrlsConstant.getChildRestrictions, cancel, param: `?child_id=${child_id}`})
         .then(res =>
@@ -48,7 +48,7 @@ const getChildRestrictions = ({child_id, dispatch, cancel}) =>
         })
 }
 
-const getChildChart = ({child_id, time_period, dispatch, cancel}) =>
+function getChildChart({child_id, time_period, dispatch, cancel})
 {
     let param = `?time_period=${time_period}`
     if (child_id) param += `&child_id=${child_id}`
@@ -62,7 +62,7 @@ const getChildChart = ({child_id, time_period, dispatch, cancel}) =>
         })
 }
 
-const getChildTodayUsage = ({child_id, dispatch, cancel}) =>
+function getChildTodayUsage({child_id, dispatch, cancel})
 {
     return request.get({base, url: apiUrlsConstant.getChildTodayUsage, param: `?child_id=${child_id}`, cancel})
         .then(res =>
@@ -74,7 +74,7 @@ const getChildTodayUsage = ({child_id, dispatch, cancel}) =>
         })
 }
 
-const getChildCategories = ({child_id, dispatch, cancel}) =>
+function getChildCategories({child_id, dispatch, cancel})
 {
     let param = child_id ? `?child_id=${child_id}` : ""
     return request.get({base, url: apiUrlsConstant.getChildCategories, cancel, param})
@@ -87,7 +87,7 @@ const getChildCategories = ({child_id, dispatch, cancel}) =>
         })
 }
 
-const getChildTimeLine = ({child_id, dispatch, cancel}) =>
+function getChildTimeLine({child_id, dispatch, cancel})
 {
     return request.get({base, url: apiUrlsConstant.getChildTimeLine, cancel, param: `?child_id=${child_id}`})
         .then(res =>
@@ -99,7 +99,7 @@ const getChildTimeLine = ({child_id, dispatch, cancel}) =>
         })
 }
 
-const getChildTimeLineDetail = ({child_id, dispatch, cancel}) =>
+function getChildTimeLineDetail({child_id, dispatch, cancel})
 {
     return request.get({base, url: apiUrlsConstant.getChildTimeLineDetail, cancel, param: `?child_id=${child_id}`})
         .then(res =>
@@ -111,7 +111,7 @@ const getChildTimeLineDetail = ({child_id, dispatch, cancel}) =>
         })
 }
 
-const setRestrictions = ({res, dispatch, updateTimelineDetailContact}) =>
+function setRestrictions({res, dispatch, updateTimelineDetailContact})
 {
     dispatch({
         type: SET_RESTRICTIONS,
@@ -119,7 +119,7 @@ const setRestrictions = ({res, dispatch, updateTimelineDetailContact}) =>
     })
 }
 
-const editChildRestriction = ({childId, restrictions, dispatch}) =>
+function editChildRestriction({childId, restrictions, dispatch})
 {
     return request.put({base, url: apiUrlsConstant.editChildRestrictionsTime, data: {childId, restrictions}})
         .then(res =>
@@ -130,7 +130,7 @@ const editChildRestriction = ({childId, restrictions, dispatch}) =>
         })
 }
 
-const editChildPackage = ({childId, packageId, dispatch}) =>
+function editChildPackage({childId, packageId, dispatch})
 {
     return request.put({base, url: apiUrlsConstant.editChildPackage, data: {childId, packageId}})
         .then(res =>
@@ -140,7 +140,7 @@ const editChildPackage = ({childId, packageId, dispatch}) =>
         })
 }
 
-const removeChildWhiteApp = ({child_id, app_package_name, dispatch}) =>
+function removeChildWhiteApp({child_id, app_package_name, dispatch})
 {
     return request.del({base, url: apiUrlsConstant.removeChildRestrictionsApp, data: {child_id, app_package_name}})
         .then(res =>
@@ -150,7 +150,7 @@ const removeChildWhiteApp = ({child_id, app_package_name, dispatch}) =>
         })
 }
 
-const addChildWhiteApp = ({child_id, app_package_name, dispatch}) =>
+function addChildWhiteApp({child_id, app_package_name, dispatch})
 {
     return request.put({base, url: apiUrlsConstant.addChildRestrictionsApp, data: {is_default: false, fid: "", child_id, app_package_name}})
         .then(res =>
@@ -160,7 +160,7 @@ const addChildWhiteApp = ({child_id, app_package_name, dispatch}) =>
         })
 }
 
-const addChildWhiteContact = ({child_id, contact_phone_no, contact_label, contact_avatar_file, progress, dispatch}) =>
+function addChildWhiteContact({child_id, contact_phone_no, contact_label, contact_avatar_file, progress, dispatch})
 {
     const data = new FormData()
     data.append("child_id", child_id)
@@ -180,7 +180,7 @@ const addChildWhiteContact = ({child_id, contact_phone_no, contact_label, contac
         })
 }
 
-const removeChildWhiteContact = ({child_id, contact_phone_no, dispatch}) =>
+function removeChildWhiteContact({child_id, contact_phone_no, dispatch})
 {
     return request.del({base, url: apiUrlsConstant.addChildRestrictionsContact, data: {child_id, contact_phone_no}})
         .then(res =>
@@ -190,7 +190,7 @@ const removeChildWhiteContact = ({child_id, contact_phone_no, dispatch}) =>
         })
 }
 
-const addChildWhiteSite = ({child_id, url, dispatch}) =>
+function addChildWhiteSite({child_id, url, dispatch})
 {
     return request.put({base, url: apiUrlsConstant.addChildRestrictionsSite, data: {childId: child_id, url}})
         .then(res =>
@@ -200,7 +200,7 @@ const addChildWhiteSite = ({child_id, url, dispatch}) =>
         })
 }
 
-const removeChildWhiteSite = ({child_id, site_url, dispatch}) =>
+function removeChildWhiteSite({child_id, site_url, dispatch})
 {
     return request.del({base, url: apiUrlsConstant.addChildRestrictionsSite, data: {child_id, site_url}})
         .then(res =>
@@ -210,7 +210,7 @@ const removeChildWhiteSite = ({child_id, site_url, dispatch}) =>
         })
 }
 
-const getChildAllApps = ({child_id, dispatch, cancel}) =>
+function getChildAllApps({child_id, dispatch, cancel})
 {
     return request.get({base, url: apiUrlsConstant.getChildApps, cancel})
         .then(res =>
@@ -234,7 +234,7 @@ const getChildAllApps = ({child_id, dispatch, cancel}) =>
         })
 }
 
-const getChildAllContacts = ({child_id, dispatch, cancel}) =>
+function getChildAllContacts({child_id, dispatch, cancel})
 {
     return request.get({base, url: apiUrlsConstant.getChildContacts, cancel})
         .then(res =>
@@ -258,7 +258,7 @@ const getChildAllContacts = ({child_id, dispatch, cancel}) =>
         })
 }
 
-const setKidZonePassword = ({password, cancel}) =>
+function setKidZonePassword({password, cancel})
 {
     return request.post({base, url: apiUrlsConstant.setKidZonePass, data: {password}, dontToast: true, cancel})
         .then(res =>
@@ -268,7 +268,7 @@ const setKidZonePassword = ({password, cancel}) =>
         })
 }
 
-const verifyKidZonePassword = ({password, cancel}) =>
+function verifyKidZonePassword({password, cancel})
 {
     return request.post({base, url: apiUrlsConstant.verifyKidZonePass, data: {password}, dontToast: true, cancel})
         .then(() =>
