@@ -25,7 +25,7 @@ const faTextConstant = {
     onBoardingDesc3: "Cause by Access Control, You Can Take Care of Him",
 
     enterCode: "Enter Submission Code",
-    enterVerifyCode: `the Code We Sent to `,
+    enterVerifyCode: `The Code We Sent to `,
     enterVerifyCodeEnd: " Should be Fill Here.",
     editPhone: "Edit Number",
 
