@@ -13,13 +13,14 @@ import onScroll from "../../seyed-modules/helpers/onScroll"
 import showPhoneNumber from "../../seyed-modules/helpers/showPhoneNumber"
 import ShowValidationError from "./ShowValidationError"
 import fixInputScroll from "../helpers/fixInputScroll"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 const Input = forwardRef(({
                               className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll, fixScroll,
                               defaultValue, onChange, disabled, ltr, ltrPlaceHolder, Icon, required, onSubmit, onSubmitDisable, disableSubmit, labelClassName, iconClassName, noSpace,
-                              lang = "fa",
                           }, ref) =>
 {
+    const {language} = GetTextConstant()
     const tempRef = useRef(null)
     const inputRef = ref || tempRef
     const [validationLoading, setValidationLoading] = useState("")
@@ -97,7 +98,7 @@ const Input = forwardRef(({
                                 .then(() =>
                                 {
                                     setValidationLoading("NOK")
-                                    setError(validationConstant[lang].repeatedEmail)
+                                    setError(validationConstant[language].repeatedEmail)
                                 })
                                 .catch(err =>
                                 {
@@ -168,7 +169,7 @@ const Input = forwardRef(({
         let tempErr = ""
         if (!tempValue)
         {
-            if (required) tempErr = validationConstant[lang].requiredField
+            if (required) tempErr = validationConstant[language].requiredField
         }
         else
         {
@@ -176,19 +177,19 @@ const Input = forwardRef(({
             {
                 if (validation === "email")
                 {
-                    if (!regexConstant.EMAIL_REGEX.test(tempValue)) tempErr = validationConstant[lang].unValidEmail
+                    if (!regexConstant.EMAIL_REGEX.test(tempValue)) tempErr = validationConstant[language].unValidEmail
                 }
                 else if (validation === "national_code")
                 {
-                    if (!checkNationalCode(tempValue)) tempErr = validationConstant[lang].unValidNationalCode
+                    if (!checkNationalCode(tempValue)) tempErr = validationConstant[language].unValidNationalCode
                 }
                 else if (validation === "phone")
                 {
-                    if (!regexConstant.PHONE_REGEX.test(tempValue)) tempErr = validationConstant[lang].unValidPhone
+                    if (!regexConstant.PHONE_REGEX.test(tempValue)) tempErr = validationConstant[language].unValidPhone
                 }
                 else if (validation === "url")
                 {
-                    if (!regexConstant.URL_REGEX.test(tempValue)) tempErr = validationConstant[lang].unValidUrl
+                    if (!regexConstant.URL_REGEX.test(tempValue)) tempErr = validationConstant[language].unValidUrl
                 }
             }
         }

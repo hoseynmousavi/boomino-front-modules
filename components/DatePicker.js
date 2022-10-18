@@ -11,16 +11,18 @@ import fixDateFormat from "../helpers/fixDateFormat"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
 import ShowValidationError from "./ShowValidationError"
 import validationConstant from "../constant/validationConstant"
+import GetTextConstant from "../hooks/GetTextConstant"
 
-function DatePicker({name, full_title, title, onChange, placeholder, defaultValue, disabled, required, noSpace, lang = "fa"})
+function DatePicker({name, full_title, title, onChange, placeholder, defaultValue, disabled, required, noSpace})
 {
+    const {language} = GetTextConstant()
     const [isShowPanel, setIsShowPanel] = useState(false)
     const [value, setValue] = useState(null)
     const [haveOpened, setHaveOpened] = useState(false)
     const [day, setDay] = useState(dateConstant.defaultDay)
     const [month, setMonth] = useState(dateConstant.defaultMonth)
     const [year, setYear] = useState(dateConstant.defaultYear)
-    const error = required && haveOpened && !isShowPanel && !value && validationConstant[lang].requiredField
+    const error = required && haveOpened && !isShowPanel && !value && validationConstant[language].requiredField
 
     useEffect(() =>
     {

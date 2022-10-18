@@ -6,13 +6,15 @@ import RadioItem from "./RadioItem"
 import VerticalPanel from "./VerticalPanel"
 import ShowValidationError from "./ShowValidationError"
 import validationConstant from "../constant/validationConstant"
+import GetTextConstant from "../hooks/GetTextConstant"
 
-function Select({name, full_title, placeholder, title, items, defaultValue, onChange, disabled, required, noSpace, lang = "fa"})
+function Select({name, full_title, placeholder, title, items, defaultValue, onChange, disabled, required, noSpace})
 {
+    const {language} = GetTextConstant()
     const [isShowPanel, setIsShowPanel] = useState(false)
     const [value, setValue] = useState(null)
     const [haveOpened, setHaveOpened] = useState(false)
-    const error = required && haveOpened && !isShowPanel && !value && validationConstant[lang].requiredField
+    const error = required && haveOpened && !isShowPanel && !value && validationConstant[language].requiredField
 
     useEffect(() =>
     {
