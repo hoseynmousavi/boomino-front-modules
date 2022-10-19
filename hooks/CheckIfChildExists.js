@@ -27,7 +27,7 @@ function CheckIfChildExists({childId, doAfterGet})
 
     function request()
     {
-        return FamilyActions.getFamily({dispatch, cancel: cancelSource => request.current = cancelSource})
+        return FamilyActions.getFamily({dispatch, cancel: cancelSource => cancelToken.current = cancelSource})
     }
 
     return {child, notFound, isLoading}
