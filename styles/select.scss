@@ -219,3 +219,41 @@
 .select-birth-save {
   margin: 30px 0 calc(var(--bottom-env-padding) + var(--mobile-first-solid-padding)) 0;
 }
+
+.select-desktop-cont {
+  position: relative;
+}
+
+.select-desktop-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--full-height);
+  z-index: var(--modal-z-index);
+  background-color: transparent;
+}
+
+.select-desktop {
+  box-shadow: var(--first-shadow);
+  border-radius: var(--second-radius);
+  padding: 16px;
+  background-color: var(--first-background-color);
+  position: absolute;
+  top: calc(var(--btn-input-height) + 10px);
+  left: 0;
+  right: 0;
+  z-index: var(--modal-z-index);
+  animation: fade-in ease 0.2s;
+  transition: opacity ease 0.2s;
+
+  &.hide {
+    opacity: 0;
+  }
+
+  .select-items-cont {
+    padding-bottom: 0;
+  }
+}
