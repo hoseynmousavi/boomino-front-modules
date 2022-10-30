@@ -102,6 +102,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
             <div className={`login edit ${isDark ? "dark" : ""}`}>
                 <WizardBack title={isAfterSignUp ? textConstant.completeProfile : childId ? textConstant.childAccountInfo : textConstant.accountInfo}
                             desc={isAfterSignUp && textConstant.completeProfileAfterSignup}
+                            dontShowBack={isAfterSignUp}
                 />
                 <div className="login-edit-form">
                     {

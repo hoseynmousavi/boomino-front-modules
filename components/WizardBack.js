@@ -9,7 +9,7 @@ import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import createSafariBlurNav from "../../seyed-modules/helpers/createSafariBlurNav"
 import GetTextConstant from "../hooks/GetTextConstant"
 
-function WizardBack({rootId, secondPadding, title, headerTile, desc, dontFix, link, isDisable})
+function WizardBack({rootId, secondPadding, title, headerTile, desc, dontFix, link, isDisable, dontShowBack})
 {
     const {textConstant} = GetTextConstant()
     const [isFix, setIsFix] = useState(false)
@@ -48,18 +48,21 @@ function WizardBack({rootId, secondPadding, title, headerTile, desc, dontFix, li
                 }
             >
                 {
-                    link ?
-                        <Link href={link}>
-                            <Material className="wizard-back">
+                    !dontShowBack ?
+                        link ?
+                            <Link href={link}>
+                                <Material className="wizard-back">
+                                    <BackSvg className="wizard-back-svg"/>
+                                    <div className={`wizard-back-title ${isFix ? "hide" : ""}`}>{textConstant.back}</div>
+                                </Material>
+                            </Link>
+                            :
+                            <Material className="wizard-back" onClick={isDisable ? undefined : goBack}>
                                 <BackSvg className="wizard-back-svg"/>
                                 <div className={`wizard-back-title ${isFix ? "hide" : ""}`}>{textConstant.back}</div>
                             </Material>
-                        </Link>
                         :
-                        <Material className="wizard-back" onClick={isDisable ? undefined : goBack}>
-                            <BackSvg className="wizard-back-svg"/>
-                            <div className={`wizard-back-title ${isFix ? "hide" : ""}`}>{textConstant.back}</div>
-                        </Material>
+                        null
                 }
                 {(title || headerTile) && <div className={`wizard-back-text-title fix ${showFixTitle || (isFix && !title && headerTile) ? "" : "hide"}`}>{title || headerTile}</div>}
                 <div className="wizard-back-end"/>
