@@ -29,7 +29,7 @@ function Select({name, full_title, placeholder, title, items, defaultValue, onCh
 
     function showPanel()
     {
-        popOnPopState({key: null, dontChangeOverflow: true})
+        setTimeout(() => popOnPopState({key: null, dontChangeOverflow: true}), 10)
         setHaveOpened(true)
         setIsShowPanel(true)
     }
