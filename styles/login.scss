@@ -51,7 +51,7 @@
 
 .login-code-err {
   height: 0;
-  color: var(--toast-fail-text);
+  color: var(--danger-color);
   margin: 0 auto;
   display: flex;
   align-items: flex-end;
@@ -208,5 +208,5 @@
 }
 
 .login-image-edit-title-remove {
-  color: var(--toast-fail-text);
+  color: var(--danger-color);
 }

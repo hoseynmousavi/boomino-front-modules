@@ -136,7 +136,7 @@ function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChan
                 <UserAvatar havePadding={showLoading} isActive={isChild && showLoading} childLoadingOpacity={showLoading ? "1" : "0"} childLoading={uploadLoading} isChild={isChild} className={`login-image-edit ${isDark ? "dark" : ""} ${showLoading ? isChild ? "child-loading" : "parent-loading" : ""}`} showLoginUser={showLoginUser} avatar={avatar}/>
                 {!isChild && <CircleProgress opacity={showLoading ? "1" : "0"} percent={uploadLoading}/>}
             </div>
-            <Material disable={showLoading} className="login-image-edit-btn" backgroundColor={createMaterialColor({variable: removeButton ? "--toast-fail-text" : "--link-color"})} onClick={onBtnClick}>
+            <Material disable={showLoading} className="login-image-edit-btn" backgroundColor={createMaterialColor({variable: removeButton ? "--danger-color" : "--link-color"})} onClick={onBtnClick}>
                 {
                     removeButton ?
                         <>
@@ -177,7 +177,7 @@ function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChan
                         </CheckUserMedia>
                         {
                             showLoginUser && user.data?.avatar_fid &&
-                            <Material className="select-item have-icon remove" backgroundColor={createMaterialColor({variable: "--toast-fail-text"})} onClick={removeAvatar}>
+                            <Material className="select-item have-icon remove" backgroundColor={createMaterialColor({variable: "--danger-color"})} onClick={removeAvatar}>
                                 <TrashSvg className="select-item-svg"/>
                                 <div>{textConstant.removeAvatar}</div>
                             </Material>

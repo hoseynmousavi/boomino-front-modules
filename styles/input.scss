@@ -45,7 +45,7 @@
   }
 
   &.err {
-    border: 2px solid var(--toast-fail-text);
+    border: 2px solid var(--danger-color);
   }
 
   &::placeholder {
