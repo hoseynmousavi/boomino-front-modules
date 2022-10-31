@@ -8,7 +8,7 @@ import GetTextConstant from "../hooks/GetTextConstant"
 import SelectChoose from "./SelectChoose"
 import popOnPopState from "../../seyed-modules/helpers/popOnPopState"
 
-function Select({name, full_title, placeholder, title, items, defaultValue, onChange, disabled, required, noSpace})
+function Select({className, name, full_title, placeholder, title, items, defaultValue, onChange, disabled, required, noSpace})
 {
     const {language} = GetTextConstant()
     const [isShowPanel, setIsShowPanel] = useState(false)
@@ -45,7 +45,7 @@ function Select({name, full_title, placeholder, title, items, defaultValue, onCh
     }
 
     return (
-        <label className="select-label">
+        <label className={`select-label ${className}`}>
             <p className="select-label-text">{title}</p>
             <div className="select-desktop-cont">
                 <Material className={`select-main ${error ? "err" : ""}`} onClick={showPanel} disable={disabled}>

@@ -24,6 +24,12 @@
   border-radius: var(--first-radius);
   transition: border ease 0.2s;
 
+  &.area {
+    padding: 12px;
+    height: auto;
+    resize: none;
+  }
+
   &.have-icon {
     padding-inline-end: 48px;
   }
