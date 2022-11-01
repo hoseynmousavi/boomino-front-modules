@@ -16,10 +16,11 @@ import fixInputScroll from "../helpers/fixInputScroll"
 import GetTextConstant from "../hooks/GetTextConstant"
 
 const Input = forwardRef(({
-                              className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll, fixScroll,
+                              className, name, autoComplete = "on", focusOnMountDesktop, label, type = "text", validation, placeholder = "", onIconClick, disableOnScroll, fixScroll, isArea,
                               defaultValue, onChange, disabled, ltr, ltrPlaceHolder, Icon, required, onSubmit, onSubmitDisable, disableSubmit, labelClassName, iconClassName, noSpace,
                           }, ref) =>
 {
+    const Tag = isArea ? "textarea" : "input"
     const {language} = GetTextConstant()
     const tempRef = useRef(null)
     const inputRef = ref || tempRef
@@ -209,19 +210,20 @@ const Input = forwardRef(({
         <label className={`input-label ${className}`}>
             <p className={`input-label-text ${labelClassName}`}>{label}</p>
             <div className="input-label-relative">
-                <input autoComplete={autoComplete}
-                       name={name}
-                       className={`input-main ${ltrPlaceHolder ? "ltr-placeholder" : ""} ${Icon || (validation === "email" && value) ? "have-icon" : ""} ${error ? "err" : ""} ${ltr ? "ltr" : ""}`}
-                       disabled={disabled}
-                       ref={inputRef}
-                       type={type}
-                       placeholder={placeholder}
-                       value={validation === "phone" ? showPhoneNumber.showPhone(value) : value}
-                       onChange={onInputChange}
-                       onBlur={onInputBlur}
-                       onKeyDown={onSubmit || onSubmitDisable ? inputKeyDownEnter({onSubmit, onSubmitDisable, disableSubmit, checkValidation: onInputBlur}) : undefined}
-                       onFocus={onFocusClick}
-                       onClick={onFocusClick}
+                <Tag autoComplete={autoComplete}
+                     name={name}
+                     className={`input-main ${isArea ? "area" : ""} ${ltrPlaceHolder ? "ltr-placeholder" : ""} ${Icon || (validation === "email" && value) ? "have-icon" : ""} ${error ? "err" : ""} ${ltr ? "ltr" : ""}`}
+                     rows={5}
+                     disabled={disabled}
+                     ref={inputRef}
+                     type={type}
+                     placeholder={placeholder}
+                     value={validation === "phone" ? showPhoneNumber.showPhone(value) : value}
+                     onChange={onInputChange}
+                     onBlur={onInputBlur}
+                     onKeyDown={onSubmit || onSubmitDisable ? inputKeyDownEnter({onSubmit, onSubmitDisable, disableSubmit, checkValidation: onInputBlur}) : undefined}
+                     onFocus={onFocusClick}
+                     onClick={onFocusClick}
                 />
                 {
                     Icon ?

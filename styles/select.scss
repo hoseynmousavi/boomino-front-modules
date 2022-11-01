@@ -240,8 +240,10 @@
   box-shadow: var(--first-shadow);
   border-radius: var(--second-radius);
   padding: 16px;
-  background-color: var(--first-background-color);
+  background-color: var(--second-background-color);
   position: absolute;
+  max-height: calc(32px + 5 * var(--btn-input-height));
+  overflow: auto;
   top: calc(var(--btn-input-height) + 10px);
   left: 0;
   right: 0;
