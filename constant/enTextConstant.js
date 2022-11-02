@@ -58,6 +58,15 @@ const faTextConstant = {
 
     hour: "Hour",
     minute: "Minute",
+
+    and: " & ",
+
+    spaceHour: " Hour",
+    spaceMinute: " Minute",
+    spaceSecond: " Second",
+    oneQuarter: "One Quarter",
+    halfHour: "Half of a Hour",
+    emptyTime: "0 Hour",
 }
 
 export default faTextConstant
