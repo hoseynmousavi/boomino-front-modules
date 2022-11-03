@@ -9,7 +9,7 @@ import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import createSafariBlurNav from "../../seyed-modules/helpers/createSafariBlurNav"
 import GetTextConstant from "../hooks/GetTextConstant"
 
-function WizardBack({rootId, secondPadding, title, headerTile, desc, dontFix, link, isDisable, dontShowBack})
+function WizardBack({secondPadding, title, headerTile, desc, dontFix, link, isDisable, dontShowBack})
 {
     const {textConstant} = GetTextConstant()
     const [isFix, setIsFix] = useState(false)
@@ -33,7 +33,7 @@ function WizardBack({rootId, secondPadding, title, headerTile, desc, dontFix, li
         }
     }
 
-    ScrollY({rootId, condition})
+    ScrollY({condition})
 
     return (
         <div className="wizard-back-cont" ref={contRef}>

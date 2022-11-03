@@ -1,4 +1,5 @@
 import checkOs from "../../seyed-modules/helpers/checkOs"
+import getMainRender from "../../seyed-modules/helpers/getMainRender"
 
 function fixInputScroll({inputRef, halfHeight = 40})
 {
@@ -6,7 +7,7 @@ function fixInputScroll({inputRef, halfHeight = 40})
     {
         return setTimeout(() =>
         {
-            const root = document.getElementById("main-render")
+            const root = getMainRender()
             const rect = inputRef.current.getBoundingClientRect()
             const should = root.clientHeight / 2
             const scroll = root.scrollTop
