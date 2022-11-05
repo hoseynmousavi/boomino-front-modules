@@ -1,37 +1,11 @@
+import checkEnv from "./checkEnv"
+
 function makeBaseOnEnv(base)
 {
-    if (window.location.protocol === "file:")
-    {
-        const env = localStorage.getItem("env")
-        if (env === "dev")
-        {
-            return base.replace(`.${process.env.REACT_APP_DOMAIN}`, `-dev.${process.env.REACT_APP_DOMAIN}`)
-        }
-        if (env === "uat")
-        {
-            return base.replace(`.${process.env.REACT_APP_DOMAIN}`, `-uat.${process.env.REACT_APP_DOMAIN}`)
-        }
-        else
-        {
-            return base
-        }
-    }
-    else
-    {
-        const {hostname} = window.location
-        if (process.env.NODE_ENV === "development" || hostname.includes("dev"))
-        {
-            return base.replace(`.${process.env.REACT_APP_DOMAIN}`, `-dev.${process.env.REACT_APP_DOMAIN}`)
-        }
-        else if (hostname.includes("uat"))
-        {
-            return base.replace(`.${process.env.REACT_APP_DOMAIN}`, `-uat.${process.env.REACT_APP_DOMAIN}`)
-        }
-        else
-        {
-            return base
-        }
-    }
+    const env = checkEnv()
+    if (env === "dev") return base.replace(`.${process.env.REACT_APP_DOMAIN}`, `-dev.${process.env.REACT_APP_DOMAIN}`)
+    else if (env === "uat") return base.replace(`.${process.env.REACT_APP_DOMAIN}`, `-uat.${process.env.REACT_APP_DOMAIN}`)
+    else return base
 }
 
 export default makeBaseOnEnv
