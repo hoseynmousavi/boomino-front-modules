@@ -14,7 +14,6 @@ import CameraSvg from "../media/svg/CameraSvg"
 import CheckUserMedia from "../hooks/CheckUserMedia"
 import getImageLink from "../../boomino-front-modules/helpers/getImageLink"
 import ParentalActions from "../context/parental/ParentalActions"
-import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import CropImage from "./CropImage"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
 import GetTextConstant from "../hooks/GetTextConstant"
@@ -22,7 +21,6 @@ import GetTextConstant from "../hooks/GetTextConstant"
 function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChange, removeButton, link, getRef, isChild})
 {
     const {textConstant, toastConstant} = GetTextConstant()
-    const {isDark} = GetTheme()
     const {state: {user}, dispatch} = useContext(AuthContext)
     const [avatarTemp, setAvatarTemp] = useState(null)
     const [isShowMenu, setIsShowMenu] = useState(null)
@@ -133,7 +131,7 @@ function EditAvatar({showLoginUser, avatar, avatarClassName, label, icon, onChan
     return (
         <>
             <div className={`login-image-edit-cont ${avatarClassName}`}>
-                <UserAvatar havePadding={showLoading} isActive={isChild && showLoading} childLoadingOpacity={showLoading ? "1" : "0"} childLoading={uploadLoading} isChild={isChild} className={`login-image-edit ${isDark ? "dark" : ""} ${showLoading ? isChild ? "child-loading" : "parent-loading" : ""}`} showLoginUser={showLoginUser} avatar={avatar}/>
+                <UserAvatar havePadding={showLoading} isActive={isChild && showLoading} childLoadingOpacity={showLoading ? "1" : "0"} childLoading={uploadLoading} isChild={isChild} className={`login-image-edit ${showLoading ? isChild ? "child-loading" : "parent-loading" : ""}`} showLoginUser={showLoginUser} avatar={avatar}/>
                 {!isChild && <CircleProgress opacity={showLoading ? "1" : "0"} percent={uploadLoading}/>}
             </div>
             <Material disable={showLoading} className="login-image-edit-btn" backgroundColor={createMaterialColor({variable: removeButton ? "--danger-color" : "--link-color"})} onClick={onBtnClick}>

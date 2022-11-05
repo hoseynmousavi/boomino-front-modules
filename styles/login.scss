@@ -1,6 +1,6 @@
 .login {
   min-height: var(--full-height);
-  background-color: var(--first-background-color);
+  background-color: var(--page-color);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -10,10 +10,6 @@
 
   &.edit {
     justify-content: space-between;
-  }
-
-  &.dark {
-    background-color: var(--second-background-color);
   }
 }
 
@@ -163,19 +159,15 @@
   right: 0;
   object-fit: cover;
   cursor: pointer;
-  fill: var(--first-background-color);
+  fill: var(--page-color);
   transition: top ease 0.2s, bottom ease 0.2s, left ease 0.2s, right ease 0.2s, padding ease 0.2s;
 
-  &.dark {
-    fill: var(--second-background-color);
+  .default {
+    background-color: var(--box-color);
+  }
 
-    .default {
-      background-color: var(--first-background-color);
-    }
-
-    .image-loading {
-      background-color: var(--first-background-color);
-    }
+  .image-loading {
+    background-color: var(--box-color);
   }
 
   &.parent-loading {

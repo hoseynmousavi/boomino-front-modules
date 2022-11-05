@@ -1,4 +1,5 @@
 .on-boarding {
+  background-color: var(--page-color);
   direction: rtl;
   display: flex;
   flex-direction: column;
@@ -8,10 +9,6 @@
   touch-action: pan-x;
   width: 100%;
   transition: min-height ease 0.15s;
-
-  &.dark {
-    background-color: var(--second-background-color);
-  }
 }
 
 .on-boarding-slide {
@@ -30,6 +27,7 @@
 }
 
 .on-boarding-img {
+  border-radius: var(--second-radius);
   width: 72%;
   margin: auto;
   aspect-ratio: 1 / 1;

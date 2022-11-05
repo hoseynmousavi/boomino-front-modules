@@ -33,7 +33,7 @@ function LoginInputPhone()
                 <p className="login-desc">{textConstant.enterPhone}</p>
                 <PhoneInput onChange={onPhoneChange} onSubmit={goToCode} disableSubmit={isDisable}/>
             </div>
-            <BtnBottomFullScreen changeOnDark={false}>
+            <BtnBottomFullScreen>
                 <Button type="first" disable={isDisable} onClick={goToCode}>{textConstant.continueBtn}</Button>
             </BtnBottomFullScreen>
         </div>

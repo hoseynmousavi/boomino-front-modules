@@ -11,9 +11,9 @@ import GetTextConstant from "../hooks/GetTextConstant"
 
 function WizardBack({secondPadding, title, headerTile, desc, dontFix, link, isDisable, dontShowBack})
 {
+    GetTheme() // update nav color
     const {textConstant} = GetTextConstant()
     const [isFix, setIsFix] = useState(false)
-    const {isDark} = GetTheme()
     const [showFixTitle, setShowFixTitle] = useState(false)
     const contRef = useRef(null)
     const titleRef = useRef(null)
@@ -38,11 +38,11 @@ function WizardBack({secondPadding, title, headerTile, desc, dontFix, link, isDi
     return (
         <div className="wizard-back-cont" ref={contRef}>
             <div
-                className={`wizard-back-fixer ${isFix ? `fix ${isDark ? "dark" : ""}` : ""} ${secondPadding ? "second-padding" : dontFix ? "no-padding" : ""}`}
+                className={`wizard-back-fixer ${isFix ? "fix" : ""} ${secondPadding ? "second-padding" : dontFix ? "no-padding" : ""}`}
                 style={
                     createSafariBlurNav({
                         color: !isFix && "transparent",
-                        variable: isDark ? "--second-background-color" : "--first-background-color",
+                        variable: "--page-color",
                         blur: isFix,
                     })
                 }

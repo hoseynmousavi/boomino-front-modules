@@ -1,11 +1,9 @@
 import {useEffect, useRef} from "react"
-import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import checkIsPinned from "../helpers/checkIsPinned"
 
-function BtnBottomFullScreen({className, children, delayCheckPin = true, changeOnDark = true})
+function BtnBottomFullScreen({className, children, delayCheckPin = true})
 {
     const btnRef = useRef(null)
-    const {isDark} = GetTheme()
 
     useEffect(() =>
     {
@@ -14,7 +12,7 @@ function BtnBottomFullScreen({className, children, delayCheckPin = true, changeO
     }, [])
 
     return (
-        <div className={`full-screen-btn ${isDark && changeOnDark ? "dark" : ""} ${className}`} ref={btnRef}>
+        <div className={`full-screen-btn ${className}`} ref={btnRef}>
             {children}
         </div>
     )
