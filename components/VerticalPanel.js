@@ -26,7 +26,7 @@ function VerticalPanel({children, className, contentClassName, style, close, sta
     useEffect(() =>
     {
         changeBodyOverflow(true)
-        popOnPopState({dontPush, callback: hideSidebar, dontChangeOverflow: true, statusBarColor: dontChangeStatus ? null : statusBarColor || (isDark ? "#0A0A0A" : "#7F7F7F")})
+        popOnPopState({dontPush, callback: hideSidebar, dontChangeOverflow: true, statusBarColor: dontChangeStatus ? null : statusBarColor || (isDark ? "#0D0D0D" : "#7F7F7F")})
         setHeight({reset: false})
         removeResize.current = onResize({callback: () => setHeight({reset: true})})
         return () => removeResize.current && removeResize.current()
