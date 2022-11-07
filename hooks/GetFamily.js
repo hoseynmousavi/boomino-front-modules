@@ -3,13 +3,13 @@ import {FamilyContext} from "../context/family/FamilyReducer"
 import FamilyActions from "../context/family/FamilyActions"
 import GetData from "../../seyed-modules/request/GetData"
 
-function GetFamily({doAfterGet, selectChildId} = {})
+function GetFamily({doAfterGet, selectChildId, isRendering} = {})
 {
     const {state: {family, selectedChildUserId, getFamily}, dispatch} = useContext(FamilyContext)
     const isLoading = !getFamily
     const cancelToken = useRef(null)
 
-    GetData({request, isLoading, cancelToken, doAfterGet})
+    GetData({request, isLoading, cancelToken, doAfterGet, forceNetworkReq: isRendering, dependencies: isRendering ? [isRendering] : []})
 
     function request()
     {
