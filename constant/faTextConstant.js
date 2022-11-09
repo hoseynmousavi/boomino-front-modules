@@ -16,7 +16,7 @@ const faTextConstant = {
     submitAndContinueBtn: "ثبت و ادامه",
     closeBtn: "بستن",
 
-    entering: "ورود به ",
+    entering: "ورود به بومینو",
     enterPhone: "شماره موبایل خود را وارد کنید.",
 
     onBoardingTitle1: "بهمون بگو چند سالشه؟",
