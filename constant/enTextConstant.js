@@ -15,7 +15,7 @@ const faTextConstant = {
     closeBtn: "Close",
 
     entering: "Entering Abnabat",
-    enterPhone: "Enter Your Phone Number.",
+    enterPhone: "Dear Parents! Enter your Mobile Number!",
 
     onBoardingTitle1: "Tell Us How Old He is?",
     onBoardingTitle2: "Everything You Want is Here",

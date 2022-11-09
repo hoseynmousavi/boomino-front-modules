@@ -17,7 +17,7 @@ const faTextConstant = {
     closeBtn: "بستن",
 
     entering: "ورود به آبنبات",
-    enterPhone: "شماره موبایل خود را وارد کنید.",
+    enterPhone: "پدر مادر عزیز! شماره موبایلتان را وارد کنید!",
 
     onBoardingTitle1: "بهمون بگو چند سالشه؟",
     onBoardingTitle2: "هر چی بخوای این جا هست",
