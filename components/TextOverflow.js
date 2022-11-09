@@ -1,13 +1,16 @@
 import {useEffect, useRef, useState} from "react"
 import createMaterialColor from "../../seyed-modules/helpers/createMaterialColor"
 import pageLoaded from "../../seyed-modules/helpers/pageLoaded"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function TextOverflow({className, children, infinite})
 {
+    const {direction} = GetTextConstant()
     const [showAddedText, setShowAddedText] = useState(false)
     const textRef = useRef(null)
     const textSlideRef = useRef(null)
     const scrollWidthRef = useRef(null)
+    const multiple = direction === "rtl" ? 1 : -1
 
     useEffect(() =>
     {
@@ -23,7 +26,7 @@ function TextOverflow({className, children, infinite})
                 {
                     setShowAddedText(true)
                     textSlide.style.transition = `transform linear ${scrollWidthRef.current * 20}ms`
-                    textSlide.style.transform = `translate3d(${scrollWidthRef.current + 16}px,0,0)`
+                    textSlide.style.transform = `translate3d(${multiple * (scrollWidthRef.current + 16)}px,0,0)`
                     setTimeout(() =>
                     {
                         textSlide.style.transition = `transform linear 0ms`
