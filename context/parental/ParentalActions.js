@@ -1,6 +1,6 @@
 import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
-import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
+import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE, SET_SUGGESTED_APPS} from "./ParentalTypes"
 import strToHash from "../../helpers/strToHash"
 import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
 import enToastConstant from "../../constant/enToastConstant"
@@ -47,6 +47,18 @@ function getChildRestrictions({child_id, dispatch, cancel})
                 setRestrictions({res, dispatch})
             }
             else throw err
+        })
+}
+
+function getSuggestedApps({dispatch, cancel})
+{
+    return request.get({base, url: apiUrlsConstant.getSuggestedApps, cancel})
+        .then(res =>
+        {
+            dispatch({
+                type: SET_SUGGESTED_APPS,
+                payload: {res},
+            })
         })
 }
 
@@ -154,7 +166,7 @@ function removeChildWhiteApp({child_id, app_package_name, dispatch})
 
 function addChildWhiteApp({child_id, app_package_name, dispatch})
 {
-    return request.put({base, url: apiUrlsConstant.addChildRestrictionsApp, data: {is_default: false, fid: "", child_id, app_package_name}})
+    return request.put({base, url: apiUrlsConstant.addChildRestrictionsApp, data: {child_id, app_package_name}})
         .then(res =>
         {
             res.child_id = child_id
@@ -331,6 +343,7 @@ const ParentalActions = {
     setKidZonePassword,
     verifyKidZonePassword,
     getUpdateChanges,
+    getSuggestedApps,
 }
 
 export default ParentalActions

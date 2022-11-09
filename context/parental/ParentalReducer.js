@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer} from "react"
-import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
+import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_SUGGESTED_APPS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
 import {LOGOUT} from "../auth/AuthTypes"
 import logoutManager from "../../../seyed-modules/helpers/logoutManager"
 
@@ -19,6 +19,7 @@ function ParentalProvider({children})
         timelineDetail: {},
         todayUsage: {},
         allChangeLogs: {},
+        suggested: {},
     }
 
     const [state, dispatch] = useReducer(reducer, initialState, init)
@@ -189,6 +190,18 @@ function ParentalProvider({children})
                     allChangeLogs: {
                         getDone: true,
                         changeLogs: res,
+                    },
+                }
+            }
+            case SET_SUGGESTED_APPS:
+            {
+                const {res: {apps, pwas}} = action.payload
+                return {
+                    ...state,
+                    suggested: {
+                        apps,
+                        pwas,
+                        getDone: true,
                     },
                 }
             }

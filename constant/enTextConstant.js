@@ -14,12 +14,12 @@ const faTextConstant = {
     submitAndContinueBtn: "Continue",
     closeBtn: "Close",
 
-    entering: "Entering Boomino",
+    entering: "Entering Abnabat",
     enterPhone: "Enter Your Phone Number.",
 
     onBoardingTitle1: "Tell Us How Old He is?",
     onBoardingTitle2: "Everything You Want is Here",
-    onBoardingTitle3: "You Are at Ease with Boomino",
+    onBoardingTitle3: "You Are at Ease with Abnabat",
     onBoardingDesc1: "Then We Tell What is Good for Him",
     onBoardingDesc2: "Game, Movie, Animation, Music and Visual Education for Kids",
     onBoardingDesc3: "Cause by Access Control, You Can Take Care of Him",

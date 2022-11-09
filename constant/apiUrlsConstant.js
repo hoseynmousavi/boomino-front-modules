@@ -18,6 +18,7 @@ const apiUrlsConstant = {
     addChildRestrictions: "parental-control/restriction",
     editChildRestrictionsTime: "parental-control/time-restriction",
     getChildRestrictions: "parental-control/get-restriction",
+    getSuggestedApps: "parental-control/suggested-apps",
     getChildChart: "parental-control/chart",
     getChildTodayUsage: "parental-control/today-usage",
     getChildCategories: "parental-control/child-categories",

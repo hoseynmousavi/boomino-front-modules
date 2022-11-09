@@ -16,12 +16,12 @@ const faTextConstant = {
     submitAndContinueBtn: "ثبت و ادامه",
     closeBtn: "بستن",
 
-    entering: "ورود به بومینو",
+    entering: "ورود به آبنبات",
     enterPhone: "شماره موبایل خود را وارد کنید.",
 
     onBoardingTitle1: "بهمون بگو چند سالشه؟",
     onBoardingTitle2: "هر چی بخوای این جا هست",
-    onBoardingTitle3: "با بومینو خیالتون راحته",
+    onBoardingTitle3: "با آبنبات خیالتون راحته",
     onBoardingDesc1: "تا بهتون بگیم محتوای مناسب سنش چیه",
     onBoardingDesc2: "بازی، فیلم، انیمیشن، موسیقی و دیدنی های آموزشی برای بچه‌ها",
     onBoardingDesc3: "چون با مدیریت سطح دسترسی‌های کودک، می‌تونید ازش مراقبت کنید",
