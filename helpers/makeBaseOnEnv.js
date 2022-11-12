@@ -1,10 +1,12 @@
 import checkEnv from "./checkEnv"
+import getDomain from "../../seyed-modules/helpers/getDomain"
 
 function makeBaseOnEnv(base)
 {
     const env = checkEnv()
-    if (env === "dev") return base.replace(`.${process.env.REACT_APP_DOMAIN}`, `-dev.${process.env.REACT_APP_DOMAIN}`)
-    else if (env === "uat") return base.replace(`.${process.env.REACT_APP_DOMAIN}`, `-uat.${process.env.REACT_APP_DOMAIN}`)
+    const domain = getDomain()
+    if (env === "dev") return base.replace(`.${domain}`, `-dev.${domain}`)
+    else if (env === "uat") return base.replace(`.${domain}`, `-uat.${domain}`)
     else return base
 }
 
