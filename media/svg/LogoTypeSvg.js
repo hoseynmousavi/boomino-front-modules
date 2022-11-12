@@ -1,7 +1,7 @@
 function LogoTypeSvg({className})
 {
     return (
-        <svg className={className} viewBox="75 285 940 280">
+        <svg className={className} viewBox="80 295 925 270">
             <rect fill="#2bce6d" x="753.55" y="298.84" width="43.98" height="37.79" rx="12.17"/>
             <rect fill="#2bce6d" x="840.74" y="519.98" width="43.98" height="37.79" rx="12.17"/>
             <rect fill="#2bce6d" x="937.22" y="351.83" width="46.27" height="145.42" rx="13.64"/>
