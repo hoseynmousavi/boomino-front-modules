@@ -19,7 +19,7 @@ const faTextConstant = {
 
     onBoardingTitle1: "Tell Us How Old He is?",
     onBoardingTitle2: "Everything You Want is Here",
-    onBoardingTitle3: `You Are at Ease with ${process.env.REACT_APP_EN_NAME}`,
+    onBoardingTitle3: `You Are at Ease with Abnabaat`,
     onBoardingDesc1: "Then We Tell What is Good for Him",
     onBoardingDesc2: "Game, Movie, Animation, Music and Visual Education for Kids",
     onBoardingDesc3: "Cause by Access Control, You Can Take Care of Him",

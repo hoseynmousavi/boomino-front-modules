@@ -21,7 +21,7 @@ const faTextConstant = {
 
     onBoardingTitle1: "بهمون بگو چند سالشه؟",
     onBoardingTitle2: "هر چی بخوای این جا هست",
-    onBoardingTitle3: `با ${process.env.REACT_APP_NAME} خیالتون راحته`,
+    onBoardingTitle3: `با آبنبات خیالتون راحته`,
     onBoardingDesc1: "تا بهتون بگیم محتوای مناسب سنش چیه",
     onBoardingDesc2: "بازی، فیلم، انیمیشن، موسیقی و دیدنی های آموزشی برای بچه‌ها",
     onBoardingDesc3: "چون با مدیریت سطح دسترسی‌های کودک، می‌تونید ازش مراقبت کنید",
