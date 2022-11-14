@@ -76,9 +76,9 @@ function getChildChart({child_id, time_period, dispatch, cancel})
         })
 }
 
-function getChildTodayUsage({child_id, dispatch, cancel})
+function getChildTodayUsage({child_id, dispatch, cancel, forceGet})
 {
-    return request.get({base, url: apiUrlsConstant.getChildTodayUsage, param: `?child_id=${child_id}`, cancel})
+    return request.get({base, url: apiUrlsConstant.getChildTodayUsage, param: `?child_id=${child_id}`, cancel, refreshed: forceGet})
         .then(res =>
         {
             dispatch({
@@ -321,6 +321,18 @@ function getUpdateChanges({version, getAll, dispatch, cancel})
         })
 }
 
+function storeAppLog({data: {child_id, app_package_name, duration, date}, getTodayUsage, dispatch})
+{
+    return request.post({base, url: apiUrlsConstant.storeAppLog, data: {child_id, app_package_name, duration, date}, dontToast: true})
+        .then(() =>
+        {
+            if (getTodayUsage)
+            {
+                getChildTodayUsage({child_id, dispatch, forceGet: true})
+            }
+        })
+}
+
 const ParentalActions = {
     getPackages,
     addChildRestrictions,
@@ -344,6 +356,7 @@ const ParentalActions = {
     verifyKidZonePassword,
     getUpdateChanges,
     getSuggestedApps,
+    storeAppLog,
 }
 
 export default ParentalActions
