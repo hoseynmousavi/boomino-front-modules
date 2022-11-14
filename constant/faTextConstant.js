@@ -68,7 +68,7 @@ const faTextConstant = {
     spaceSecond: " ثانیه",
     oneQuarter: "یک ربع ساعت",
     halfHour: "نیم ساعت",
-    emptyTime: "0 ساعت",
+    emptyTime: "0 دقیقه",
 }
 
 export default faTextConstant
