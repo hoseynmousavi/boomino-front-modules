@@ -9,7 +9,7 @@ const dateConstant = {
     defaultMonth: 6,
     defaultHour: 0,
     defaultMinute: 15,
-    noLimitTime: "23:59",
+    noLimitTime: "24:00",
 }
 
 export default dateConstant

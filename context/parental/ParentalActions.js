@@ -85,6 +85,7 @@ function getChildTodayUsage({child_id, dispatch, cancel, forceGet})
                 type: SET_TODAY_USAGE,
                 payload: {res, child_id},
             })
+            return res
         })
 }
 
