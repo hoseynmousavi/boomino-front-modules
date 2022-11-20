@@ -1,6 +1,6 @@
 import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
-import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE, SET_SUGGESTED_APPS} from "./ParentalTypes"
+import {GET_PACKAGES, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE, SET_SUGGESTED_APPS} from "./ParentalTypes"
 import strToHash from "../../helpers/strToHash"
 import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
 import enToastConstant from "../../constant/enToastConstant"
@@ -16,7 +16,7 @@ function getPackages({child_age, dispatch})
         .then(packages =>
         {
             dispatch({
-                type: GET_PACKAGES_SUCCESS,
+                type: GET_PACKAGES,
                 payload: {packages},
             })
         })

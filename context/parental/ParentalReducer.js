@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer} from "react"
-import {GET_PACKAGES_SUCCESS, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_SUGGESTED_APPS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
+import {GET_PACKAGES, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_SUGGESTED_APPS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
 import {LOGOUT} from "../auth/AuthTypes"
 import logoutManager from "../../../seyed-modules/helpers/logoutManager"
 
@@ -33,7 +33,7 @@ function ParentalProvider({children})
     {
         switch (action.type)
         {
-            case GET_PACKAGES_SUCCESS:
+            case GET_PACKAGES:
             {
                 const {packages} = action.payload
                 return {
