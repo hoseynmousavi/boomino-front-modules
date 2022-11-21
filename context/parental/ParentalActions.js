@@ -1,6 +1,6 @@
 import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
-import {GET_PACKAGES, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE, SET_SUGGESTED_APPS} from "./ParentalTypes"
+import {GET_PACKAGES, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_SUGGESTED_APPS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
 import strToHash from "../../helpers/strToHash"
 import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
 import enToastConstant from "../../constant/enToastConstant"
@@ -81,7 +81,7 @@ function getChildTodayUsage({child_id, dispatch, cancel, forceGet})
     return request.get({base, url: apiUrlsConstant.getChildTodayUsage, param: `?child_id=${child_id}`, cancel, refreshed: forceGet})
         .then(res =>
         {
-            dispatch({
+            dispatch?.({
                 type: SET_TODAY_USAGE,
                 payload: {res, child_id},
             })
