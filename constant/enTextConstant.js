@@ -83,6 +83,9 @@ const enTextConstant = {
     wednesday: "Wednesday",
     thursday: "Thursday",
     friday: "Friday",
+
+    selectTimeRestriction: "Time Activity",
+    selectTimeRestrictionDesc: "Choose Time Activity.",
 }
 
 export default enTextConstant

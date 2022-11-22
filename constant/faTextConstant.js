@@ -85,6 +85,9 @@ const faTextConstant = {
     wednesday: "چهارشنبه",
     thursday: "پنجشنبه",
     friday: "جمعه",
+
+    selectTimeRestriction: "مقدار فعالیت",
+    selectTimeRestrictionDesc: "مقدار زمان فعالیت فرزند خود را مشخص کنید.",
 }
 
 export default faTextConstant
