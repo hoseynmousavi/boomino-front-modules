@@ -61,12 +61,28 @@ const enTextConstant = {
 
     and: " & ",
 
+    proposedPack: "Recommended",
+
     spaceHour: " Hour",
     spaceMinute: " Minute",
     spaceSecond: " Second",
     oneQuarter: "One Quarter",
     halfHour: "Half of a Hour",
     emptyTime: "0 Minute",
+
+    noLimit: "No Limits",
+    sameTimeForWeek: "Same Time for Week",
+    differentTimeForWeek: "Different Time for Week",
+    manualSelect: "Manual",
+    manualSelectTitle: "Manual Set",
+
+    saturday: "Saturday",
+    sunday: "Sunday",
+    monday: "Monday",
+    tuesday: "Tuesday",
+    wednesday: "Wednesday",
+    thursday: "Thursday",
+    friday: "Friday",
 }
 
 export default enTextConstant

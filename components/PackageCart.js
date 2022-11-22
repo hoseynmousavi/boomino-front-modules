@@ -3,7 +3,7 @@ import Material from "../../seyed-modules/components/Material"
 import createMaterialColor from "../../seyed-modules/helpers/createMaterialColor"
 import ImageShow from "../../seyed-modules/components/ImageShow"
 import getImageLink from "../helpers/getImageLink"
-import GetTextConstant from "../../seyed-modules/hooks/GetTextConstant"
+import GetTextConstant from "../hooks/GetTextConstant"
 
 function PackageCart({data: {id, name, description, icon_fid, is_suggested}, selectedPack, onSelect})
 {

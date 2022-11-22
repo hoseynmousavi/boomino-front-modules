@@ -1,0 +1,118 @@
+.manual-time-mode {
+  border-radius: var(--second-radius);
+  box-shadow: var(--first-shadow);
+  padding: 5px 20px;
+  margin-top: 18px;
+  animation: fade-in ease 0.2s;
+  background-color: var(--first-background-color);
+}
+
+.manual-time-line {
+  height: 1px;
+  width: calc(100% - 35px);
+  margin-inline-start: 35px;
+  background-color: var(--first-border-color);
+}
+
+.manual-time-day-cont {
+  position: relative;
+}
+
+
+.manual-time-day {
+  position: relative;
+  font-size: var(--large-font);
+  padding: 15px;
+  width: calc(100% + 30px);
+  margin-inline-start: -15px;
+  border-radius: var(--second-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    content: " ";
+    height: 1px;
+    width: calc(100% - 30px);
+    background-color: var(--first-border-color);
+  }
+
+  &.last {
+    &:after {
+      background-color: transparent;
+    }
+  }
+}
+
+.manual-time-day-time {
+  color: var(--second-text-color);
+  display: flex;
+  align-items: center;
+  font-size: var(--regular-font);
+}
+
+.manual-time-day-time-svg {
+  width: 23px;
+  height: 23px;
+
+  path {
+    stroke: var(--second-text-color);
+  }
+}
+
+.manual-time-day-active {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  inset-inline-end: 12px;
+  transition: top ease 0.1s;
+}
+
+.manual-time-day-item {
+  direction: var(--language-direction);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-inline-start: 20px;
+  padding-inline-end: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  transition: color ease 0.1s;
+
+  &.diagram {
+    color: var(--first-text-color);
+    padding-inline-end: 60px;
+  }
+
+  &.active {
+    color: var(--first-color);
+  }
+}
+
+.manual-time-day-menu {
+  position: absolute;
+  inset-inline-end: 0;
+  top: 15px;
+  border-radius: var(--second-radius);
+  overflow: hidden;
+  box-shadow: var(--first-shadow);
+  z-index: var(--modal-z-index);
+  background-color: var(--first-background-color);
+  transform-origin: top;
+  transform: perspective(0) scale(0.98) translate3d(0, 5px, 0);
+  opacity: 0;
+  transition: transform var(--first-transition), opacity var(--first-transition), margin-top var(--first-transition);
+  will-change: transform, opacity;
+  pointer-events: none;
+
+  &.show {
+    transform: perspective(0) scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+    pointer-events: all;
+  }
+}

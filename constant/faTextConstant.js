@@ -63,12 +63,28 @@ const faTextConstant = {
 
     and: " و ",
 
+    proposedPack: "بسته پیشنهادی",
+
     spaceHour: " ساعت",
     spaceMinute: " دقیقه",
     spaceSecond: " ثانیه",
     oneQuarter: "یک ربع ساعت",
     halfHour: "نیم ساعت",
     emptyTime: "0 دقیقه",
+
+    noLimit: "بدون محدودیت",
+    sameTimeForWeek: "زمان یکسان برای کل هفته",
+    differentTimeForWeek: "زمان متفاوت برای هر روز هفته",
+    manualSelect: "تنظیم دستی",
+    manualSelectTitle: "تعیین زمان دستی",
+
+    saturday: "شنبه",
+    sunday: "یکشنبه",
+    monday: "دوشنبه",
+    tuesday: "سه‌شنبه",
+    wednesday: "چهارشنبه",
+    thursday: "پنجشنبه",
+    friday: "جمعه",
 }
 
 export default faTextConstant
