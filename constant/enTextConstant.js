@@ -1,4 +1,4 @@
-const faTextConstant = {
+const enTextConstant = {
     back: "Back",
 
     chooseGallery: "Choose From Gallery",
@@ -69,4 +69,4 @@ const faTextConstant = {
     emptyTime: "0 Minute",
 }
 
-export default faTextConstant
+export default enTextConstant
