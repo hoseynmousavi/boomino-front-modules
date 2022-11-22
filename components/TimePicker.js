@@ -10,7 +10,7 @@ import fixTimeFormat from "../helpers/fixTimeFormat"
 import VerticalPanel from "../../boomino-front-modules/components/VerticalPanel"
 import GetTextConstant from "../hooks/GetTextConstant"
 
-function TimePicker({name, full_title, title, onChange, placeholder, defaultValue, justShowPanel})
+function TimePicker({parent, name, full_title, title, onChange, placeholder, defaultValue, justShowPanel})
 {
     const {textConstant} = GetTextConstant()
     const [isShowPanel, setIsShowPanel] = useState(false)
@@ -82,7 +82,7 @@ function TimePicker({name, full_title, title, onChange, placeholder, defaultValu
 
             {
                 isShowPanel &&
-                <VerticalPanel close={hidePanel}>
+                <VerticalPanel parent={parent} close={hidePanel}>
                     <div className="select-title">{full_title || title}</div>
                     <div className="select-birth-cont">
                         <div className="select-birth-col">

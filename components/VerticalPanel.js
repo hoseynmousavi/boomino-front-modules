@@ -8,8 +8,9 @@ import onResize from "../../seyed-modules/helpers/onResize"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import {dontSwitchGesture} from "../../seyed-modules/hooks/SwitchGesture"
 
-function VerticalPanel({children, className, contentClassName, style, close, statusBarColor, dontChangeStatus, dontPush})
+function VerticalPanel({parent = "root", children, className, contentClassName, style, close, statusBarColor, dontChangeStatus, dontPush})
 {
+    const root = document.getElementById(parent)
     const {isDark} = GetTheme()
     let gesture = useRef(false)
     let maxHeight = useRef(0)
@@ -25,7 +26,7 @@ function VerticalPanel({children, className, contentClassName, style, close, sta
 
     useEffect(() =>
     {
-        changeBodyOverflow(true)
+        changeBodyOverflow(true, parent)
         popOnPopState({dontPush, callback: hideSidebar, dontChangeOverflow: true, statusBarColor: dontChangeStatus ? null : statusBarColor || (isDark ? "#0D0D0D" : "#7F7F7F")})
         setHeight({reset: false})
         removeResize.current = onResize({callback: () => setHeight({reset: true})})
@@ -44,11 +45,11 @@ function VerticalPanel({children, className, contentClassName, style, close, sta
 
         setTimeout(() =>
         {
-            if (sidebarRef.current.scrollHeight < window.innerHeight) maxHeight.current = -sidebarRef.current.scrollHeight
+            if (sidebarRef.current.scrollHeight < root.clientHeight) maxHeight.current = -sidebarRef.current.scrollHeight
             else
             {
-                maxHeight.current = -window.innerHeight
-                sidebarContentRef.current.style.height = window.innerHeight - 45 + "px"
+                maxHeight.current = -root.clientHeight
+                sidebarContentRef.current.style.height = root.clientHeight - 45 + "px"
                 fullModal.current = true
             }
             showSidebar()
@@ -152,7 +153,7 @@ function VerticalPanel({children, className, contentClassName, style, close, sta
             }
             setTimeout(() =>
             {
-                changeBodyOverflow(false)
+                changeBodyOverflow(false, parent)
                 close()
             }, 250)
         }
@@ -170,15 +171,19 @@ function VerticalPanel({children, className, contentClassName, style, close, sta
     return (
         createPortal(
             <>
-                <div className={`vertical-panel-back ${dontSwitchGesture}`} ref={sidebarBack} onClick={goBackIfNotHiding}/>
-                <div className={`vertical-panel ${dontSwitchGesture} ${className}`} style={style} ref={sidebarRef} onMouseDown={onTouchStart} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                <div className={`vertical-panel-back ${dontSwitchGesture}`} style={parent ? {height: root.clientHeight + "px"} : {}} ref={sidebarBack} onClick={goBackIfNotHiding}/>
+                <div className={`vertical-panel ${dontSwitchGesture} ${className}`}
+                     style={{...style, ...(parent ? {top: root.clientHeight + "px"} : {})}}
+                     ref={sidebarRef}
+                     onMouseDown={onTouchStart}
+                     onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
                     <div className="vertical-panel-line"/>
                     <div className={`vertical-panel-content hide-scroll ${contentClassName}`} ref={sidebarContentRef}>
                         {children}
                     </div>
                 </div>
             </>,
-            document.getElementById("root"),
+            root,
         )
     )
 }

@@ -6,7 +6,7 @@ import dateConstant from "../constant/dateConstant"
 import GetTextConstant from "../hooks/GetTextConstant"
 import MinuteToTime from "../hooks/MinuteToTime"
 
-function ManualTimeSetting({setWeekTimes, weekTimes, disabled})
+function ManualTimeSetting({parent, setWeekTimes, weekTimes, disabled})
 {
     const {textConstant} = GetTextConstant()
     const choiceNum = MinuteToTime({timeMinutes: 15})
@@ -154,7 +154,7 @@ function ManualTimeSetting({setWeekTimes, weekTimes, disabled})
 
             {
                 showTimer !== "" &&
-                <TimePicker defaultValue={weekMode === "same" ? times[0] : times[showTimer]} full_title={textConstant.manualSelectTitle} onChange={setTime} justShowPanel={closeTimer}/>
+                <TimePicker parent={parent} defaultValue={weekMode === "same" ? times[0] : times[showTimer]} full_title={textConstant.manualSelectTitle} onChange={setTime} justShowPanel={closeTimer}/>
             }
 
         </>
