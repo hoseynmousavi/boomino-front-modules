@@ -300,3 +300,46 @@
     stroke: var(--second-text-color) !important;
   }
 }
+
+.edit-child-profile-btn {
+  padding: 8px;
+  border-radius: var(--first-radius);
+  display: flex;
+  align-items: center;
+  margin: 8px auto 0 auto;
+  color: var(--link-color);
+  font-size: var(--title-font);
+  cursor: pointer;
+  transition: opacity var(--first-transition);
+
+  &.disable {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.add-child {
+    margin: 0 0 0 -8px;
+    font-family: "my-font-demibold", serif;
+  }
+
+  &.add-child-empty {
+    font-family: "my-font-demibold", serif;
+  }
+}
+
+.edit-child-profile-btn-svg {
+  width: 15px;
+  height: 15px;
+  margin-inline-end: 8px;
+
+  g {
+    stroke: var(--link-color);
+  }
+
+  &.add-child {
+    path {
+      stroke-width: 2px;
+      stroke: var(--link-color);
+    }
+  }
+}
