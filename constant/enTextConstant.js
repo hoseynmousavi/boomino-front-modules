@@ -86,6 +86,15 @@ const enTextConstant = {
 
     selectTimeRestriction: "Time Activity",
     selectTimeRestrictionDesc: "Choose Time Activity.",
+
+    recommended: "Recommended",
+
+    manageApps: "Manage Applications",
+    searchInApps: "Search in Applications List",
+
+    choosePackFirst: "Please Choose Package First.",
+
+    noItemsFound: "Not Found.",
 }
 
 export default enTextConstant

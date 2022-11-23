@@ -88,6 +88,14 @@ const faTextConstant = {
 
     selectTimeRestriction: "مقدار فعالیت",
     selectTimeRestrictionDesc: "مقدار زمان فعالیت فرزند خود را مشخص کنید.",
+
+    recommended: "پیشنهادی",
+    manageApps: "مدیریت نرم‌افزارها",
+    searchInApps: "جستجو در لیست اپلیکیشن‌ها",
+
+    choosePackFirst: "لطفا ابتدا بسته فرزند خود را مشخص کنید.",
+
+    noItemsFound: "موردی یافت نشد.",
 }
 
 export default faTextConstant
