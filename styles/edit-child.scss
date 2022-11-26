@@ -280,6 +280,11 @@
 
 .edit-child-permission-search {
   padding: 0 var(--mobile-second-solid-padding);
+
+  &.panel {
+    padding: 0;
+    height: 80px;
+  }
 }
 
 .edit-child-content-loading {
