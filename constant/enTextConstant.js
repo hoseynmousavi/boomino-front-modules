@@ -99,6 +99,9 @@ const enTextConstant = {
     manageWeb: "Manage Websites",
     webAccessed: length => `Web Accessed (${length})`,
     newWebAccess: "New Web Access",
+
+    addWeb: "New Website",
+    addWebDesc: "Enter Website Url",
 }
 
 export default enTextConstant

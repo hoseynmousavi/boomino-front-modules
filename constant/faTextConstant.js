@@ -100,6 +100,9 @@ const faTextConstant = {
     manageWeb: "مدیریت وبسایت‌ها",
     webAccessed: length => `دسترسی داده شده (${length})`,
     newWebAccess: "وبسایت جدید",
+
+    addWeb: "وبسایت جدید",
+    addWebDesc: "آدرس وبسایت جدید را وارد کنید",
 }
 
 export default faTextConstant
