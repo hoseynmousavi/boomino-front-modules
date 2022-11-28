@@ -1,0 +1,15 @@
+.privacy {
+  display: flex;
+  flex-direction: column;
+  min-height: var(--full-height);
+  background-color: var(--page-color);
+}
+
+.privacy-text {
+  width: 100%;
+  padding: var(--mobile-first-solid-padding);
+  text-align: justify;
+  white-space: pre-line;
+  line-height: var(--first-line-height);
+  font-size: var(--title-font);
+}

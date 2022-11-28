@@ -15,6 +15,7 @@ import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import {INFO_TOAST, REQUEST_CANCEL} from "../../seyed-modules/constant/toastTypes"
 import toastManager from "../../seyed-modules/helpers/toastManager"
 import GetTextConstant from "../hooks/GetTextConstant"
+import createMaterialColor from "../../seyed-modules/helpers/createMaterialColor"
 
 function LoginInputCode({route: {match: {params: {phone}}}})
 {
@@ -98,7 +99,9 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                     <div className="login-code-desc-phone">{showPhoneNumber.showPhone(phone)}</div>
                     {textConstant.enterVerifyCodeEnd}
                 </div>
-                <Material className={`login-code-edit ${verifyLoading ? "disable" : ""}`} disable={verifyLoading} onClick={goBack}>{textConstant.editPhone}</Material>
+                <Material className={`login-code-edit ${verifyLoading ? "disable" : ""}`} disable={verifyLoading} backgroundColor={createMaterialColor({variable: "--link-color"})} onClick={goBack}>
+                    {textConstant.editPhone}
+                </Material>
                 <CodeInput error={!!showError} disable={disable} onChange={onCodeChange} ref={inputRef}/>
                 <div className={`login-code-err ${!!showError ? "show" : ""}`}>{showError}</div>
                 {

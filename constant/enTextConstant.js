@@ -104,6 +104,13 @@ const enTextConstant = {
 
     addWeb: "New Website",
     addWebDesc: "Enter Website Url",
+
+    privacyIntro: "Your Entry Constitutes Your Acceptance of The",
+    privacyTitle: "Privacy Policy",
+    privacyEnd: "",
+    privacyText: `In the middle of the unlimited world of the internet, which rains good, bad, healthy and unhealthy content from the ground and the sky, we have created a clean and beautiful world for children with the help of the children's internet, and we have named it: Abnabaat!
+Abnabaat means you no longer have to worry about your child's surfing in the Internet world. By using Abnabaat, everything is adjusted according to the age, understanding and vision of your children. You can choose and manage your child's access to different content by choosing Abnabaat child internet packages and allow your child to grow and experience in a healthy environment.
+With Abnabaat, you can rest assured that children only have access to content suitable for their age, and children can freely use the children's Internet, which is their natural right.`,
 }
 
 export default enTextConstant

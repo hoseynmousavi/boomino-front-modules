@@ -7,6 +7,8 @@ const urlConstant = {
 
     editInformation: "/parent/profile",
     editInformationAfterSignup: "/parent/profile/after-signup",
+
+    privacy: "/privacy",
 }
 
 export default urlConstant

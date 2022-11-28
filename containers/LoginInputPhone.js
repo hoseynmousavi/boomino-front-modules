@@ -6,6 +6,9 @@ import Button from "../../seyed-modules/components/Button"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import BtnBottomFullScreen from "../components/BtnBottomFullScreen"
 import GetTextConstant from "../hooks/GetTextConstant"
+import Link from "../../seyed-modules/components/Link"
+import Material from "../../seyed-modules/components/Material"
+import createMaterialColor from "../../seyed-modules/helpers/createMaterialColor"
 
 function LoginInputPhone()
 {
@@ -33,9 +36,20 @@ function LoginInputPhone()
                 <p className="login-desc">{textConstant.enterPhone}</p>
                 <PhoneInput onChange={onPhoneChange} onSubmit={goToCode} disableSubmit={isDisable}/>
             </div>
-            <BtnBottomFullScreen>
-                <Button type="first" disable={isDisable} onClick={goToCode}>{textConstant.continueBtn}</Button>
-            </BtnBottomFullScreen>
+            <div className="login-bottom">
+                <div className="login-privacy">
+                    {textConstant.privacyIntro}
+                    <Link to={urlConstant.privacy}>
+                        <Material className="login-privacy-link" backgroundColor={createMaterialColor({variable: "--link-color"})}>
+                            {textConstant.privacyTitle}
+                        </Material>
+                    </Link>
+                    {textConstant.privacyEnd}
+                </div>
+                <BtnBottomFullScreen>
+                    <Button type="first" disable={isDisable} onClick={goToCode}>{textConstant.continueBtn}</Button>
+                </BtnBottomFullScreen>
+            </div>
         </div>
     )
 }

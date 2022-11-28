@@ -13,6 +13,27 @@
   }
 }
 
+.login-bottom {
+  width: 100%;
+}
+
+.login-privacy {
+  font-size: var(--regular-font);
+  color: var(--second-text-color);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-privacy-link {
+  padding: 2px 0;
+  color: var(--link-color);
+  margin: 0 4px;
+  border-bottom: 2px dashed var(--link-color);
+  cursor: pointer;
+}
+
 .login-content {
   width: 100%;
   padding: var(--mobile-first-solid-padding);
@@ -71,11 +92,12 @@
 }
 
 .login-code-edit {
+  color: var(--link-color);
+  font-family: "my-font-demibold", serif;
   font-size: var(--title-font);
   margin: 0 auto 25px auto;
-  border-bottom: 2px dotted var(--first-text-color);
-  padding: 5px;
-  border-radius: var(--second-radius) var(--second-radius) 0 0;
+  border-bottom: 2px dashed var(--link-color);
+  padding: 2px 0;
   cursor: pointer;
   transition: opacity ease 0.2s;
 

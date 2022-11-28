@@ -11,7 +11,7 @@ function Login()
         <Switch>
             <Route path={urlConstant.loginVerifyCode(":phone")} render={route => <LoginInputCode route={route}/>}/>
             <Route path={urlConstant.loginPhone} render={() => <LoginInputPhone/>}/>
-            <Route path="*" render={() => <OnBoarding/>}/>
+            <Route path={urlConstant.login} render={() => <OnBoarding/>}/>
         </Switch>
     )
 }
