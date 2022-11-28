@@ -96,6 +96,10 @@ const faTextConstant = {
     choosePackFirst: "لطفا ابتدا بسته فرزند خود را مشخص کنید.",
 
     noItemsFound: "موردی یافت نشد.",
+
+    manageWeb: "مدیریت وبسایت‌ها",
+    webAccessed: "دسترسی داده شده ",
+    newWebAccess: "وبسایت جدید",
 }
 
 export default faTextConstant

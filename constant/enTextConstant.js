@@ -95,6 +95,10 @@ const enTextConstant = {
     choosePackFirst: "Please Choose Package First.",
 
     noItemsFound: "Not Found.",
+
+    manageWeb: "Manage Websites",
+    webAccessed: "Web Accessed ",
+    newWebAccess: "New Web Access",
 }
 
 export default enTextConstant
