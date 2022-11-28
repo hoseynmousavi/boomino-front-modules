@@ -97,7 +97,7 @@ const enTextConstant = {
     noItemsFound: "Not Found.",
 
     manageWeb: "Manage Websites",
-    webAccessed: "Web Accessed ",
+    webAccessed: length => `Web Accessed (${length})`,
     newWebAccess: "New Web Access",
 }
 

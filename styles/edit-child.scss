@@ -364,4 +364,8 @@
   &.permission {
     margin: 20px var(--mobile-second-solid-padding) 10px var(--mobile-second-solid-padding);
   }
+
+  &.no-padding {
+    margin: 10px var(--mobile-second-solid-padding);
+  }
 }

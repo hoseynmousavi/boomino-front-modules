@@ -98,7 +98,7 @@ const faTextConstant = {
     noItemsFound: "موردی یافت نشد.",
 
     manageWeb: "مدیریت وبسایت‌ها",
-    webAccessed: "دسترسی داده شده ",
+    webAccessed: length => `دسترسی داده شده (${length})`,
     newWebAccess: "وبسایت جدید",
 }
 
