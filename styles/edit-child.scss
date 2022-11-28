@@ -66,6 +66,10 @@
   background-color: var(--box-color);
   border-radius: var(--first-radius);
 
+  &.permission {
+    background-color: var(--second-background-color);
+  }
+
   &.smaller {
     min-width: 24px;
     width: 24px;

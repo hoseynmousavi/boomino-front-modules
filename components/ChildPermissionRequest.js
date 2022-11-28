@@ -56,14 +56,14 @@ function ChildPermissionRequest({title, desc, ltrDesc, favicon, isAccessible, no
             {
                 notWeb ?
                     favicon ?
-                        <ImageShow className={`edit-child-request-web-img ${isContact ? "contact" : ""}`} src={favicon} alt={title}/>
+                        <ImageShow className={`edit-child-request-web-img permission ${isContact ? "contact" : ""}`} src={favicon} alt={title}/>
                         :
                         isContact ?
                             <UserSvg className="edit-child-request-web-svg"/>
                             :
                             <Icon2Svg className="edit-child-request-web-img"/>
                     :
-                    <ImageShow className="edit-child-request-web-img" src={favicon ? favicon : `${url.includes("http") ? url : "https://" + url}/favicon.ico`} alt={title}/>
+                    <ImageShow className="edit-child-request-web-img permission" src={favicon ? favicon : `${url.includes("http") ? url : "https://" + url}/favicon.ico`} alt={title}/>
             }
             {isAccessible && <CheckSvg className="edit-child-request-web-check"/>}
             <div className="edit-child-request-web-content">
