@@ -1,6 +1,7 @@
 .privacy {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-height: var(--full-height);
   background-color: var(--page-color);
 }

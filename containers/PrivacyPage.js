@@ -4,6 +4,8 @@ import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import getDomain from "../../seyed-modules/helpers/getDomain"
 import BtnBottomFullScreen from "../components/BtnBottomFullScreen"
 import LogoSvg from "../media/svg/LogoSvg"
+import Button from "../../seyed-modules/components/Button"
+import goBack from "../../seyed-modules/helpers/goBack"
 
 function PrivacyPage()
 {
@@ -23,7 +25,9 @@ function PrivacyPage()
             />
             <div className="privacy-text">{textConstant.privacyText}</div>
             <BtnBottomFullScreen>
-                {textConstant.iRead}
+                <Button onClick={goBack}>
+                    {textConstant.iRead}
+                </Button>
             </BtnBottomFullScreen>
         </div>
     )
