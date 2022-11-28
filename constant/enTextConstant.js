@@ -1,6 +1,8 @@
 const enTextConstant = {
     back: "Back",
 
+    submitBtn: "Submit",
+
     chooseGallery: "Choose From Gallery",
     chooseCamera: "Open Camera",
     removeAvatar: "Remove Photo",
