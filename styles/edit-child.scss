@@ -348,3 +348,20 @@
     }
   }
 }
+
+.edit-child-devices-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "my-font-demibold", serif;
+  font-size: var(--title-font);
+  margin: 35px var(--mobile-second-solid-padding) 10px var(--mobile-second-solid-padding);
+
+  &.child {
+    margin: 0 var(--mobile-second-solid-padding) 10px var(--mobile-second-solid-padding);
+  }
+
+  &.permission {
+    margin: 20px var(--mobile-second-solid-padding) 10px var(--mobile-second-solid-padding);
+  }
+}
