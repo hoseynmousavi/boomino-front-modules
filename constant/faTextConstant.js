@@ -106,6 +106,8 @@ const faTextConstant = {
     addWeb: "وبسایت جدید",
     addWebDesc: "آدرس وبسایت جدید را وارد کنید",
 
+    iRead: "خواندم",
+
     privacyIntro: "ورود شما به معنای پذیرش",
     privacyTitle: "قوانین حریم خصوصی",
     privacyEnd: "است.",

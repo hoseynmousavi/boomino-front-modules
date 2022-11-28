@@ -30,7 +30,7 @@
   padding: 2px 0;
   color: var(--link-color);
   margin: 0 4px;
-  border-bottom: 2px dashed var(--link-color);
+  border-bottom: 2px dotted var(--link-color);
   cursor: pointer;
 }
 
@@ -96,7 +96,7 @@
   font-family: "my-font-demibold", serif;
   font-size: var(--title-font);
   margin: 0 auto 25px auto;
-  border-bottom: 2px dashed var(--link-color);
+  border-bottom: 2px dotted var(--link-color);
   padding: 2px 0;
   cursor: pointer;
   transition: opacity ease 0.2s;

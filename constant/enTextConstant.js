@@ -105,6 +105,8 @@ const enTextConstant = {
     addWeb: "New Website",
     addWebDesc: "Enter Website Url",
 
+    iRead: "I Read",
+
     privacyIntro: "Your Entry Constitutes Your Acceptance of The",
     privacyTitle: "Privacy Policy",
     privacyEnd: "",

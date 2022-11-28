@@ -13,3 +13,14 @@
   line-height: var(--first-line-height);
   font-size: var(--title-font);
 }
+
+.about-privacy-header {
+  display: flex;
+  align-items: center;
+}
+
+.about-privacy-header-logo {
+  width: 36px;
+  height: 36px;
+  margin-inline-end: 12px;
+}
