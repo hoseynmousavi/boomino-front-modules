@@ -64,10 +64,15 @@ function LoginInputCode({route: {match: {params: {phone}}}})
             {
                 setTimerId(new Date().toISOString())
                 setRemainingTime(0)
-                setShowError(errorConstant(err))
-                clearTimeout(errorTimer.current)
-                errorTimer.current = setTimeout(() => setShowError(null), 2500)
+                showError(err)
             })
+    }
+
+    function showError(err)
+    {
+        setShowError(errorConstant(err))
+        clearTimeout(errorTimer.current)
+        errorTimer.current = setTimeout(() => setShowError(null), 2500)
     }
 
     function onCodeChange(code, resetInput)
@@ -93,9 +98,7 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                 {
                     setVerifyLoading(false)
                     resetInput()
-                    setShowError(errorConstant(err))
-                    clearTimeout(errorTimer.current)
-                    errorTimer.current = setTimeout(() => setShowError(null), 2500)
+                    showError(err)
                 })
         }
     }
