@@ -18,7 +18,8 @@
   width: 100%;
   padding: var(--mobile-first-solid-padding);
   text-align: justify;
-  white-space: pre-line;
+  text-align-last: start;
+  white-space: pre-wrap;
   line-height: var(--first-line-height);
   font-size: var(--title-font);
 }
