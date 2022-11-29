@@ -36,17 +36,21 @@ function LoginInputCode({route: {match: {params: {phone}}}})
         if (!regexConstant.PHONE_REGEX.test(phone || "")) window.history.replaceState("", "", urlConstant.home)
         else sendCode()
 
-        return () => request?.current?.cancel?.(REQUEST_CANCEL)
+        return () =>
+        {
+            clearTimeout(errorTimer.current)
+            request?.current?.cancel?.(REQUEST_CANCEL)
+        }
         // eslint-disable-next-line
     }, [])
 
     function sendCode()
     {
-        if (timerId !== null || remainingTime !== null)
-        {
-            setTimerId(null)
-            setRemainingTime(null)
-        }
+        setTimerId(null)
+        setRemainingTime(null)
+        setShowError(null)
+        clearTimeout(errorTimer.current)
+
         AuthActions.sendOtp({mobile: phone, cancel: cancelSource => request.current = cancelSource})
             .then(res =>
             {
@@ -61,6 +65,8 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                 setTimerId(new Date().toISOString())
                 setRemainingTime(0)
                 setShowError(errorConstant(err))
+                clearTimeout(errorTimer.current)
+                errorTimer.current = setTimeout(() => setShowError(null), 2500)
             })
     }
 
@@ -85,9 +91,9 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                 })
                 .catch(err =>
                 {
-                    setShowError(errorConstant(err))
                     setVerifyLoading(false)
                     resetInput()
+                    setShowError(errorConstant(err))
                     clearTimeout(errorTimer.current)
                     errorTimer.current = setTimeout(() => setShowError(null), 2500)
                 })
