@@ -6,7 +6,7 @@ import BtnBottomFullScreen from "../components/BtnBottomFullScreen"
 import LogoSvg from "../media/svg/LogoSvg"
 import Button from "../../seyed-modules/components/Button"
 import goBack from "../../seyed-modules/helpers/goBack"
-import {useLayoutEffect, useRef} from "react"
+import {useEffect, useRef} from "react"
 import titleDetector from "../helpers/titleDetector"
 
 function PrivacyPage()
@@ -17,9 +17,15 @@ function PrivacyPage()
     const domain = getDomain()
     const contRef = useRef(null)
 
-    useLayoutEffect(() =>
+    useEffect(() =>
     {
-        titleDetector(contRef.current)
+        function detect()
+        {
+            if (contRef?.current?.innerText) titleDetector(contRef.current)
+            else setTimeout(detect, 10)
+        }
+
+        detect()
     }, [])
 
     return (
