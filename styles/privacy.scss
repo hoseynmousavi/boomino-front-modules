@@ -1,12 +1,20 @@
-.privacy {
+.about-privacy {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: var(--full-height);
   background-color: var(--page-color);
+  padding-bottom: 1px;
+
+  .wizard-back-text-title.fix {
+    .about-privacy-header-logo {
+      width: 28px;
+      height: 28px;
+      margin-inline-end: 8px;
+    }
+  }
 }
 
-.privacy-text {
+.about-privacy-text {
   width: 100%;
   padding: var(--mobile-first-solid-padding);
   text-align: justify;

@@ -6,6 +6,8 @@ import BtnBottomFullScreen from "../components/BtnBottomFullScreen"
 import LogoSvg from "../media/svg/LogoSvg"
 import Button from "../../seyed-modules/components/Button"
 import goBack from "../../seyed-modules/helpers/goBack"
+import {useLayoutEffect, useRef} from "react"
+import titleDetector from "../helpers/titleDetector"
 
 function PrivacyPage()
 {
@@ -13,8 +15,15 @@ function PrivacyPage()
     const {source} = parseQueryString()
     const isFromAndroid = source?.replace("/", "") === "android"
     const domain = getDomain()
+    const contRef = useRef(null)
+
+    useLayoutEffect(() =>
+    {
+        titleDetector(contRef.current)
+    }, [])
+
     return (
-        <div className="privacy">
+        <div className="about-privacy">
             <WizardBack link={isFromAndroid && `https://${domain}/#back`}
                         title={
                             <div className="about-privacy-header">
@@ -23,7 +32,9 @@ function PrivacyPage()
                             </div>
                         }
             />
-            <div className="privacy-text">{textConstant.privacyText}</div>
+            <div className="about-privacy-text" ref={contRef}>
+                {textConstant.privacyText}
+            </div>
             <BtnBottomFullScreen>
                 <Button onClick={goBack}>
                     {textConstant.iRead}
