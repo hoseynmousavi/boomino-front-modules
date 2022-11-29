@@ -56,7 +56,12 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                 setTimerId(new Date().toISOString())
                 inputRef?.current?.focus?.()
             })
-            .catch(err => setShowError(errorConstant(err)))
+            .catch(err =>
+            {
+                setTimerId(new Date().toISOString())
+                setRemainingTime(0)
+                setShowError(errorConstant(err))
+            })
     }
 
     function onCodeChange(code, resetInput)
@@ -106,7 +111,7 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                 <div className={`login-code-err ${!!showError ? "show" : ""}`}>{showError}</div>
                 {
                     timerId ?
-                        <TimerCode key={timerId} disable={disable} onEndRetry={sendCode} timeInSeconds={remainingTime || undefined}/>
+                        <TimerCode key={timerId} disable={disable} onEndRetry={sendCode} timeInSeconds={remainingTime}/>
                         :
                         <MyLoader className="login-code-loading" width={32}/>
                 }

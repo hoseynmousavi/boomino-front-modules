@@ -19,8 +19,15 @@ function TimerCode({onEndRetry, disable, timeInSeconds = verifyCodeConstant.seco
         const timer = setInterval(() =>
         {
             const remainSeconds = Math.floor(timeInSeconds + ((start - new Date()) / 1000))
-            if (remainSeconds >= 0) setRemain(fixFormat(remainSeconds))
-            if (remainSeconds <= 0) clearInterval(timer)
+            if (remainSeconds >= 0)
+            {
+                setRemain(fixFormat(remainSeconds))
+            }
+            if (remainSeconds <= 0)
+            {
+                setRemain(fixFormat(0))
+                clearInterval(timer)
+            }
         }, 900)
         return () => clearInterval(timer)
         // eslint-disable-next-line
