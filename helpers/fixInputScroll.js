@@ -12,7 +12,7 @@ function fixInputScroll({inputRef, halfHeight = 40})
             const should = root.clientHeight / 2
             const scroll = root.scrollTop
             const now = rect.top
-            root.scroll({top: scroll - (should - now - halfHeight), behavior: "smooth"})
+            root.scrollTo({top: scroll - (should - now - halfHeight), behavior: "smooth"})
         }, 800)
     }
     else return null
