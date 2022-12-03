@@ -13,6 +13,7 @@ function Scroll({type, selectedMonth, selectedYear, onChange, defaultValue})
     const scrollCont = useRef(null)
     const timerScroll = useRef(null)
     const isTouching = useRef(false)
+    const leastYear = dateConstant.thisYear - 18
 
     useEffect(() =>
     {
@@ -20,8 +21,8 @@ function Scroll({type, selectedMonth, selectedYear, onChange, defaultValue})
         {
             if (type === "year")
             {
-                setActiveIndex(defaultValue - dateConstant.leastYear)
-                fixScroll(defaultValue - dateConstant.leastYear, true)
+                setActiveIndex(defaultValue - leastYear)
+                fixScroll(defaultValue - leastYear, true)
             }
             else if (type === "hour" || type === "minute")
             {
@@ -58,7 +59,7 @@ function Scroll({type, selectedMonth, selectedYear, onChange, defaultValue})
             if (isTouching.current === false)
             {
                 scrollCont.current.scrollTo({top: activeIndex * scrollItem, behavior: isDefault ? "auto" : "smooth"})
-                if (type === "year") onChange(activeIndex + dateConstant.leastYear)
+                if (type === "year") onChange(activeIndex + leastYear)
                 else if (type === "hour" || type === "minute") onChange(activeIndex)
                 else onChange(activeIndex + 1)
             }
@@ -114,9 +115,9 @@ function Scroll({type, selectedMonth, selectedYear, onChange, defaultValue})
                             )
                             :
                             type === "year" ?
-                                Array(dateConstant.thisYear - dateConstant.leastYear + 1).fill(0).map((_, index) =>
+                                Array(dateConstant.thisYear - leastYear + 1).fill(0).map((_, index) =>
                                     <div key={index} className={`select-birth-item ${activeIndex === index ? "active" : ""}`} style={{height: scrollItem + "px"}} onClick={onItemClick(index)}>
-                                        {index + dateConstant.leastYear}
+                                        {index + leastYear}
                                     </div>,
                                 )
                                 :
