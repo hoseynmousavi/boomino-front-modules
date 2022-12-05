@@ -18,9 +18,9 @@ function getFamily({dispatch, cancel})
         })
 }
 
-function addFamilyMember({birthDate, gender, fullName, dispatch})
+function addFamilyMember({data, dispatch})
 {
-    return request.post({base, url: apiUrlsConstant.addMember, data: {birthDate, fullName, gender}})
+    return request.post({base, url: apiUrlsConstant.addMember, data})
         .then(child =>
         {
             dispatch({

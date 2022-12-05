@@ -8,9 +8,9 @@ import onResize from "../../seyed-modules/helpers/onResize"
 import GetTheme from "../../seyed-modules/hooks/GetTheme"
 import {dontSwitchGesture} from "../../seyed-modules/hooks/SwitchGesture"
 
-function VerticalPanel({parent = "root", children, className, contentClassName, style, close, statusBarColor, dontChangeStatus, dontPush})
+function VerticalPanel({parent, children, className, contentClassName, style, close, statusBarColor, dontChangeStatus, dontPush})
 {
-    const root = document.getElementById(parent)
+    const root = document.getElementById(parent || "root")
     const {isDark} = GetTheme()
     let gesture = useRef(false)
     let maxHeight = useRef(0)
