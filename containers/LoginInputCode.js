@@ -19,6 +19,7 @@ import createMaterialColor from "../../seyed-modules/helpers/createMaterialColor
 
 function LoginInputCode({route: {match: {params: {phone}}}})
 {
+    const phoneRef = useRef(phone)
     const {textConstant} = GetTextConstant()
     const {dispatch} = useContext(AuthContext)
     const [timerId, setTimerId] = useState(null)
@@ -33,7 +34,7 @@ function LoginInputCode({route: {match: {params: {phone}}}})
 
     useEffect(() =>
     {
-        if (!regexConstant.PHONE_REGEX.test(phone || "")) window.history.replaceState("", "", urlConstant.home)
+        if (!regexConstant.PHONE_REGEX.test(phoneRef.current || "")) window.history.replaceState("", "", urlConstant.home)
         else sendCode()
 
         return () =>
@@ -51,7 +52,7 @@ function LoginInputCode({route: {match: {params: {phone}}}})
         setShowError(null)
         clearTimeout(errorTimer.current)
 
-        AuthActions.sendOtp({mobile: phone, cancel: cancelSource => request.current = cancelSource})
+        AuthActions.sendOtp({mobile: phoneRef.current, cancel: cancelSource => request.current = cancelSource})
             .then(res =>
             {
                 const {already_sent, status, ttl} = res || {}
@@ -74,7 +75,7 @@ function LoginInputCode({route: {match: {params: {phone}}}})
         if (code)
         {
             setVerifyLoading(true)
-            AuthActions.loginOrSignup({mobile: phone, code, dispatch})
+            AuthActions.loginOrSignup({mobile: phoneRef.current, code, dispatch})
                 .then(({isSignUp}) =>
                 {
                     const {returnTo} = parseQueryString()
@@ -110,7 +111,7 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                 <h1 className="login-title">{textConstant.enterCode}</h1>
                 <div className="login-code-desc">
                     {textConstant.enterVerifyCode}
-                    <div className="login-code-desc-phone">{showPhoneNumber.showPhone(phone)}</div>
+                    <div className="login-code-desc-phone">{showPhoneNumber.showPhone(phoneRef.current)}</div>
                     {textConstant.enterVerifyCodeEnd}
                 </div>
                 <Material className={`login-code-edit ${verifyLoading ? "disable" : ""}`} disable={verifyLoading} backgroundColor={createMaterialColor({variable: "--link-color"})} onClick={goBack}>
