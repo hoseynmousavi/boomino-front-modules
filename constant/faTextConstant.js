@@ -1,9 +1,9 @@
 import verifyCodeConstant from "./verifyCodeConstant"
 
 const faTextConstant = {
-    back: "بازگشت",
+    back: "برگشت",
 
-    submitBtn: "ثبت",
+    submitBtn: "تایید",
 
     chooseGallery: "انتخاب از گالری",
     chooseCamera: "باز کردن دوربین",
@@ -12,48 +12,50 @@ const faTextConstant = {
     next: "بعدی",
     letsGo: "برو بریم",
 
-    sendCodeAgain: "ارسال مجدد کد",
+    sendCodeAgain: "کد تایید به دستم نرسید، دوباره بفرستین",
 
-    continueBtn: "ادامه",
+    continueBtn: "بریم مرحله‌ی بعد",
     submitAndContinueBtn: "ثبت و ادامه",
     closeBtn: "بستن",
 
     entering: `ورود به ${process.env.REACT_APP_NAME}`,
-    enterPhone: "پدر مادر عزیز! شماره موبایلتان را وارد کنید!",
+    enterPhone: "پدر و مادر عزیز! لطفا شماره موبایلتون رو وارد کنید",
 
-    onBoardingTitle1: "بهمون بگو چند سالشه؟",
-    onBoardingTitle2: "هر چی بخوای این جا هست",
-    onBoardingTitle3: `با آبنبات خیالتون راحته`,
-    onBoardingDesc1: "تا بهتون بگیم محتوای مناسب سنش چیه",
-    onBoardingDesc2: "بازی، فیلم، انیمیشن، موسیقی و دیدنی های آموزشی برای بچه‌ها",
-    onBoardingDesc3: "چون با مدیریت سطح دسترسی‌های کودک، می‌تونید ازش مراقبت کنید",
+    onBoardingTitle1: "ورود بچه به اینترنت آزاده",
+    onBoardingTitle2: "بچه تو گوشی غرق نمی‌شه",
+    onBoardingTitle3: "گوشیتو بده دست بچه",
+    onBoardingDesc1: "با اینترنت کودک، فقط محتوای مناسب سن خودش رو می‌بینه",
+    onBoardingDesc2: "مشخص می‌کنید روزانه چه مدت می‌تونه از گوشی استفاده کنه",
+    onBoardingDesc3: "خیالتون راحته که فقط به اپلیکیشن‌هایی که شما انتخاب کردین، دسترسی داره",
 
-    enterCode: "کد تاييد را وارد کنید",
-    enterVerifyCode: `کد تاييد ${verifyCodeConstant.numberOfDigits} رقمی که به شماره همراه `,
-    enterVerifyCodeEnd: " ارسال شد را در زیر وارد کنید.",
-    editPhone: "ویرایش شماره",
+    enterCode: "کد تاييد رو وارد کنید",
+    enterVerifyCode: `کد تاييد ${verifyCodeConstant.numberOfDigits} رقمی که به شماره `,
+    enterVerifyCodeEnd: " ارسال شده رو وارد کنید.",
+    editPhone: "ویرایش شماره موبایل",
 
-    completeProfile: "تکمیل اطلاعات کاربری",
-    completeProfileAfterSignup: "حساب شما با موفقیت ساخته شد، اطلاعات خود را کامل کنید.",
-    childAccountInfo: "اطلاعات حساب فرزند",
+    completeProfile: "مشخصات خودتون",
+    completeProfileAfterSignup: "پدر مادر عزیز! لطفا مشخصات خودتون رو وارد کنید.",
+    childAccountInfo: "اطلاعات حساب کودک",
     accountInfo: "اطلاعات حساب کاربری",
     editAvatar: "ویرایش تصویر پروفایل",
-    lastName: "نام خانوادگی",
-    fullName: "نام",
+    lastName: "فامیلیتون",
+    lastNamePlaceholder: "فامیلیتون رو اینجا بنویسید",
+    firstName: "اسمتون",
+    firstNamePlaceholder: "اسمتون رو اینجا بنویسید",
     email: "ایمیل",
     enterEmail: "ایمیل خود را وارد کنید",
     mobilePhone: "شماره همراه",
     nationalCode: "کدملی",
     enterNationalCode: "کد ملی 10 رقمی",
-    gender: "جنسیت",
-    chooseGender: "جنسیت خود را انتخاب کنید",
+    gender: "خانم هستین یا آقا؟",
+    chooseGender: "جسنیت خودتون رو انتخاب کنید",
     birthDate: "تاریخ تولد",
 
     chooseChildGender: "جنسیت فرزند خود را انتخاب کنید",
     chooseChildBirthDate: "تاریخ تولد فرزند خود را انتخاب کنید",
 
     saveBtn: "ذخیره",
-    skipBtn: "رد کردن",
+    skipBtn: "بمونه برای بعد",
 
     boy: "پسر",
     girl: "دختر",
@@ -92,14 +94,14 @@ const faTextConstant = {
     selectTimeRestrictionDesc: "مقدار زمان فعالیت فرزند خود را مشخص کنید.",
 
     recommended: "پیشنهادی",
-    manageApps: "مدیریت نرم‌افزارها",
-    searchInApps: "جستجو در لیست اپلیکیشن‌ها",
+    manageApps: "مدیریت  نرم‌افزارهای کودک",
+    searchInApps: "جستجو در لیست نرم‌افزار‌های گوشی",
 
     choosePackFirst: "لطفا ابتدا بسته فرزند خود را مشخص کنید.",
 
-    noItemsFound: "موردی یافت نشد.",
+    noItemsFound: "همه جا رو زیر و رو کردیم، نبود!",
 
-    manageWeb: "مدیریت وبسایت‌ها",
+    manageWeb: "مدیریت وب‌سایت‌های کودک",
     webAccessed: length => `دسترسی داده شده (${length})`,
     newWebAccess: "وبسایت جدید",
 
@@ -108,9 +110,9 @@ const faTextConstant = {
 
     iRead: "خواندم",
 
-    privacyIntro: "ورود شما به معنای پذیرش",
+    privacyIntro: "ورود به آبنبات یعنی",
     privacyTitle: "قوانین حریم خصوصی",
-    privacyEnd: "است.",
+    privacyEnd: "رو قبول کردین",
     privacyText: `**سیاست‌های حریم خصوصی آبنبات**
 «آبنبات» برای حفظ حریم شخصی و اطلاعات کاربران احترام بسیار زیادی قائل است. از این رو در این سند توضیح می‌دهیم چه اطلاعاتی از شما را به چه دلیلی جمع‌آوری، چگونه از این اطلاعات استفاده و از آن محافظت می‌کنیم.
 بر اساس این سند و در محدوده‌ی امکانات و توانایی‌هایمان به شما اطمینان می‌دهیم که از اطلاعاتی که به شکل مستقیم یا غیرمستقیم در اختیار ما قرار می‌دهید تنها به منظور دلایل بیان شده در این سند و ارائه‌ی خدمات بهتر به شما، استفاده خواهد شد.

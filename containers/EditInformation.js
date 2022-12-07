@@ -114,8 +114,8 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                         />
                     }
                     <Input name={childId ? "fullName" : "firstName"}
-                           label={textConstant.fullName}
-                           placeholder={textConstant.fullName}
+                           label={textConstant.firstName}
+                           placeholder={textConstant.firstNamePlaceholder}
                            defaultValue={childId ? child.fullName || "" : user.firstName || ""}
                            onChange={changeField}
                            focusOnMountDesktop
@@ -130,7 +130,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                         !childId &&
                         <Input name="lastName"
                                label={textConstant.lastName}
-                               placeholder={textConstant.lastName}
+                               placeholder={textConstant.lastNamePlaceholder}
                                defaultValue={user.lastName || ""}
                                onChange={changeField}
                                disableSubmit={validationError}

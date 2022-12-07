@@ -8,6 +8,9 @@
   color: var(--second-text-color);
   line-height: var(--first-line-height);
   margin: 16px 0;
+  white-space: pre-wrap;
+  text-align: justify;
+  text-align-last: start;
 }
 
 .alert-buttons {

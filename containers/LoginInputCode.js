@@ -127,7 +127,7 @@ function LoginInputCode({route: {match: {params: {phone}}}})
                 }
             </div>
             <div className="login-code-submit">
-                <Button type="first" disable={!code} loading={verifyLoading}>{textConstant.continueBtn}</Button>
+                <Button type="first" disable={!code} loading={verifyLoading}>{textConstant.submitBtn}</Button>
             </div>
         </div>
     )

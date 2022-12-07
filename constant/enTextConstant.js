@@ -36,8 +36,10 @@ const enTextConstant = {
     childAccountInfo: "Child Account Info",
     accountInfo: "Account Info",
     editAvatar: "Edit Profile Photo",
-    lastName: "Family",
-    fullName: "Name",
+    lastName: "Last Name",
+    lastNamePlaceholder: "Enter Your Last Name",
+    firstName: "First Name",
+    firstNamePlaceholder: "Enter Your First Name",
     email: "Email",
     enterEmail: "Enter Your Email",
     mobilePhone: "Phone Number",
@@ -90,7 +92,6 @@ const enTextConstant = {
     selectTimeRestrictionDesc: "Choose Time Activity.",
 
     recommended: "Recommended",
-
     manageApps: "Manage Applications",
     searchInApps: "Search in Applications List",
 

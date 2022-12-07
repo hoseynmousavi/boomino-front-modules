@@ -47,7 +47,7 @@ function LoginInputPhone()
                     {textConstant.privacyEnd}
                 </div>
                 <BtnBottomFullScreen>
-                    <Button type="first" disable={isDisable} onClick={goToCode}>{textConstant.continueBtn}</Button>
+                    <Button type="first" disable={isDisable} onClick={goToCode}>{textConstant.submitBtn}</Button>
                 </BtnBottomFullScreen>
             </div>
         </div>
