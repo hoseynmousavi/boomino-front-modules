@@ -1,6 +1,6 @@
 import request from "../../../seyed-modules/request/request"
 import apiUrlsConstant from "../../constant/apiUrlsConstant"
-import {GET_PACKAGES, SET_APPS, SET_CATEGORIES, SET_CHANGE_LOGS, SET_CHART, SET_CONTACTS, SET_RESTRICTIONS, SET_SUGGESTED_APPS, SET_TIMELINE, SET_TIMELINE_DETAIL, SET_TODAY_USAGE} from "./ParentalTypes"
+import {GET_PACKAGES, SET_APPS, SET_CHANGE_LOGS, SET_CONTACTS, SET_RESTRICTIONS, SET_SUGGESTED_APPS} from "./ParentalTypes"
 import strToHash from "../../helpers/strToHash"
 import cookieHelper from "../../../seyed-modules/helpers/cookieHelper"
 import enToastConstant from "../../constant/enToastConstant"
@@ -62,75 +62,11 @@ function getSuggestedApps({dispatch, cancel})
         })
 }
 
-function getChildChart({child_id, time_period, dispatch, cancel})
-{
-    let param = `?time_period=${time_period}`
-    if (child_id) param += `&child_id=${child_id}`
-    return request.get({base, url: apiUrlsConstant.getChildChart, cancel, param})
-        .then(res =>
-        {
-            dispatch({
-                type: SET_CHART,
-                payload: {res, child_id, time_period},
-            })
-        })
-}
-
-function getChildTodayUsage({child_id, dispatch, cancel, forceGet})
-{
-    return request.get({base, url: apiUrlsConstant.getChildTodayUsage, param: `?child_id=${child_id}`, cancel, refreshed: forceGet})
-        .then(res =>
-        {
-            dispatch?.({
-                type: SET_TODAY_USAGE,
-                payload: {res, child_id},
-            })
-            return res
-        })
-}
-
-function getChildCategories({child_id, dispatch, cancel})
-{
-    let param = child_id ? `?child_id=${child_id}` : ""
-    return request.get({base, url: apiUrlsConstant.getChildCategories, cancel, param})
-        .then(res =>
-        {
-            dispatch({
-                type: SET_CATEGORIES,
-                payload: {res, child_id},
-            })
-        })
-}
-
-function getChildTimeLine({child_id, dispatch, cancel})
-{
-    return request.get({base, url: apiUrlsConstant.getChildTimeLine, cancel, param: `?child_id=${child_id}`})
-        .then(res =>
-        {
-            dispatch({
-                type: SET_TIMELINE,
-                payload: {res, child_id},
-            })
-        })
-}
-
-function getChildTimeLineDetail({child_id, dispatch, cancel})
-{
-    return request.get({base, url: apiUrlsConstant.getChildTimeLineDetail, cancel, param: `?child_id=${child_id}`})
-        .then(res =>
-        {
-            dispatch({
-                type: SET_TIMELINE_DETAIL,
-                payload: {res, child_id},
-            })
-        })
-}
-
-function setRestrictions({res, dispatch, updateTimelineDetailContact})
+function setRestrictions({res, dispatch})
 {
     dispatch({
         type: SET_RESTRICTIONS,
-        payload: {res, updateTimelineDetailContact},
+        payload: {res},
     })
 }
 
@@ -141,7 +77,6 @@ function editChildRestriction({childId, restrictions, dispatch})
         {
             res.child_id = childId
             setRestrictions({res, dispatch})
-            getChildTodayUsage({child_id: childId, dispatch})
         })
 }
 
@@ -190,7 +125,7 @@ function addChildWhiteContact({child_id, contact_phone_no, contact_label, contac
         .then(res =>
         {
             res.child_id = child_id
-            setRestrictions({res, dispatch, updateTimelineDetailContact: true})
+            setRestrictions({res, dispatch})
             getChildAllContacts({child_id, dispatch})
         })
 }
@@ -322,27 +257,11 @@ function getUpdateChanges({version, getAll, dispatch, cancel})
         })
 }
 
-function storeAppLog({data: {child_id, app_package_name, duration, date}, getTodayUsage, dispatch})
-{
-    return request.post({base, url: apiUrlsConstant.storeAppLog, data: {child_id, app_package_name, duration, date}, dontToast: true})
-        .then(() =>
-        {
-            if (getTodayUsage)
-            {
-                getChildTodayUsage({child_id, dispatch, forceGet: true})
-            }
-        })
-}
-
 const ParentalActions = {
     getPackages,
     addChildRestrictions,
     getChildRestrictions,
-    getChildChart,
-    getChildCategories,
-    getChildTimeLine,
     editChildRestriction,
-    getChildTodayUsage,
     editChildPackage,
     addChildWhiteContact,
     addChildWhiteSite,
@@ -350,14 +269,12 @@ const ParentalActions = {
     removeChildWhiteApp,
     addChildWhiteApp,
     removeChildWhiteContact,
-    getChildTimeLineDetail,
     getChildAllApps,
     getChildAllContacts,
     setKidZonePassword,
     verifyKidZonePassword,
     getUpdateChanges,
     getSuggestedApps,
-    storeAppLog,
 }
 
 export default ParentalActions
