@@ -58,8 +58,8 @@ function editProfile({data, childId, familyDispatch, dispatch})
         {
             if (childId && familyDispatch)
             {
-                const {birthDate, data: {gender}, fullName} = res.user
-                FamilyActions.editChildSuccess({childId, data: {birthDate, gender, fullName}, dispatch: familyDispatch})
+                const {birthDate, data: {gender, phone_number}, fullName} = res.user
+                FamilyActions.editChildSuccess({childId, data: {birthDate, gender, phone_number, fullName}, dispatch: familyDispatch})
             }
             else setUser({user: res, dispatch})
         })
