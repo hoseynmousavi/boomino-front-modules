@@ -74,7 +74,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
         {
             const root = getMainRender()
             root.scrollTo({top: root.clientHeight, behavior: "smooth"})
-            setTimeout(() => phoneRef.current.focus(), 100)
+            setTimeout(() => phoneRef.current.focus(), 300)
         }, 400)
     }
 
