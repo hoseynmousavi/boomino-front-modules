@@ -1,6 +1,6 @@
 import Input from "../../boomino-front-modules/components/Input"
 import Select from "../../boomino-front-modules/components/Select"
-import {useContext, useState} from "react"
+import {useContext, useRef, useState} from "react"
 import Button from "../../seyed-modules/components/Button"
 import DatePicker from "../components/DatePicker"
 import ShieldSvg from "../media/svg/ShieldSvg"
@@ -20,6 +20,9 @@ import WizardBack from "../../boomino-front-modules/components/WizardBack"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import closeAndToast from "../../seyed-modules/helpers/closeAndToast"
 import GetTextConstant from "../hooks/GetTextConstant"
+import ChildHavePhone from "../../views/components/ChildHavePhone"
+import getMainRender from "../../seyed-modules/helpers/getMainRender"
+import normalizePhone from "../../helpers/normalizePhone"
 
 function EditInformation({route: {location: {pathname}, match: {params: {childId}}}, link})
 {
@@ -29,11 +32,21 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
     const [values, setValues] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const isAfterSignUp = pathname === urlConstant.editInformationAfterSignup
+    const [havePhone, setHavePhone] = useState(false)
+    const phoneRef = useRef(null)
+    const {child, isLoading: isChildLoading, notFound} = CheckIfChildExists({childId, doAfterGet})
 
-    const {child, isLoading: isChildLoading, notFound} = CheckIfChildExists({childId})
-
-    const {fullName, firstName, lastName, email, birthDate, nationalCode, gender} = values
+    const {fullName, firstName, lastName, email, birthDate, nationalCode, gender, phone_number} = values
     let data = {}
+
+    function doAfterGet(child)
+    {
+        if (child)
+        {
+            const {phone_number} = child
+            if (phone_number) setHavePhone(true)
+        }
+    }
 
     if (child && (fullName || fullName === "") && fullName !== (child.fullName || "")) data.fullName = fullName
     if ((firstName || firstName === "") && firstName !== (user.firstName || "")) data.firstName = firstName
@@ -42,8 +55,28 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
     if ((nationalCode || nationalCode === "") && nationalCode !== (user.data?.nationalCode || "")) data.data = {...data.data, nationalCode}
     if (birthDate && birthDate !== (childId ? child.birthDate : user.birthDate)) data.birthDate = birthDate
     if (gender && gender !== (childId ? child.gender : user.data?.gender)) data.data = {...data.data, gender}
+    if (child)
+    {
+        if (havePhone && phone_number)
+        {
+            if (normalizePhone(child.phone_number) !== phone_number) data.data = {...data.data, phone_number}
+        }
+        else if (child.phone_number) data.data = {...data.data, phone_number: null}
+    }
 
-    const validationError = Object.values(values).some(item => item === null)
+    const validationError = Object.keys(values).some(item => item !== "phone_number" && values[item] === null)
+
+    function toggleChildPhone()
+    {
+        const havePhoneTemp = !havePhone
+        setHavePhone(havePhoneTemp)
+        if (havePhoneTemp) setTimeout(() =>
+        {
+            phoneRef.current.focus()
+            const root = getMainRender()
+            root.scrollTo({top: root.clientHeight, behavior: "smooth"})
+        }, 400)
+    }
 
     function changeField({name, value})
     {
@@ -202,6 +235,19 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
                                     defaultValue={childId ? child.birthDate : user.birthDate}
                                     onChange={changeField}
                                     disabled={isLoading}
+                        />
+                    }
+                    {
+                        child &&
+                        <ChildHavePhone ref={phoneRef}
+                                        disabled={isLoading}
+                                        defaultValue={normalizePhone(child.phone_number)}
+                                        isActive={havePhone}
+                                        changeField={changeField}
+                                        onSubmit={saveInformation}
+                                        onSubmitDisable={onDisableSaveClick}
+                                        disableSubmit={validationError}
+                                        toggle={toggleChildPhone}
                         />
                     }
                 </div>
