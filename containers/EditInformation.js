@@ -20,9 +20,9 @@ import WizardBack from "../../boomino-front-modules/components/WizardBack"
 import parseQueryString from "../../seyed-modules/helpers/parseQueryString"
 import closeAndToast from "../../seyed-modules/helpers/closeAndToast"
 import GetTextConstant from "../hooks/GetTextConstant"
-import ChildHavePhone from "../../views/components/ChildHavePhone"
+import ChildHavePhone from "../components/ChildHavePhone"
 import getMainRender from "../../seyed-modules/helpers/getMainRender"
-import normalizePhone from "../../helpers/normalizePhone"
+import normalizePhone from "../helpers/normalizePhone"
 
 function EditInformation({route: {location: {pathname}, match: {params: {childId}}}, link})
 {
@@ -64,7 +64,7 @@ function EditInformation({route: {location: {pathname}, match: {params: {childId
         else if (child.phone_number) data.data = {...data.data, phone_number: null}
     }
 
-    const validationError = Object.keys(values).some(item => item !== "phone_number" && values[item] === null)
+    const validationError = Object.keys(values).some(item => item === "phone_number" ? havePhone && values[item] === null : values[item] === null)
 
     function toggleChildPhone()
     {
